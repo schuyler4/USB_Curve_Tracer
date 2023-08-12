@@ -9,6 +9,7 @@
     (date "2023-08-05")
     (rev "2")
     (comment 1 "Designed by Marek Newton")
+    (comment 2 "Unless otherwise noted, all resistor are 1% tolerance.")
   )
 
   (lib_symbols
@@ -1332,10 +1333,6 @@
     (stroke (width 0) (type default))
     (uuid 4c1a8f2a-f4f0-440b-b9dd-6eece04bad48)
   )
-  (wire (pts (xy 140.97 68.58) (xy 146.05 68.58))
-    (stroke (width 0) (type default))
-    (uuid 4cfca34f-0af2-4e9d-a0ab-0b2bdc5635f5)
-  )
   (wire (pts (xy 148.59 33.02) (xy 148.59 34.29))
     (stroke (width 0) (type default))
     (uuid 4d2a00cd-810e-4304-b9b1-faaf21e60cf7)
@@ -1516,6 +1513,10 @@
     (stroke (width 0) (type default))
     (uuid a14bbcb4-c82b-4343-8f99-a44e209715b5)
   )
+  (wire (pts (xy 120.65 68.58) (xy 146.05 68.58))
+    (stroke (width 0) (type default))
+    (uuid a6975c93-1951-49af-ad09-d6e3ff3f2f8b)
+  )
   (wire (pts (xy 179.07 106.68) (xy 179.07 71.12))
     (stroke (width 0) (type default))
     (uuid a7a4b568-f209-4d83-b17e-c0c68a6ea52b)
@@ -1659,14 +1660,6 @@
   (text "Indication LEDs" (at 219.71 138.43 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid f12d8c5c-e27d-477e-9bfd-29c6b0cc33d5)
-  )
-
-  (global_label "V{slash}2" (shape input) (at 140.97 68.58 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 346fd2a3-f5b2-4ee6-8648-e842ec6e0193)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 134.4356 68.58 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
   )
 
   (symbol (lib_id "Device:R_US") (at 139.7 38.1 0) (unit 1)
@@ -3091,6 +3084,10 @@
     (pin "VADJ" input (at 88.9 58.42 180)
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid f76b5852-0787-474a-8a7d-8b15c59d3d28)
+    )
+    (pin "V{slash}4" output (at 120.65 68.58 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 1fba2534-0ffa-44df-a2b4-705266d08454)
     )
     (instances
       (project "USB_curve_tracer"
