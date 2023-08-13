@@ -826,11 +826,11 @@
         )
       )
     )
-    (symbol "Reference_Voltage:LM285Z-2.5" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
+    (symbol "Reference_Voltage:LM385BZ-2.5" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "LM285Z-2.5" (at 0 -3.175 0)
+      (property "Value" "LM385BZ-2.5" (at 0 -3.175 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 0 -5.08 0)
@@ -848,7 +848,7 @@
       (property "ki_fp_filters" "TO?92*Inline*" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "LM285Z-2.5_0_1"
+      (symbol "LM385BZ-2.5_0_1"
         (polyline
           (pts
             (xy -1.27 0)
@@ -879,7 +879,7 @@
           (fill (type none))
         )
       )
-      (symbol "LM285Z-2.5_1_1"
+      (symbol "LM385BZ-2.5_1_1"
         (pin passive line (at 3.81 0 180) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "2" (effects (font (size 1.27 1.27))))
@@ -2516,6 +2516,32 @@
     )
   )
 
+  (symbol (lib_id "Reference_Voltage:LM385BZ-2.5") (at 129.54 48.26 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b6024e91-3916-4fce-b65c-1f66cdcc1828)
+    (property "Reference" "U4" (at 132.08 47.625 90)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Value" "LM385BZ-2.5" (at 132.08 50.165 90)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 134.62 48.26 0)
+      (effects (font (size 1.27 1.27) italic) hide)
+    )
+    (property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/LM285-D.PDF" (at 129.54 48.26 0)
+      (effects (font (size 1.27 1.27) italic) hide)
+    )
+    (pin "2" (uuid bdce3f96-ccd6-450c-b0db-2384e0533453))
+    (pin "3" (uuid a23272cc-0a65-4d0f-8ccf-f10f4951829f))
+    (instances
+      (project "USB_curve_tracer"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+          (reference "U4") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 193.04 95.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b98a461c-1e4a-470b-acea-b93a0dfb09c3)
@@ -2807,32 +2833,6 @@
       (project "USB_curve_tracer"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
           (reference "D1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Reference_Voltage:LM285Z-2.5") (at 129.54 48.26 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid e6c582d8-2353-4f4c-97d6-4002d6ccf970)
-    (property "Reference" "U4" (at 132.08 47.625 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LM285Z-2.5" (at 132.08 50.165 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 134.62 48.26 0)
-      (effects (font (size 1.27 1.27) italic) hide)
-    )
-    (property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/LM285-D.PDF" (at 129.54 48.26 0)
-      (effects (font (size 1.27 1.27) italic) hide)
-    )
-    (pin "2" (uuid dd97592c-dcb8-4c8f-838d-fe9d0f409e79))
-    (pin "3" (uuid 6a354ca4-d490-4058-9a35-e0193a3bf506))
-    (instances
-      (project "USB_curve_tracer"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-          (reference "U4") (unit 1)
         )
       )
     )
