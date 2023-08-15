@@ -9,7 +9,7 @@
     (date "2023-08-05")
     (rev "2")
     (comment 1 "Designed by Marek Newton")
-    (comment 2 "Unless otherwise noted, all resistor are 1% tolerance.")
+    (comment 2 "Unless otherwise noted, all resistor are either 1% or 5% tolerance.")
   )
 
   (lib_symbols
