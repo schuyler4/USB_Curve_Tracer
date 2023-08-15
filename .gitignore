@@ -14,4 +14,16 @@ _autosave-*
 *-save.kicad_pcb
 fp-info-cache
 
-./rev1
+*.zip
+
+rev1/
+
+# Logfile
+*.log
+
+# Simulation Outputs
+*.raw
+*.fft
+
+# Netlist
+*.net
