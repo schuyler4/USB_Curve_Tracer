@@ -1,0 +1,1 @@
+-12V supply tvs diode has incorrect reverse stand off voltage
