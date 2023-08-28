@@ -17,6 +17,7 @@ fp-info-cache
 *.zip
 
 rev1/
+bin/
 
 # Logfile
 *.log
