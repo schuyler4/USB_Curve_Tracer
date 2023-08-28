@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdint.h>
+#include <util/delay.h>
 
 #include "main.h"
 #include "UART.h"
@@ -17,7 +18,14 @@ int main(void)
     {
         PORTB |= (1 << PORTB0);
         PORTD |= (1 << PORTD7);
-        set_DAC(500);
+        
+        /*uint16_t i;
+        for(i = 0; i < 1024; i+=1)
+        {
+            set_DAC(i);
+            //_delay_ms(10);
+        }*/
+        set_DAC(1023);
     }
 
     // The program should never return. 
@@ -29,19 +37,35 @@ void DAC_CS_toggle(void)
     PORTB ^= (1 << PORTB2);
 }
 
+void ADC_CS_toggle(void)
+{
+    PORTB ^= (1 << PORTB1);
+}
+
 // set the DAC to the given code
 void set_DAC(uint16_t code)
 {
     if(code <= DAC_RESOLUTION - 1)
     {
-        uint16_t configuration_bits = 0x6000;
-        uint16_t command_bits = configuration_bits | code;
+        uint16_t configuration_bits = 0x7000;
+        uint16_t command_bits = configuration_bits | (code << 0x4);
+        //uint16_t command_bits = 0b0111111111111111;
+        uint8_t first_command_byte = command_bits >> 8;
+        uint8_t second_command_byte = command_bits && 0xFF;
         DAC_CS_toggle();
-        SPI_transmit(0b01110011);
-        SPI_transmit(0b11111111);
+        SPI_transceiver(first_command_byte);
+        SPI_transceiver(second_command_byte);
         DAC_CS_toggle();
     } 
     // In all other cases, the code is out of range, so do nothing. 
+}
+
+uint16_t get_ADC_reading(uint8_t channel)
+{
+    SPI_transceiver(0b00000110);
+    uint8_t first_byte = SPI_transceiver(0b00000000);
+    uint8_t second_byte = SPI_transceiver(0b00000000);
+    return (first_byte << 8) | second_byte;
 }
 
 void setup_SPI(void)
@@ -54,12 +78,14 @@ void setup_SPI(void)
     PORTB |= (1 << PORTB2);
 }
 
-void SPI_transmit(uint8_t data)
+uint8_t SPI_transceiver(uint8_t data)
 {
     // Start the transmission.
     SPDR = data; 
     // Wait for the transmission to finish. 
     while(!(SPSR & (1<<SPIF)));
+    // Return the data that was received. 
+    return SPDR;
 }
 
 void setup_IO(void)
