@@ -13,19 +13,23 @@ int main(void)
     setup_IO();
     setup_SPI();
     UART_transmit_string("USB Curve Tracer Starting\n\r");
+    UART_transmit_uint16_t(1544);
 
     while(1)
     {
         PORTB |= (1 << PORTB0);
         PORTD |= (1 << PORTD7);
         
-        /*uint16_t i;
+        uint16_t i;
         for(i = 0; i < 1024; i+=1)
         {
             set_DAC(i);
+            uint16_t adc_reading = get_ADC_reading(2);
+            UART_transmit_uint16_t(adc_reading);
+            UART_transmit_string("\n\r");
             //_delay_ms(10);
-        }*/
-        set_DAC(1023);
+        }
+        //set_DAC(1023);
     }
 
     // The program should never return. 
@@ -62,9 +66,17 @@ void set_DAC(uint16_t code)
 
 uint16_t get_ADC_reading(uint8_t channel)
 {
-    SPI_transceiver(0b00000110);
-    uint8_t first_byte = SPI_transceiver(0b00000000);
-    uint8_t second_byte = SPI_transceiver(0b00000000);
+    uint8_t configuration_byte1 = 0x06 | (channel & 0x04) >> 2;
+    uint8_t configuration_byte2 = (0x03 & channel) << 6;
+
+    ADC_CS_toggle();
+    // The first byte is for configuration.
+    SPI_transceiver(configuration_byte1);
+    // The second byte is for configuration and receiving.
+    uint8_t first_byte = SPI_transceiver(configuration_byte2);
+    // The third byte is only for receiving
+    uint8_t second_byte = SPI_transceiver(0x00);
+    ADC_CS_toggle();
     return (first_byte << 8) | second_byte;
 }
 

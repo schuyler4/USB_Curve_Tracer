@@ -104,13 +104,13 @@ void UART_transmit_uint16_t(uint16_t number)
     {
         uint8_t digit = number % INTEGER_BASE;
         number /= INTEGER_BASE;
-        digit_stack[DIGIT_COUNT_8_BIT - i - 1] = digit;
+        digit_stack[DIGIT_COUNT_16_BIT - i - 1] = digit;
         i++;
     }
 
     uint8_t leading_zero = 1;
 
-    for(i = 0; i < DIGIT_COUNT_8_BIT; i++)
+    for(i = 0; i < DIGIT_COUNT_16_BIT; i++)
     {
         // Don't transmit leading zeros.
         if(digit_stack[i] == 0 && leading_zero && i != DIGIT_COUNT_8_BIT - 1)
