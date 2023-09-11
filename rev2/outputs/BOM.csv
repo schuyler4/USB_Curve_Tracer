@@ -2,7 +2,7 @@ Item,Qty,Reference(s),Value,Distributor,Distributor Part #,Unit Cost,Cost,Carted
 1,1,A1,Arduino_Nano_v3.x,Digikey,1050-1001-ND,15.08,15.08,T
 2,5,"C1, C2, C4, C5, C8",0.1uF,Digikey,BC2665CT-ND,0.23,1.15,T
 3,1,C3,10uF,Digikey,445-173437-1-ND,0.67,0.67,T
-4,1,D1,SA6.0A,Digikey,SA6.0ALFCT-ND,0.44,0.44,T
+4,1,D1,SA13A,Digikey,SA13A-E3/54GICT-ND,0.46,0.46,T
 5,1,D2,SA6.5CA,Digikey,SA6.5CALFCT-ND,0.43,0.43,T
 6,1,D6,WP7113SGD,Digikey,754-1735-ND,0.34,0.34,T
 7,1,D7,WP7113ID,Digikey,754-1264-ND,0.1,0.1,T
@@ -12,8 +12,8 @@ Item,Qty,Reference(s),Value,Distributor,Distributor Part #,Unit Cost,Cost,Carted
 11,4,"HS1, HS2, HS3, HS4",15.60°C/W,Digikey,HS112-ND,1.8,7.2,T
 12,1,J1,DUT Connector,Digikey,102-6179-ND,0.71,0.71,T
 13,1,J2,Power Input,Digikey,102-6179-ND,0.71,0.71,T
-14,2,"Q1, Q5",IRF3205,Digikey,IRF3205ZPBF-ND,1.7,3.4,T
-15,2,"Q2, Q6",IRF4905,Digikey,IRF4905PBF-ND,2.47,4.94,T
+14,2,"Q1, Q5",TIP122,Digikey,TIP122GOS-ND,0.79,1.58,T
+15,2,"Q2, Q6",TIP127,Digikey,497-2571-5-ND,0.79,1.58,T
 16,11,"R1, R2, R3, R6, R7, R20, R22, R24, R25, R26, R27",10k,Digikey,CF14JT10K0CT-ND,0.1,1.1,T
 17,4,"R4, R9, R14, R17",4.02k+/-0.1%,Digikey,1712-YR1B4K02CT-ND,0.63,2.52,T
 18,2,"R10, R19",250k+/-0.1%,Digikey,RN55E2503BB14-ND,1.04,2.08,T
@@ -25,7 +25,7 @@ Item,Qty,Reference(s),Value,Distributor,Distributor Part #,Unit Cost,Cost,Carted
 24,1,R21,14k,Digikey,14.0KXBK-ND,0.1,0.1,T
 25,4,"TP1, TP2, TP3, TP4, TP5, TP6",4952,Digikey,36-4952-ND,0.26,1.04,T
 26,1,U1,MCP4911,Digikey,MCP4911-E/P-ND,1.97,1.97,T
-27,1,U2,MCP604,Digikey,MCP6044-I/P-ND,2.01,2.01,T
+27,1,U2,LMC6484IN/NOPB,Digikey,LMC6484IN/NOPB-ND,2.83,2.83,T
 28,1,U3,MCP3204,Digikey,MCP3204-CI/P-ND,4.52,4.52,T
 29,1,U4,LM385BZ-2.5,Digikey,LM385BZ-2.5GOS-ND,0.78,0.78,T
-total:,,,,,,,56.74,
+total:,,,,,,,52.4,

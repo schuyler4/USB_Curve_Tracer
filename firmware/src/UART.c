@@ -22,6 +22,7 @@
 
 #define DIGIT_COUNT_8_BIT 3
 #define DIGIT_COUNT_16_BIT 5
+#define DIGIT_COUNT_32_BIT 10
 
 char digit_to_character(uint8_t digit)
 {
@@ -69,7 +70,7 @@ void UART_transmit_string(char *string)
 // This function transmits an 8 bit unsigned integer.
 void UART_transmit_uint8_t(uint8_t number)
 {
-    uint8_t digit_stack[DIGIT_COUNT_8_BIT] = {0, 0, 0};
+    uint8_t digit_stack[DIGIT_COUNT_8_BIT] = {0};
     uint8_t i = 0;
 
     while(number > 0)
@@ -89,6 +90,10 @@ void UART_transmit_uint8_t(uint8_t number)
         {
             continue;
         }
+        else if(digit_stack[i] != 0)
+        {
+            leading_zero = 0;
+        }
 
         UART_transmit_char(digit_to_character(digit_stack[i]));
     }
@@ -97,7 +102,7 @@ void UART_transmit_uint8_t(uint8_t number)
 // This function transmits a 16 bit unsigned integer.
 void UART_transmit_uint16_t(uint16_t number)
 {
-    uint8_t digit_stack[DIGIT_COUNT_16_BIT] = {0, 0, 0, 0, 0};
+    uint8_t digit_stack[DIGIT_COUNT_16_BIT] = {0};
     uint8_t i = 0;
 
     while(number > 0)
@@ -113,9 +118,45 @@ void UART_transmit_uint16_t(uint16_t number)
     for(i = 0; i < DIGIT_COUNT_16_BIT; i++)
     {
         // Don't transmit leading zeros.
-        if(digit_stack[i] == 0 && leading_zero && i != DIGIT_COUNT_8_BIT - 1)
+        if(digit_stack[i] == 0 && leading_zero && i != DIGIT_COUNT_16_BIT - 1)
         {
             continue;
+        }
+        else if(digit_stack[i] != 0)
+        {
+            leading_zero = 0;
+        }
+
+        UART_transmit_char(digit_to_character(digit_stack[i]));
+    }
+}
+
+// This function transmits a 32 bit unsigned integer.
+void UART_transmit_uint32_t(uint32_t number)
+{
+    uint8_t digit_stack[DIGIT_COUNT_32_BIT] = {0};
+    uint8_t i = 0;
+
+    while(number > 0)
+    {
+        uint8_t digit = number % INTEGER_BASE;
+        number /= INTEGER_BASE;
+        digit_stack[DIGIT_COUNT_32_BIT - i - 1] = digit;
+        i++;
+    }
+
+    uint8_t leading_zero = 1;
+
+    for(i = 0; i < DIGIT_COUNT_32_BIT; i++)
+    {
+        // Don't transmit leading zeros.
+        if(digit_stack[i] == 0 && leading_zero && i != DIGIT_COUNT_32_BIT - 1)
+        {
+            continue;
+        }
+        else if(digit_stack[i] != 0)
+        {
+            leading_zero = 0;
         }
 
         UART_transmit_char(digit_to_character(digit_stack[i]));
