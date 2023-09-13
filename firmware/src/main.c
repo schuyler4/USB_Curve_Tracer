@@ -3,6 +3,8 @@
 
 #include "main.h"
 #include "UART.h"
+#include "spi.h"
+#include "MCP3204.h"
 
 #define DAC_RESOLUTION 1024
 
@@ -27,7 +29,7 @@ int main(void)
     setup_SPI();
     UART_transmit_string("USB Curve Tracer Starting\n\r");
 
-    //sweep_device();
+    sweep_device();
     while(1)
     {
         PORTB |= (1 << PORTB0);
@@ -38,11 +40,11 @@ int main(void)
         //set_DAC(0);
         //set_DAC(1024);
 
-        uint32_t zero_current_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
+        /*uint32_t zero_current_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
         for(uint16_t i = 0; i < 256; i++)
         {
             set_DAC(i);
-        }  
+        }*/
 
     }
 
@@ -53,11 +55,6 @@ int main(void)
 void DAC_CS_toggle(void)
 {
     PORTB ^= (1 << PORTB2);
-}
-
-void ADC_CS_toggle(void)
-{
-    PORTB ^= (1 << PORTB1);
 }
 
 // set the DAC to the given code
@@ -79,43 +76,6 @@ void set_DAC(uint16_t code)
     // In all other cases, the code is out of range, so do nothing. 
 }
 
-uint16_t get_ADC_reading(uint8_t channel)
-{
-    uint8_t configuration_byte1 = 0x06 | (channel & 0x04) >> 2;
-    uint8_t configuration_byte2 = (0x03 & channel) << 6;
-
-    ADC_CS_toggle();
-    // The first byte is for configuration.
-    SPI_transceiver(configuration_byte1);
-    // The second byte is for configuration and receiving.
-    uint8_t first_byte = SPI_transceiver(configuration_byte2);
-    // The third byte is only for receiving
-    uint8_t second_byte = SPI_transceiver(0x00);
-    ADC_CS_toggle();
-    uint16_t combined_bytes = (uint16_t)(first_byte << 8) | second_byte;
-    return combined_bytes;
-}
-
-void setup_SPI(void)
-{
-    // Set up the SPI peripheral.   
-    // Obviously, the microcontroller is being used as a master. 
-    SPCR = (1<<SPE) | (1<<MSTR) | (1<<SPR0) | (1 << SPR1);
-    // Start both CS pins high.
-    PORTB |= (1 << PORTB1);
-    PORTB |= (1 << PORTB2);
-}
-
-uint8_t SPI_transceiver(uint8_t data)
-{
-    // Start the transmission.
-    SPDR = data; 
-    // Wait for the transmission to finish. 
-    while(!(SPSR & (1<<SPIF)));
-    // Return the data that was received. 
-    return SPDR;
-}
-
 void setup_IO(void)
 {
     // Set MOSI and SCK to output for SPI.
@@ -129,7 +89,7 @@ void setup_IO(void)
     DDRD |= (1 << DDD7);
 }
 
-uint32_t average_ADC_reading(uint8_t channel)
+/*uint32_t average_ADC_reading(uint8_t channel)
 {
     uint16_t i;
     uint32_t sum = 0;
@@ -144,11 +104,11 @@ uint32_t average_ADC_reading(uint8_t channel)
     }
 
     return sum/AVERAGING_SAMPLE_COUNT;
-}
+}*/
 
 uint16_t DAC_voltage_setting = 500;
 
-void zero_device_voltage(void)
+/*void zero_device_voltage(void)
 {
     uint32_t device_voltage = average_ADC_reading(VOLTAGE_ADC_CHANNEL);
 
@@ -167,7 +127,7 @@ void zero_device_voltage(void)
     set_DAC(DAC_voltage_setting);
     UART_transmit_uint16_t(DAC_voltage_setting);
     UART_transmit_string("\n\r");
-}
+}*/
 
 void sweep_device(void)
 {
@@ -177,12 +137,12 @@ void sweep_device(void)
     for(i = 0; i < SAMPLE_COUNT; i++)
     {
         set_DAC(i);
-        uint32_t voltage_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
-        uint32_t current_reading = average_ADC_reading(VOLTAGE_ADC_CHANNEL);
-
-        UART_transmit_uint32_t(voltage_reading);
+        uint16_t voltage_reading = get_ADC_reading(CURRENT_ADC_CHANNEL, SINGLE_ENDED);
+        uint16_t current_reading = get_ADC_reading(VOLTAGE_ADC_CHANNEL, SINGLE_ENDED);
+    
+        UART_transmit_uint16_t(voltage_reading);
         UART_transmit_string(" , ");
-        UART_transmit_uint32_t(current_reading);
+        UART_transmit_uint16_t(current_reading);
         UART_transmit_string("\n\r");
     }
     UART_transmit_string("Ending Sweep\n\r");
