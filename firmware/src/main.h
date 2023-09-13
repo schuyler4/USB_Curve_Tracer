@@ -3,7 +3,6 @@
 
 void setup_IO(void);
 void DAC_CS_toggle(void);
-void set_DAC(uint16_t code);
 void ADC_CS_toggle(void);
 uint32_t average_ADC_reading(uint8_t channel);
 void zero_device_voltage(void);

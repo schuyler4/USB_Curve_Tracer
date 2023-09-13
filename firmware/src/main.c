@@ -5,6 +5,7 @@
 #include "UART.h"
 #include "spi.h"
 #include "MCP3204.h"
+#include "MCP4911.h"
 
 #define DAC_RESOLUTION 1024
 
@@ -31,7 +32,7 @@ int main(void)
 
     sweep_device();
     while(1)
-    {
+    {   
         PORTB |= (1 << PORTB0);
         PORTD |= (1 << PORTD7);
 
@@ -50,30 +51,6 @@ int main(void)
 
     // The program should never return. 
     return 0;
-}
-
-void DAC_CS_toggle(void)
-{
-    PORTB ^= (1 << PORTB2);
-}
-
-// set the DAC to the given code
-void set_DAC(uint16_t code)
-{
-    if(code <= DAC_RESOLUTION - 1)
-    {
-        uint16_t configuration_bits = 0x7000;
-        uint16_t command_bits = configuration_bits | (code << 0x4);
-        //uint16_t command_bits = configuration_bits | (code << 0x4);
-        //uint16_t command_bits = 0b0111111111111111;
-        uint8_t first_command_byte = command_bits >> 8;
-        uint8_t second_command_byte = command_bits && 0xFF;
-        DAC_CS_toggle();
-        SPI_transceiver(first_command_byte);
-        SPI_transceiver(second_command_byte);
-        DAC_CS_toggle();
-    } 
-    // In all other cases, the code is out of range, so do nothing. 
 }
 
 void setup_IO(void)
@@ -136,7 +113,7 @@ void sweep_device(void)
     UART_transmit_string("Starting Sweep\n\r");
     for(i = 0; i < SAMPLE_COUNT; i++)
     {
-        set_DAC(i);
+        set_DAC(i, GAIN_1X, BUFFERED);
         uint16_t voltage_reading = get_ADC_reading(CURRENT_ADC_CHANNEL, SINGLE_ENDED);
         uint16_t current_reading = get_ADC_reading(VOLTAGE_ADC_CHANNEL, SINGLE_ENDED);
     

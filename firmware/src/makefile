@@ -11,7 +11,7 @@ BIN_DIRECTORY = ../bin
 
 # the c files to be linked and compiled
 # add file to line as the number of files in the program grows
-SOURCE_FILES = main.c UART.c spi.c MCP3204.c
+SOURCE_FILES = main.c UART.c spi.c MCP3204.c MCP4911.c
 
 # the name of the output file that will be compiled
 OUTPUT_FILE = program
