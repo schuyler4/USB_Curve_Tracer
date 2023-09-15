@@ -1,4 +1,0 @@
--12V supply tvs diode has incorrect reverse stand off voltage
--Operational amplifier supply voltage to low for 12V
--Step down divider for current sense diff amp is not correct
--Missing zener diode D4

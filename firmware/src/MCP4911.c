@@ -5,9 +5,6 @@
 
 #include "spi.h"
 
-#define CODE_BYTE1_OFFSET 2
-#define CODE_BYTE0_OFFSET 6
-
 static void DAC_CS_toggle(void)
 {
     PORTB ^= (1 << PORTB2);

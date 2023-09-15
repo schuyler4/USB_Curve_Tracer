@@ -18,8 +18,15 @@
 #define CURRENT_SENSOR_ADC_BIAS 2331    
 
 #define ZERO_DEVICE_VOLTAGE_CODE 1725
+#define ZERO_DEVICE_MARGIN 5
 
-#define SAMPLE_COUNT 1024
+#define MAX_POSITIVE_CURRENT_CODE 0
+#define MAX_NEGATIVE_CURRENT_CODE 0
+
+#define MAXIMUM_DAC_CODE 1023
+#define MINIMUM_DAC_CODE 0
+
+static uint16_t DAC_voltage_setting = 0;
 
 int main(void)
 {
@@ -28,13 +35,14 @@ int main(void)
     setup_SPI();
     UART_transmit_string("USB Curve Tracer Starting\n\r");
 
+    zero_device_voltage();
     sweep_device();
+
     while(1)
     {   
         PORTB |= (1 << PORTB0);
         PORTD |= (1 << PORTD7);
 
-        //zero_device_voltage();
         //set_DAC(400);
         //set_DAC(0);
         //set_DAC(1024);
@@ -59,61 +67,56 @@ void setup_IO(void)
     DDRD |= (1 << DDD7);
 }
 
-/*uint32_t average_ADC_reading(uint8_t channel)
+void zero_device_voltage(void)
 {
-    uint16_t i;
-    uint32_t sum = 0;
-    for(i = 0; i < AVERAGING_SAMPLE_COUNT; i++)
+    while(1)
     {
-        uint16_t reading = get_ADC_reading(channel);
-        while(reading > MAXIMUM_ADC_READING)
-        {
-            reading = get_ADC_reading(channel);
-        }
-        sum += reading;
-    }
+        uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
 
-    return sum/AVERAGING_SAMPLE_COUNT;
-}*/
-
-uint16_t DAC_voltage_setting = 500;
-
-/*void zero_device_voltage(void)
-{
-    uint32_t device_voltage = average_ADC_reading(VOLTAGE_ADC_CHANNEL);
-
-    if(DAC_voltage_setting >= 0 && DAC_voltage_setting < 1024)
-    {
-        if(device_voltage > ZERO_DEVICE_VOLTAGE_CODE)
+        if(voltage_reading > ZERO_DEVICE_VOLTAGE_CODE)
         {
             DAC_voltage_setting--;
         }
-        else if(device_voltage < ZERO_DEVICE_VOLTAGE_CODE)
+        else if(voltage_reading < ZERO_DEVICE_VOLTAGE_CODE)
         {
             DAC_voltage_setting++;
         }
-    }
 
-    set_DAC(DAC_voltage_setting);
-    UART_transmit_uint16_t(DAC_voltage_setting);
-    UART_transmit_string("\n\r");
-}*/
+        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+
+        uint8_t above_range = voltage_reading > ZERO_DEVICE_VOLTAGE_CODE + ZERO_DEVICE_MARGIN;
+        uint8_t below_range = voltage_reading < ZERO_DEVICE_VOLTAGE_CODE - ZERO_DEVICE_MARGIN;
+
+        if(!above_range && !below_range)
+        {
+            break;
+        }
+    }
+}
+
+IV_Sample sample_IV(void)
+{
+    IV_Sample iv_sample;
+    iv_sample.voltage_code = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
+    iv_sample.current_code = get_ADC_reading(SINGLE_ENDED, CURRENT_ADC_CHANNEL);
+    return iv_sample;
+}
 
 void sweep_device(void)
 {
-    uint16_t i;
-   
-    UART_transmit_string("Starting Sweep\n\r");
-    for(i = 0; i < SAMPLE_COUNT; i++)
+    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
     {
-        set_DAC(i, GAIN_1X, BUFFERED);
-        uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
-        uint16_t current_reading = get_ADC_reading(SINGLE_ENDED, CURRENT_ADC_CHANNEL);
-    
-        UART_transmit_uint16_t(current_reading);
-        UART_transmit_string(" , ");
-        UART_transmit_uint16_t(voltage_reading);
-        UART_transmit_string("\n\r");
+        DAC_voltage_setting++;
+        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
     }
-    UART_transmit_string("Ending Sweep\n\r");
+
+    zero_device_voltage();
+
+    while(DAC_voltage_setting >= MINIMUM_DAC_CODE)
+    {
+        DAC_voltage_setting--;
+        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+    }
+
+    zero_device_voltage();
 }
