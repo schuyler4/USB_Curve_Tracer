@@ -5,6 +5,9 @@
 
 #include "spi.h"
 
+#define CODE_BYTE1_OFFSET 2
+#define CODE_BYTE0_OFFSET 6
+
 static void DAC_CS_toggle(void)
 {
     PORTB ^= (1 << PORTB2);
@@ -15,9 +18,9 @@ void set_DAC(uint16_t code, uint8_t gain, uint8_t buffer)
 {
     if(code <= DAC_RESOLUTION - 1)
     {
-        uint16_t configuration = (1 << SHDN) | (gain << GA) | (buffer << BUF);
+        uint16_t configuration = (1 << SHDN) | (gain << GA) | (buffer << BUF) | (0 << START);
         DAC_CS_toggle();
-        SPI_transceiver((uint8_t) configuration | (code >> CODE_BYTE0_OFFSET));
+        SPI_transceiver(configuration | (code >> CODE_BYTE0_OFFSET));
         SPI_transceiver((uint8_t) code << CODE_BYTE1_OFFSET);
         DAC_CS_toggle();
     } 

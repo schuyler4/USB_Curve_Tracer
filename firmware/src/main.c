@@ -7,8 +7,6 @@
 #include "MCP3204.h"
 #include "MCP4911.h"
 
-#define DAC_RESOLUTION 1024
-
 #define AVERAGING_SAMPLE_COUNT 10
 
 #define VOLTAGE_ADC_CHANNEL 0
@@ -21,7 +19,7 @@
 
 #define ZERO_DEVICE_VOLTAGE_CODE 1725
 
-#define SAMPLE_COUNT 256
+#define SAMPLE_COUNT 1024
 
 int main(void)
 {
@@ -41,12 +39,7 @@ int main(void)
         //set_DAC(0);
         //set_DAC(1024);
 
-        /*uint32_t zero_current_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
-        for(uint16_t i = 0; i < 256; i++)
-        {
-            set_DAC(i);
-        }*/
-
+        //uint32_t zero_current_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
     }
 
     // The program should never return. 
@@ -114,12 +107,12 @@ void sweep_device(void)
     for(i = 0; i < SAMPLE_COUNT; i++)
     {
         set_DAC(i, GAIN_1X, BUFFERED);
-        uint16_t voltage_reading = get_ADC_reading(CURRENT_ADC_CHANNEL, SINGLE_ENDED);
-        uint16_t current_reading = get_ADC_reading(VOLTAGE_ADC_CHANNEL, SINGLE_ENDED);
+        uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
+        uint16_t current_reading = get_ADC_reading(SINGLE_ENDED, CURRENT_ADC_CHANNEL);
     
-        UART_transmit_uint16_t(voltage_reading);
-        UART_transmit_string(" , ");
         UART_transmit_uint16_t(current_reading);
+        UART_transmit_string(" , ");
+        UART_transmit_uint16_t(voltage_reading);
         UART_transmit_string("\n\r");
     }
     UART_transmit_string("Ending Sweep\n\r");

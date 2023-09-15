@@ -6,7 +6,7 @@ from numpy.polynomial.polynomial import polyfit
 adc_resolution = 4096
 reference_voltage = 2.5 # V
 common_voltage = 6 # V
-current_amplifier_gain = 360 # V/V
+current_amplifier_gain = 350 # V/V
 lsb = reference_voltage/adc_resolution
 
 voltage_sensor_upper_step_down_resistor = 4700 # Ohms
@@ -19,7 +19,7 @@ shunt_resistance = 0.1 # Ohms
 df = pd.read_csv('./data470.csv')
 
 # Get a list from the second column of the dataframe
-voltage_code = df.iloc[:, 1].tolist()
+voltage_code = df.iloc[:, 1].tolist()   
 # Get a list from the third column of the dataframe
 current_code = df.iloc[:, 0].tolist()
 
@@ -41,10 +41,12 @@ current_output = (divided_voltage(output_voltage(current_code) - current_sensor_
 b, m = polyfit(voltage_output, current_output, 1)
 
 percent_error = lambda theoretical, experimental: np.abs((experimental - theoretical)/theoretical * 100)
+conductance = lambda resistance: 1/resistance
 
-
+print("ERROR: ", percent_error(conductance(470), m))
     
 # Plot the data
 plt.scatter(voltage_output, current_output)
-plt.plot(voltage_output, m*voltage_output + b)
+#plt.plot(voltage_output, m*voltage_output + b)
+#plt.scatter(voltage_code, current_code)
 plt.show()

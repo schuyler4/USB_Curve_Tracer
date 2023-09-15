@@ -19,6 +19,12 @@
 #define D1 7
 #define D0 6
 
+#define D0_MASK 1
+#define D1_MASK 2
+#define D2_MASK 4
+
+#define FIRST_RECEIVE_BYTE_MASK 0x0F
+
 uint16_t get_ADC_reading(uint8_t single_or_diff, uint8_t channel);
 
 #endif
