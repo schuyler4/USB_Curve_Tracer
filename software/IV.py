@@ -21,6 +21,9 @@ def divided_voltage(divider_voltage, upper_resistor):
 
 gain_division = lambda voltage, gain: voltage/gain
 
-voltage_output = divided_voltage(output_voltage(voltage_code), voltage_sensor_upper_step_down_resistor) - common_voltage
-current_output = (divided_voltage(output_voltage(current_code) - current_sensor_zero_voltage, 
-                                voltage_sensor_upper_step_down_resistor)/current_amplifier_gain)/shunt_resistance 
+def IV_data(voltage_codes, current_codes):
+    voltages = divided_voltage(output_voltage(voltage_codes), voltage_sensor_upper_step_down_resistor) - common_voltage
+    currents = (divided_voltage(output_voltage(current_codes) - current_sensor_zero_voltage, 
+                                    voltage_sensor_upper_step_down_resistor)/current_amplifier_gain)/shunt_resistance 
+    
+    return currents, voltages

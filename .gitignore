@@ -17,7 +17,11 @@ fp-info-cache
 *.zip
 
 rev1/
-bin/
+electronics/rev1
+__pycache__/
+
+*.hex
+*.o
 
 # Logfile
 *.log

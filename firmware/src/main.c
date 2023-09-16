@@ -1,5 +1,8 @@
+#define F_CPU 16000000UL
+
 #include <avr/io.h>
 #include <stdint.h>
+#include <util/delay.h>
 
 #include "main.h"
 #include "UART.h"
@@ -20,10 +23,10 @@
 #define ZERO_DEVICE_VOLTAGE_CODE 1725
 #define ZERO_DEVICE_MARGIN 5
 
-#define MAX_POSITIVE_CURRENT_CODE 0
-#define MAX_NEGATIVE_CURRENT_CODE 0
+#define MAX_POSITIVE_CURRENT_CODE 4090
+#define MAX_NEGATIVE_CURRENT_CODE 500
 
-#define MAXIMUM_DAC_CODE 1023
+#define MAXIMUM_DAC_CODE 1024
 #define MINIMUM_DAC_CODE 0
 
 static uint16_t DAC_voltage_setting = 0;
@@ -33,13 +36,24 @@ int main(void)
     setup_UART();
     setup_IO();
     setup_SPI();
-    UART_transmit_string("USB Curve Tracer Starting\n\r");
 
     zero_device_voltage();
+
+    UART_transmit_string("USB Curve Tracer Starting\n\r");
+    
+
+
+    //_delay_ms(10);
+
+    _delay_ms(60000);
+
     sweep_device();
+
+    zero_device_voltage();
 
     while(1)
     {   
+        
         PORTB |= (1 << PORTB0);
         PORTD |= (1 << PORTD7);
 
@@ -102,20 +116,50 @@ IV_Sample sample_IV(void)
     return iv_sample;
 }
 
+uint8_t over_current(IV_Sample sample)
+{
+    return sample.current_code > MAX_POSITIVE_CURRENT_CODE || sample.current_code < MAX_NEGATIVE_CURRENT_CODE;
+}
+
+void print_sample(IV_Sample sample)
+{
+    UART_transmit_uint16_t(sample.current_code);
+    UART_transmit_string(",");
+    UART_transmit_uint16_t(sample.voltage_code);
+    UART_transmit_string("\n\r");
+}
+
 void sweep_device(void)
 {
     while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
     {
         DAC_voltage_setting++;
         set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+        IV_Sample sample;
+        sample = sample_IV();
+        print_sample(sample);
+
+        if(over_current(sample))
+        {
+            UART_transmit_string("\n\r");
+            break;
+        }
     }
 
     zero_device_voltage();
 
-    while(DAC_voltage_setting >= MINIMUM_DAC_CODE)
+    while(DAC_voltage_setting > MINIMUM_DAC_CODE)
     {
         DAC_voltage_setting--;
         set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+        IV_Sample sample;
+        sample = sample_IV();
+        print_sample(sample);
+
+        if(over_current(sample))
+        {
+            break;
+        }
     }
 
     zero_device_voltage();
