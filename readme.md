@@ -9,6 +9,7 @@ cannot measure voltage sources.
 <h3> Specs </h3>
 - 12V External Power Supply
 
+<h3> Examples </h3>
 Here are a few preliminary curves.
 
 ![Resistor Plot](./resistor_plot.png)
