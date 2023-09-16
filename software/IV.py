@@ -1,29 +1,34 @@
-import pandas as pd
-import numpy as np
+'''
+FILENAME: IV.py
 
-adc_resolution = 4096
-reference_voltage = 2.5 # V
-common_voltage = 6 # V
-current_amplifier_gain = 350 # V/V
-lsb = reference_voltage/adc_resolution
+PURPOSE: This file contains functions that convert raw ADC codes into current and voltage values.
 
-voltage_sensor_upper_step_down_resistor = 4700 # Ohms
-current_sensor_upper_step_down_resistor = 3240 # Ohms
-current_sensor_zero_voltage = 1.322 # V
-lower_step_down_resistor = 1000 # Ohms
-shunt_resistance = 0.1 # Ohms
+WRITTEN BY: Marek Newton
+'''
 
-output_voltage = lambda code: code * lsb
+ADC_RESOLUTION = 4096
+REFERENCE_VOLTAGE = 2.5 # V
+COMMON_VOLTAGE = 6 # V
+CURRENT_AMPLIFIER_GAIN = 300 # V/V
+LSB = REFERENCE_VOLTAGE/ADC_RESOLUTION # V
+
+VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR = 4700 # Ohms
+CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR = 3240 # Ohms
+CURRENT_SENSOR_ZERO_VOLTAGE = 1.322 # V
+LOWER_STEP_DOWN_RESISTOR = 1000 # Ohms
+SHUNT_RESISTANCE = 0.1 # Ohms
+
+output_voltage = lambda code: code * LSB
+gain_division = lambda voltage, gain: voltage/gain
+
 
 # This gets the input voltage of a voltage divider given its output voltage. 
 def divided_voltage(divider_voltage, upper_resistor):
-    return (divider_voltage/lower_step_down_resistor)*(upper_resistor+lower_step_down_resistor)
+    return (divider_voltage/LOWER_STEP_DOWN_RESISTOR)*(upper_resistor+LOWER_STEP_DOWN_RESISTOR)
 
-gain_division = lambda voltage, gain: voltage/gain
 
 def IV_data(voltage_codes, current_codes):
-    voltages = divided_voltage(output_voltage(voltage_codes), voltage_sensor_upper_step_down_resistor) - common_voltage
-    currents = (divided_voltage(output_voltage(current_codes) - current_sensor_zero_voltage, 
-                                    voltage_sensor_upper_step_down_resistor)/current_amplifier_gain)/shunt_resistance 
-    
+    voltages = divided_voltage(output_voltage(voltage_codes), VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR) - COMMON_VOLTAGE
+    currents = (divided_voltage(output_voltage(current_codes) - CURRENT_SENSOR_ZERO_VOLTAGE, 
+                                    CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR)/CURRENT_AMPLIFIER_GAIN)/SHUNT_RESISTANCE 
     return currents, voltages

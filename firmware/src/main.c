@@ -19,12 +19,17 @@ int main(void)
     while(1)
     {   
         zero_device_voltage();
+        turn_on_green_LED();
         uint8_t command = UART_receive_character();
 
         switch(command)
         {
             case SWEEP_COMMAND_CHARACTER:
+                turn_off_green_LED();
+                turn_on_red_LED();
                 sweep_device();
+                turn_off_red_LED();
+                turn_on_green_LED();
                 break;
             default:
                 break;

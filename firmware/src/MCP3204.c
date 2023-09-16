@@ -1,3 +1,11 @@
+//
+// FILENAME: MCP3204.c
+//
+// DESCRIPTION: MCP3204 12 bit ADC driver.
+// 
+// WRITTEN BY: Marek Newton
+//
+
 #include <avr/io.h>
 #include <stdint.h>
 

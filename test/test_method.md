@@ -8,8 +8,10 @@ This method verifies the curve tracers correct operation at all the test resista
 Even if the resistance happens to be the static resistance when sweeping a semiconductor
 device. 
 
-acceptance criterion: The error between the theoretical resistor curve slope, and the measured
+acceptance criteria: 
+-The error between the theoretical resistor curve slope, and the measured
 resistor curve slope is less than 15%. 
+-The offset must be less than 0.001 for the measured curve. 
 
 (remember, the curve tracer is only to get a rough idea of the device curve)
 
