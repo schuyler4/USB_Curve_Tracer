@@ -1,33 +1,12 @@
-#define F_CPU 16000000UL
-
 #include <avr/io.h>
 #include <stdint.h>
-#include <util/delay.h>
 
 #include "main.h"
+
 #include "UART.h"
 #include "spi.h"
 #include "MCP3204.h"
 #include "MCP4911.h"
-
-#define AVERAGING_SAMPLE_COUNT 10
-
-#define VOLTAGE_ADC_CHANNEL 0
-#define CURRENT_ADC_CHANNEL 1
-#define REFERENCE_ADC_CHANNEL 2
-
-#define MAXIMUM_ADC_READING 4095
-
-#define CURRENT_SENSOR_ADC_BIAS 2331    
-
-#define ZERO_DEVICE_VOLTAGE_CODE 1725
-#define ZERO_DEVICE_MARGIN 5
-
-#define MAX_POSITIVE_CURRENT_CODE 4090
-#define MAX_NEGATIVE_CURRENT_CODE 500
-
-#define MAXIMUM_DAC_CODE 1024
-#define MINIMUM_DAC_CODE 0
 
 static uint16_t DAC_voltage_setting = 0;
 
@@ -37,35 +16,43 @@ int main(void)
     setup_IO();
     setup_SPI();
 
-    zero_device_voltage();
-
-    UART_transmit_string("USB Curve Tracer Starting\n\r");
-    
-
-
-    //_delay_ms(10);
-
-    _delay_ms(60000);
-
-    sweep_device();
-
-    zero_device_voltage();
-
     while(1)
     {   
-        
-        PORTB |= (1 << PORTB0);
-        PORTD |= (1 << PORTD7);
+        zero_device_voltage();
+        uint8_t command = UART_receive_character();
 
-        //set_DAC(400);
-        //set_DAC(0);
-        //set_DAC(1024);
-
-        //uint32_t zero_current_reading = average_ADC_reading(CURRENT_ADC_CHANNEL);
+        switch(command)
+        {
+            case SWEEP_COMMAND_CHARACTER:
+                sweep_device();
+                break;
+            default:
+                break;
+        }
     }
 
     // The program should never return. 
     return 0;
+}
+
+void turn_on_green_LED(void)
+{
+    PORTB |= (1 << PORTB0);
+}
+
+void turn_off_green_LED(void)
+{
+    PORTB &= ~(1 << PORTB0);
+}   
+
+void turn_on_red_LED(void)
+{
+    PORTD |= (1 << PORTD7);
+}
+
+void turn_off_red_LED(void)
+{
+    PORTD &= ~(1 << PORTD7);
 }
 
 void setup_IO(void)
@@ -124,9 +111,9 @@ uint8_t over_current(IV_Sample sample)
 void print_sample(IV_Sample sample)
 {
     UART_transmit_uint16_t(sample.current_code);
-    UART_transmit_string(",");
+    UART_transmit_string(DELIMITER);
     UART_transmit_uint16_t(sample.voltage_code);
-    UART_transmit_string("\n\r");
+    UART_transmit_string(NEWLINE_AND_CARRIAGE_RETURN);
 }
 
 void sweep_device(void)
@@ -141,7 +128,7 @@ void sweep_device(void)
 
         if(over_current(sample))
         {
-            UART_transmit_string("\n\r");
+            UART_transmit_string(NEWLINE_AND_CARRIAGE_RETURN);
             break;
         }
     }

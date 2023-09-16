@@ -11,19 +11,6 @@
 #include <avr/io.h>
 #include <stdint.h>
 
-#ifndef F_CPU
-#define F_CPU 16000000UL
-#endif
-
-#define BAUD 9600
-#define MYUBRR (((F_CPU / (BAUD * 16UL))) - 1)
-
-#define INTEGER_BASE 10
-
-#define DIGIT_COUNT_8_BIT 3
-#define DIGIT_COUNT_16_BIT 5
-#define DIGIT_COUNT_32_BIT 10
-
 char digit_to_character(uint8_t digit)
 {
     return (char)(digit + '0');
