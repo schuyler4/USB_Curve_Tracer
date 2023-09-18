@@ -16,6 +16,8 @@ int main(void)
     setup_IO();
     setup_SPI();
 
+    zero_device_voltage();
+
     while(1)
     {   
         zero_device_voltage();
@@ -79,11 +81,11 @@ void zero_device_voltage(void)
     {
         uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
 
-        if(voltage_reading > ZERO_DEVICE_VOLTAGE_CODE)
+        if(voltage_reading > ZERO_DEVICE_VOLTAGE_CODE && DAC_voltage_setting > 0)
         {
             DAC_voltage_setting--;
         }
-        else if(voltage_reading < ZERO_DEVICE_VOLTAGE_CODE)
+        else if(voltage_reading < ZERO_DEVICE_VOLTAGE_CODE && DAC_voltage_setting <= DAC_RESOLUTION)
         {
             DAC_voltage_setting++;
         }
@@ -113,16 +115,30 @@ uint8_t over_current(IV_Sample sample)
     return sample.current_code > MAX_POSITIVE_CURRENT_CODE || sample.current_code < MAX_NEGATIVE_CURRENT_CODE;
 }
 
+void print_starting_command(void)
+{
+    UART_transmit_string(START_COMMAND);
+    UART_transmit_string(NEW_LINE);
+}
+
+void print_ending_command(void)
+{
+    UART_transmit_string(END_COMMAND);
+    UART_transmit_string(NEW_LINE);
+}
+
 void print_sample(IV_Sample sample)
 {
     UART_transmit_uint16_t(sample.current_code);
-    UART_transmit_string(DELIMITER);
+    UART_transmit_string(DELIMINATOR);
     UART_transmit_uint16_t(sample.voltage_code);
-    UART_transmit_string(NEWLINE_AND_CARRIAGE_RETURN);
+    UART_transmit_string(NEW_LINE);
 }
 
 void sweep_device(void)
 {
+    print_starting_command();
+
     while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
     {
         DAC_voltage_setting++;
@@ -133,7 +149,6 @@ void sweep_device(void)
 
         if(over_current(sample))
         {
-            UART_transmit_string(NEWLINE_AND_CARRIAGE_RETURN);
             break;
         }
     }
@@ -154,5 +169,6 @@ void sweep_device(void)
         }
     }
 
+    print_ending_command();
     zero_device_voltage();
 }

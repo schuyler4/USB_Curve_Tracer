@@ -22,9 +22,13 @@
 #define MAXIMUM_DAC_CODE 1024
 #define MINIMUM_DAC_CODE 0
 
+// PC Communication Protocol.
 #define DELIMINATOR ","
 
 #define SWEEP_COMMAND_CHARACTER 's'
+
+#define START_COMMAND "START"
+#define END_COMMAND "END"
 
 typedef struct 
 {

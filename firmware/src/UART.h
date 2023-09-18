@@ -23,6 +23,7 @@
 #define DIGIT_COUNT_32_BIT 10
 
 #define NEW_LINE_AND_CARRIAGE_RETURN "\n\r" 
+#define NEW_LINE "\n"
 
 // This function should be called before any UART functions are used.
 void setup_UART(void);

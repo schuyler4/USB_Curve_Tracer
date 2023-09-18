@@ -11,6 +11,8 @@
 #include <avr/io.h>
 #include <stdint.h>
 
+#include "UART.h"
+
 char digit_to_character(uint8_t digit)
 {
     return (char)(digit + '0');
