@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # This function sets up the serial object.
 def init_serial():
     baudrate = 9600
-    serial_port = 'COM6'
+    serial_port = 'COM7'
 
     try:
         my_serial = serial.Serial()
@@ -17,7 +17,7 @@ def init_serial():
         # For some reason, a delay is required before flushing the serial buffer.
         time.sleep(1)
         my_serial.flush()
-        # Another delay is required after flushing the serial buffer before using the serial port.
+        # Another delay is required after flushing the serial buffer, before using the serial port.
         time.sleep(1)
         return my_serial
     except:
@@ -61,6 +61,8 @@ def read_serial_data(my_serial):
             print('Data could not be read')
             break   
 
+    time.sleep(1)
+
     return received_data
 
 
@@ -71,66 +73,32 @@ def sanitize_integer(string):
     return decoded_integer
 
 
-# This function separates the stream of x and y data into two lists.
-def separate_data(data):
-    x = []
-    y = []
-
-    sampling_x = False
-    sampling_y = False
-
-    for data_str in data:
-        if('X' in data_str):
-            sampling_x = True
-            sampling_y = False
-        elif('Y' in data_str):
-            sampling_y = True
-            sampling_x = False
-        else:
-            if(sampling_x):
-                x.append(sanitize_integer(data_str))
-            elif(sampling_y):
-                y.append(sanitize_integer(data_str))
-
-    return x, y
-
-
-# This function plots the random data for the user to see.
-def plot_data(x, y):
-    plt.scatter(x, y)
-    plt.title('A Scatter Plot of the Numerical Data')
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    plt.show()
-
-
-def random_numbers(my_serial):
-    my_serial.write(b'2')
-    time.sleep(0.1)
-    data = read_serial_data(my_serial)
-
-    if(len(data) > 0):
-        # Print the data without the newline character.
-        return separate_data(data)
-    else:
-        return None
+# This function decodes the actual codes from the data. 
+def get_data_codes(data):
+    codes = []
+    for datum in data:
+        point = datum.split(',')
+        point[0] = int(sanitize_integer(point[0]))
+        point[1] = int(sanitize_integer(point[1]))
+        codes.append(point)
+    return np.array(codes)
 
 
 def sweep_device(my_serial):
     my_serial.write(b's')
     time.sleep(0.1)
     data = read_serial_data(my_serial)
-
+    return data
+    
 
 # This function runs the basic command line user interface.
 def user_interface(my_serial):
     while True:
         user_input = input('Enter a command: ')
 
-        if(user_input == 'random'):
-            x, y = random_numbers(my_serial)
-            plot_data(x, y)
-
+        if(user_input == 'sweep'):
+            data = sweep_device(my_serial)
+            print(data)
         elif(user_input == 'exit'):
             break
         else:

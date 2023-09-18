@@ -1,7 +1,7 @@
 '''
 FILENAME: IV.py
 
-PURPOSE: This file contains functions that convert raw ADC codes into current and voltage values.
+PURPOSE: This file contains functions that convert ADC codes into current and voltage values.
 
 WRITTEN BY: Marek Newton
 '''
