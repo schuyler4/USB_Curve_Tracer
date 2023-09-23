@@ -1,16 +1,21 @@
 import serial
 import time
+import csv
+import numpy as np
 import matplotlib.pyplot as plt
+
+from .IV import IV_data
+
 
 # This function sets up the serial object.
 def init_serial():
-    baudrate = 9600
-    serial_port = 'COM7'
+    BAUDRATE = 9600
+    SERIAL_PORT = 'COM7'
 
     try:
         my_serial = serial.Serial()
-        my_serial.port = serial_port
-        my_serial.baudrate = baudrate
+        my_serial.port = SERIAL_PORT
+        my_serial.baudrate = BAUDRATE
         my_serial.timeout = 1
         
         my_serial.open()
@@ -25,7 +30,6 @@ def init_serial():
         return None
 
 
-# This function loops through the serial data stream, reads it, and returns the data.
 def read_serial_data(my_serial):
     no_data_count = 0
     received_data = []
@@ -81,7 +85,10 @@ def get_data_codes(data):
         point[0] = int(sanitize_integer(point[0]))
         point[1] = int(sanitize_integer(point[1]))
         codes.append(point)
-    return np.array(codes)
+    codes = np.array(codes)
+    current_codes = codes[:,0]
+    voltage_codes = codes[:,1]
+    return current_codes, voltage_codes
 
 
 def sweep_device(my_serial):
@@ -89,16 +96,54 @@ def sweep_device(my_serial):
     time.sleep(0.1)
     data = read_serial_data(my_serial)
     return data
+
+
+def plot_data(current_codes, voltage_codes, title):
+    currents, voltages = IV_data(voltage_codes, current_codes)
+    plt.title(title)
+    plt.scatter(voltages, currents)
+    plt.xlabel('Voltage (V)')
+    plt.ylabel('Current (A)')
+    plt.show()
+
+
+def write_data_to_CSV(current_codes, voltage_codes, title):
+    csv_filename = title + '.csv'
+    csv_data = []
+    for index, current_code in enumerate(current_codes):
+        csv_data.append([current_code, voltage_codes[index]])
     
+    with open(csv_filename, 'wt') as fp:
+        writer = csv.writer(fp, delimiter = ',')
+        writer.writerows(csv_data)
+
 
 # This function runs the basic command line user interface.
 def user_interface(my_serial):
+    current_codes = None
+    voltage_codes = None
+    title = None
+
     while True:
         user_input = input('Enter a command: ')
 
-        if(user_input == 'sweep'):
+        if('sweep' in user_input and user_input != 'sweep'):
+            command_and_title = user_input.split(',')
+            if(len(command_and_title) != 2):
+                print('Invalid command')
+                continue
             data = sweep_device(my_serial)
-            print(data)
+            current_codes, voltage_codes = get_data_codes(data)
+            plot_data(current_codes, voltage_codes, command_and_title[1])
+        elif(user_input == 'sweep'):
+            data = sweep_device(my_serial)
+            current_codes, voltage_codes = get_data_codes(data)
+            plot_data(current_codes, voltage_codes, 'IV Trace')
+        elif(user_input == 'csv'):
+            if(current_codes == None and voltage_codes == None):
+                print('No Stored Sweeps')
+                continue
+            
         elif(user_input == 'exit'):
             break
         else:
