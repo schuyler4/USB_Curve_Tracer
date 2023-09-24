@@ -18,11 +18,21 @@ contact resistance will be included in the measurement. </li>
 <li>Maximum Positive Sweep Voltage: 3.4</li>
 <li>Minimum Negative Sweep Voltage: -4.6V</li>
 <li>Full Sweep Time: 15s</li>
-<li>Maximum Sweep Current: </li>
 </ul>
 
 <h3> Examples </h3>
-Here are a few preliminary curves.
+<p>Here are a few diode curves. </p>
 
-![Resistor Plot](./resistor_plot.png)
 ![Zener Diode Plot](./zener_diode_plot.png)
+![1N4001 Diode](./1N4001.png)
+There was a power buffering blip with the 1N4001 diode. 
+
+<h3> Test Curves </h3>
+<p>Here are the test curves with the theoretical
+curve overlaid.</p>
+
+![33 Test Curve](./test/test_plot/33.png)
+![220 Test Curve](./test/test_plot/220.png)
+![330 Test Curve](./test/test_plot/330.png)
+![470 Test Curve](./test/test_plot/470.png)
+![680 Test Curve](./test/test_plot/680.png)
