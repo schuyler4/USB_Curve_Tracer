@@ -15,6 +15,10 @@ contact resistance will be included in the measurement. </li>
 <h3> Specs </h3>
 <ul>
 <li>12V External Power Supply</li>
+<li>Maximum Positive Sweep Voltage: 3.4</li>
+<li>Minimum Negative Sweep Voltage: -4.6V</li>
+<li>Full Sweep Time: 15s</li>
+<li>Maximum Sweep Current: </li>
 </ul>
 
 <h3> Examples </h3>

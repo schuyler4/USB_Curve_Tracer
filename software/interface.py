@@ -2,10 +2,9 @@ import serial
 import time
 import csv
 import numpy as np
-import matplotlib.pyplot as plt
 
 from .IV import IV_data
-
+from .plot import plot_data
 
 # This function sets up the serial object.
 def init_serial():
@@ -98,15 +97,6 @@ def sweep_device(my_serial):
     return data
 
 
-def plot_data(current_codes, voltage_codes, title):
-    currents, voltages = IV_data(voltage_codes, current_codes)
-    plt.title(title)
-    plt.scatter(voltages, currents)
-    plt.xlabel('Voltage (V)')
-    plt.ylabel('Current (A)')
-    plt.show()
-
-
 def write_data_to_CSV(current_codes, voltage_codes, title):
     csv_filename = title + '.csv'
     csv_data = []
@@ -120,8 +110,8 @@ def write_data_to_CSV(current_codes, voltage_codes, title):
 
 # This function runs the basic command line user interface.
 def user_interface(my_serial):
-    current_codes = None
-    voltage_codes = None
+    current_codes = []
+    voltage_codes = []
     title = None
 
     while True:
@@ -134,15 +124,18 @@ def user_interface(my_serial):
                 continue
             data = sweep_device(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            plot_data(current_codes, voltage_codes, command_and_title[1])
+            plot_data(current_codes, voltage_codes, command_and_title[1]).show()
         elif(user_input == 'sweep'):
             data = sweep_device(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            plot_data(current_codes, voltage_codes, 'IV Trace')
+            plot_data(current_codes, voltage_codes, 'IV Trace').show()
         elif(user_input == 'csv'):
-            if(current_codes == None and voltage_codes == None):
+            if(len(current_codes) == 0 and len(voltage_codes) == 0):
                 print('No Stored Sweeps')
                 continue
+            else:
+                title = input('Enter a title:')
+                write_data_to_CSV(current_codes, voltage_codes, title)
             
         elif(user_input == 'exit'):
             break
