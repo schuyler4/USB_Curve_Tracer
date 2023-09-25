@@ -1,6 +1,7 @@
 <h2> USB Curve Tracer </h2>
 This is my attempt at making a curve tracer.  
-Instead of implementing a display, data is piped to a PC where it is plotted using Python. 
+Instead of implementing a display, data is piped to a PC where it is plotted using Python. It also controlled using
+a command line interface on the PC. 
 
 ![Device Picture](./device_picture.JPG)
 
