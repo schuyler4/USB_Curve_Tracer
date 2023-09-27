@@ -1,0 +1,1 @@
+-Missing zener diode D4

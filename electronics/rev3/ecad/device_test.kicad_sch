@@ -1,0 +1,15 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (uuid 9000d8d7-9f21-48c8-aff9-7ddcc057fd8d)
+
+  (paper "A")
+
+  (title_block
+    (title "USB Curve Tracer")
+    (rev "1")
+  )
+
+  (lib_symbols
+  )
+
+)

@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "USB_curve_tracer_parts")(type "KiCad")(uri "${KIPRJMOD}/USB_curve_tracer/USB_curve_tracer_parts.kicad_sym")(options "")(descr ""))
+)
