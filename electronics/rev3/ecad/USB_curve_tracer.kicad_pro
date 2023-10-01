@@ -538,6 +538,10 @@
     [
       "77b09a51-4245-4afb-8848-526ca5066b24",
       "Half Supply Buffer"
+    ],
+    [
+      "4dd5a6ca-340c-4903-adac-e344c202e05d",
+      "Sweep Voltage Buffer"
     ]
   ],
   "text_variables": {}
