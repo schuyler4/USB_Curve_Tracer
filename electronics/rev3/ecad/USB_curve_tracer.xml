@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>C:\Users\marek\Documents\projects\USB_curve_tracer\ecad_rev2\USB_curve_tracer.kicad_sch</source>
-    <date>8/7/2023 9:48:49 PM</date>
-    <tool>Eeschema 7.0.1</tool>
+    <source>C:\Users\marek\Documents\projects\USB_curve_tracer\electronics\rev3\ecad\USB_curve_tracer.kicad_sch</source>
+    <date>10/7/2023 10:38:38 PM</date>
+    <tool>Eeschema 7.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>USB Curve Tracer</title>
         <company/>
-        <rev>2</rev>
-        <date>2023-08-05</date>
+        <rev>3</rev>
+        <date>2023-09-27</date>
         <source>USB_curve_tracer.kicad_sch</source>
         <comment number="1" value="Designed by Marek Newton"/>
-        <comment number="2" value=""/>
+        <comment number="2" value="Unless otherwise noted, all resistor are either 1% or 5% tolerance, and 1/4W."/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
         <comment number="5" value=""/>
@@ -24,11 +24,47 @@
     </sheet>
     <sheet number="2" name="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/">
       <title_block>
-        <title>Analog IV Variation</title>
+        <title>Analog Front End</title>
         <company/>
-        <rev>2</rev>
-        <date>2023-08-05</date>
+        <rev>3</rev>
+        <date>2023-09-27</date>
         <source>IV_variation.kicad_sch</source>
+        <comment number="1" value="Designed by Marek Newton"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/">
+      <title_block>
+        <title>Half Supply Buffer</title>
+        <company/>
+        <rev>3</rev>
+        <date>2023-09-27</date>
+        <source>half_supply_buffer.kicad_sch</source>
+        <comment number="1" value="Designed by Marek Newton"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/">
+      <title_block>
+        <title>Sweep Voltage Buffer</title>
+        <company/>
+        <rev>3</rev>
+        <date>2023-09-27</date>
+        <source>sweep_voltage_buffer.kicad_sch</source>
         <comment number="1" value="Designed by Marek Newton"/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -46,7 +82,15 @@
       <value>Arduino_Nano_v3.x</value>
       <footprint>Module:Arduino_Nano</footprint>
       <datasheet>http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1050-ABX00033-ND</field>
+        <field name="Part #">ABX00033</field>
+        <field name="Unit Price">14.91</field>
+      </fields>
       <libsource lib="MCU_Module" part="Arduino_Nano_v3.x" description="Arduino Nano v3.x"/>
+      <property name="Distributor Part #" value="1050-ABX00033-ND"/>
+      <property name="Part #" value="ABX00033"/>
+      <property name="Unit Price" value="14.91"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Arduino Nano v3.x"/>
@@ -57,7 +101,15 @@
     <comp ref="C1">
       <value>0.1uF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
@@ -68,7 +120,15 @@
     <comp ref="C2">
       <value>0.1uF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
@@ -79,7 +139,15 @@
     <comp ref="C3">
       <value>10uF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">445-173437-1-ND</field>
+        <field name="Part #">FG26X7R1E106KRT06</field>
+        <field name="Unit Price">0.65</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="445-173437-1-ND"/>
+      <property name="Part #" value="FG26X7R1E106KRT06"/>
+      <property name="Unit Price" value="0.65"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
@@ -90,7 +158,15 @@
     <comp ref="C5">
       <value>0.1uF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
@@ -99,9 +175,17 @@
       <tstamps>37ee5271-7938-49bf-a1c6-5e512bceb85e</tstamps>
     </comp>
     <comp ref="D1">
-      <value>SA6.0A</value>
+      <value>SA13A</value>
       <footprint>Diode_THT:D_DO-15_P10.16mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">SA13A-E3/54GICT-ND</field>
+        <field name="Part #">SA13A-E3/54</field>
+        <field name="Unit Price">0.46</field>
+      </fields>
       <libsource lib="Device" part="D_Zener" description="Zener diode"/>
+      <property name="Distributor Part #" value="SA13A-E3/54GICT-ND"/>
+      <property name="Part #" value="SA13A-E3/54"/>
+      <property name="Unit Price" value="0.46"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Zener diode"/>
@@ -112,7 +196,15 @@
     <comp ref="D6">
       <value>WP7113SGD</value>
       <footprint>LED_THT:LED_D5.0mm</footprint>
+      <fields>
+        <field name="Distributor Part #">754-1735-ND</field>
+        <field name="Part #">WP7113SGD</field>
+        <field name="Unit Price">0.34</field>
+      </fields>
       <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Distributor Part #" value="754-1735-ND"/>
+      <property name="Part #" value="WP7113SGD"/>
+      <property name="Unit Price" value="0.34"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Light emitting diode"/>
@@ -123,7 +215,15 @@
     <comp ref="D7">
       <value>WP7113ID</value>
       <footprint>LED_THT:LED_D5.0mm</footprint>
+      <fields>
+        <field name="Distributor Part #">754-1264-ND</field>
+        <field name="Part #">WP7113ID</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Distributor Part #" value="754-1264-ND"/>
+      <property name="Part #" value="WP7113ID"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Light emitting diode"/>
@@ -131,10 +231,38 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b23c038a-362b-49e4-b3f2-5a19cdd79e33</tstamps>
     </comp>
+    <comp ref="D16">
+      <value>1N5817</value>
+      <footprint>Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal</footprint>
+      <datasheet>http://www.vishay.com/docs/88525/1n5817.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">497-4547-1-ND</field>
+        <field name="Part #">1N5817</field>
+        <field name="Unit Price">0.44</field>
+      </fields>
+      <libsource lib="Diode" part="1N5817" description="20V 1A Schottky Barrier Rectifier Diode, DO-41"/>
+      <property name="Distributor Part #" value="497-4547-1-ND"/>
+      <property name="Part #" value="1N5817"/>
+      <property name="Unit Price" value="0.44"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
+      <property name="ki_description" value="20V 1A Schottky Barrier Rectifier Diode, DO-41"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>529ff4ed-c27d-47d4-862b-5526f95025c4</tstamps>
+    </comp>
     <comp ref="F1">
-      <value>2A</value>
+      <value>3A</value>
       <footprint>Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder</footprint>
+      <fields>
+        <field name="Distributor Part #">507-1896-1-ND</field>
+        <field name="Part #">0685T3000-01</field>
+        <field name="Unit Price">0.32</field>
+      </fields>
       <libsource lib="Device" part="Fuse" description="Fuse"/>
+      <property name="Distributor Part #" value="507-1896-1-ND"/>
+      <property name="Part #" value="0685T3000-01"/>
+      <property name="Unit Price" value="0.32"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Fuse"/>
@@ -142,21 +270,18 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>21cfeda2-52ed-4da8-bb57-967b682e1b76</tstamps>
     </comp>
-    <comp ref="J1">
-      <value>DUT Connector</value>
-      <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal</footprint>
-      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
-      <property name="ki_description" value="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
-      <property name="ki_keywords" value="screw terminal"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>8da2cf71-80e7-41af-8b13-b687f3a60bad</tstamps>
-    </comp>
     <comp ref="J2">
       <value>Power Input</value>
       <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">102-6179-ND</field>
+        <field name="Part #">TB004-508-02BE</field>
+        <field name="Unit Price">0.71</field>
+      </fields>
       <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Distributor Part #" value="102-6179-ND"/>
+      <property name="Part #" value="TB004-508-02BE"/>
+      <property name="Unit Price" value="0.71"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
@@ -167,7 +292,15 @@
     <comp ref="R1">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -178,7 +311,15 @@
     <comp ref="R11">
       <value>619</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">619XBK-ND</field>
+        <field name="Part #">MFR-25FBF52-619R</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="619XBK-ND"/>
+      <property name="Part #" value="MFR-25FBF52-619R"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -189,7 +330,15 @@
     <comp ref="R12">
       <value>619</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">619XBK-ND</field>
+        <field name="Part #">MFR-25FBF52-619R</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="619XBK-ND"/>
+      <property name="Part #" value="MFR-25FBF52-619R"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -200,7 +349,15 @@
     <comp ref="R21">
       <value>14k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">14.0KXBK-ND</field>
+        <field name="Part #">MFR-25FBF52-14K</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="14.0KXBK-ND"/>
+      <property name="Part #" value="MFR-25FBF52-14K"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -211,7 +368,15 @@
     <comp ref="R22">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -222,7 +387,15 @@
     <comp ref="R24">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -233,7 +406,15 @@
     <comp ref="R25">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -244,7 +425,15 @@
     <comp ref="R26">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -255,7 +444,15 @@
     <comp ref="R27">
       <value>10k</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -267,7 +464,15 @@
       <value>MCP4911</value>
       <footprint>Package_DIP:DIP-8_W7.62mm</footprint>
       <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/22248a.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">MCP4911-E/P-ND</field>
+        <field name="Part #">MCP4911-E/P</field>
+        <field name="Unit Price">1.97</field>
+      </fields>
       <libsource lib="Analog_DAC" part="MCP4911" description="10-Bit D/A Converters with SPI Interface"/>
+      <property name="Distributor Part #" value="MCP4911-E/P-ND"/>
+      <property name="Part #" value="MCP4911-E/P"/>
+      <property name="Unit Price" value="1.97"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="10-Bit D/A Converters with SPI Interface"/>
@@ -279,7 +484,15 @@
       <value>MCP3204</value>
       <footprint>Package_DIP:DIP-14_W7.62mm</footprint>
       <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21298c.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">MCP3204-CI/P-ND</field>
+        <field name="Part #">MCP3204-CI/P</field>
+        <field name="Unit Price">4.52</field>
+      </fields>
       <libsource lib="Analog_ADC" part="MCP3204" description="A/D Converter, 12-Bit, 4-Channel, SPI Interface, 2.7V-5.5V"/>
+      <property name="Distributor Part #" value="MCP3204-CI/P-ND"/>
+      <property name="Part #" value="MCP3204-CI/P"/>
+      <property name="Unit Price" value="4.52"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="A/D Converter, 12-Bit, 4-Channel, SPI Interface, 2.7V-5.5V"/>
@@ -288,43 +501,94 @@
       <tstamps>c251cac3-6962-43c6-b6a0-ecf065005a61</tstamps>
     </comp>
     <comp ref="U4">
-      <value>LM285Z-2.5</value>
+      <value>LM385BZ-2.5</value>
       <footprint>Package_TO_SOT_THT:TO-92_Inline</footprint>
       <datasheet>http://www.onsemi.com/pub_link/Collateral/LM285-D.PDF</datasheet>
-      <libsource lib="Reference_Voltage" part="LM285Z-2.5" description="2.5V Micropower Voltage Reference Diodes, TO-92"/>
+      <fields>
+        <field name="Distributor Part #">LM385BZ-2.5GOS-ND</field>
+        <field name="Part #">LM385BZ-2.5G</field>
+        <field name="Unit Price">0.78</field>
+      </fields>
+      <libsource lib="Reference_Voltage" part="LM385BZ-2.5" description="2.5V Micropower Voltage Reference Diodes, TO-92"/>
+      <property name="Distributor Part #" value="LM385BZ-2.5GOS-ND"/>
+      <property name="Part #" value="LM385BZ-2.5G"/>
+      <property name="Unit Price" value="0.78"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USB_curve_tracer.kicad_sch"/>
       <property name="ki_description" value="2.5V Micropower Voltage Reference Diodes, TO-92"/>
       <property name="ki_keywords" value="diode device voltage reference"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>e6c582d8-2353-4f4c-97d6-4002d6ccf970</tstamps>
+      <tstamps>b6024e91-3916-4fce-b65c-1f66cdcc1828</tstamps>
     </comp>
-    <comp ref="C4">
-      <value>0.1uF</value>
+    <comp ref="C7">
+      <value>10nF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2662CT-ND</field>
+        <field name="Part #">K103K10X7RF5UH5</field>
+        <field name="Unit Price">0.22</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2662CT-ND"/>
+      <property name="Part #" value="K103K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.22"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>e6062c68-1eca-4afd-8f02-709f2d16c173</tstamps>
+      <tstamps>d0a5abb2-b553-4023-a447-7a8c1324116a</tstamps>
     </comp>
     <comp ref="C8">
-      <value>0.1uF</value>
+      <value>10nF</value>
       <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2662CT-ND</field>
+        <field name="Part #">K103K10X7RF5UH5</field>
+        <field name="Unit Price">0.22</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2662CT-ND"/>
+      <property name="Part #" value="K103K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.22"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>104efc7b-c12f-4f87-b837-6ffae5fa98ce</tstamps>
+      <tstamps>3111a7d5-e03a-4a88-be0a-46e527ee0f87</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>d2d5b8df-4ba2-4679-87ee-3a41a71f3c2e</tstamps>
     </comp>
     <comp ref="D2">
-      <value>SA6.5CA</value>
+      <value>SA13CA</value>
       <footprint>Diode_THT:D_DO-15_P10.16mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">SA13CACT-ND</field>
+        <field name="Part #">SA13CA</field>
+        <field name="Unit Price">0.49</field>
+      </fields>
       <libsource lib="Device" part="D_TVS" description="Bidirectional transient-voltage-suppression diode"/>
+      <property name="Distributor Part #" value="SA13CACT-ND"/>
+      <property name="Part #" value="SA13CA"/>
+      <property name="Unit Price" value="0.49"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Bidirectional transient-voltage-suppression diode"/>
@@ -332,10 +596,75 @@
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
       <tstamps>dbbb1369-3661-4f03-90e7-0f155bf6620a</tstamps>
     </comp>
+    <comp ref="D3">
+      <value>BZX79-C2V4</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1727-2115-1-ND</field>
+        <field name="Part #">BZX79-C2V4,113</field>
+        <field name="Unit Price">0.16</field>
+      </fields>
+      <libsource lib="Device" part="D_Zener" description="Zener diode"/>
+      <property name="Distributor Part #" value="1727-2115-1-ND"/>
+      <property name="Part #" value="BZX79-C2V4,113"/>
+      <property name="Unit Price" value="0.16"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Zener diode"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>967b9c8d-b324-438a-a0d9-d0e375e829fe</tstamps>
+    </comp>
+    <comp ref="D4">
+      <value>BZX79-C2V4</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1727-2115-1-ND</field>
+        <field name="Part #">BZX79-C2V4,113</field>
+        <field name="Unit Price">0.16</field>
+      </fields>
+      <libsource lib="Device" part="D_Zener" description="Zener diode"/>
+      <property name="Distributor Part #" value="1727-2115-1-ND"/>
+      <property name="Part #" value="BZX79-C2V4,113"/>
+      <property name="Unit Price" value="0.16"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Zener diode"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>d59f0280-00c4-4a1b-b247-d6ce6f3cfa0a</tstamps>
+    </comp>
+    <comp ref="D5">
+      <value>BZX79-C2V4</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1727-2115-1-ND</field>
+        <field name="Part #">BZX79-C2V4,113</field>
+        <field name="Unit Price">0.16</field>
+      </fields>
+      <libsource lib="Device" part="D_Zener" description="Zener diode"/>
+      <property name="Distributor Part #" value="1727-2115-1-ND"/>
+      <property name="Part #" value="BZX79-C2V4,113"/>
+      <property name="Unit Price" value="0.16"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Zener diode"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>cb72d403-446a-4a11-882e-ef78d66fb200</tstamps>
+    </comp>
     <comp ref="F2">
       <value>1A</value>
       <footprint>Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder</footprint>
+      <fields>
+        <field name="Distributor Part #">507-1893-1-ND</field>
+        <field name="Part #">0685T1500-01</field>
+        <field name="Unit Price">0.32</field>
+      </fields>
       <libsource lib="Device" part="Fuse" description="Fuse"/>
+      <property name="Distributor Part #" value="507-1893-1-ND"/>
+      <property name="Part #" value="0685T1500-01"/>
+      <property name="Unit Price" value="0.32"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Fuse"/>
@@ -343,157 +672,56 @@
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
       <tstamps>339f002c-1143-4ddc-8e1b-9878fb0ee0d0</tstamps>
     </comp>
-    <comp ref="HS1">
-      <value>24.40°C/W</value>
-      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
+    <comp ref="J1">
+      <value>DUT Connector</value>
+      <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">102-6179-ND</field>
+        <field name="Part #">TB004-508-02BE</field>
+        <field name="Unit Price">0.71</field>
+      </fields>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Distributor Part #" value="102-6179-ND"/>
+      <property name="Part #" value="TB004-508-02BE"/>
+      <property name="Unit Price" value="0.71"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Heatsink"/>
-      <property name="ki_keywords" value="thermal heat temperature"/>
+      <property name="ki_description" value="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="screw terminal"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>12a6a9fe-af1f-4544-aac8-b862789dac18</tstamps>
+      <tstamps>19df5d7c-26ea-47d8-bc9d-8d2dd3d18f9f</tstamps>
     </comp>
-    <comp ref="HS2">
-      <value>24.40°C/W</value>
-      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Heatsink"/>
-      <property name="ki_keywords" value="thermal heat temperature"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>e8a10d9d-e0d9-424f-8e4a-ba69fd65dde1</tstamps>
-    </comp>
-    <comp ref="HS3">
-      <value>24.40°C/W</value>
-      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Heatsink"/>
-      <property name="ki_keywords" value="thermal heat temperature"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>feacdbd8-a878-41ab-a6a6-31f661b48b54</tstamps>
-    </comp>
-    <comp ref="HS4">
-      <value>24.40°C/W</value>
-      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Heatsink"/>
-      <property name="ki_keywords" value="thermal heat temperature"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>fccb1438-a45e-42bf-bc18-d50d96ffccaa</tstamps>
-    </comp>
-    <comp ref="Q1">
-      <value>IRF3205</value>
-      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
-      <datasheet>http://www.irf.com/product-info/datasheets/data/irf3205.pdf</datasheet>
-      <libsource lib="Transistor_FET" part="IRF3205" description="110A Id, 55V Vds, Single N-Channel HEXFET Power MOSFET, 8mOhm Ron, TO-220AB"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="110A Id, 55V Vds, Single N-Channel HEXFET Power MOSFET, 8mOhm Ron, TO-220AB"/>
-      <property name="ki_keywords" value="Single N-Channel HEXFET Power MOSFET"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>d79ec801-7a7c-426c-a42a-2bc774e6134d</tstamps>
-    </comp>
-    <comp ref="Q2">
-      <value>IRF4905</value>
-      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
-      <datasheet>http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c</datasheet>
-      <libsource lib="Transistor_FET" part="IRF4905" description="-74A Id, -55V Vds, Single P-Channel HEXFET Power MOSFET, 20mOhm Ron, TO-220AB"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="-74A Id, -55V Vds, Single P-Channel HEXFET Power MOSFET, 20mOhm Ron, TO-220AB"/>
-      <property name="ki_keywords" value="Single P-Channel HEXFET Power MOSFET"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>6c91da3f-f564-4f09-8f57-1235c45be9d9</tstamps>
-    </comp>
-    <comp ref="Q5">
-      <value>IRF3205</value>
-      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
-      <datasheet>http://www.irf.com/product-info/datasheets/data/irf3205.pdf</datasheet>
-      <libsource lib="Transistor_FET" part="IRF3205" description="110A Id, 55V Vds, Single N-Channel HEXFET Power MOSFET, 8mOhm Ron, TO-220AB"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="110A Id, 55V Vds, Single N-Channel HEXFET Power MOSFET, 8mOhm Ron, TO-220AB"/>
-      <property name="ki_keywords" value="Single N-Channel HEXFET Power MOSFET"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>7a4b0bc2-5fcc-48bb-9a0c-824f79fc2135</tstamps>
-    </comp>
-    <comp ref="Q6">
-      <value>IRF4905</value>
-      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
-      <datasheet>http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c</datasheet>
-      <libsource lib="Transistor_FET" part="IRF4905" description="-74A Id, -55V Vds, Single P-Channel HEXFET Power MOSFET, 20mOhm Ron, TO-220AB"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="-74A Id, -55V Vds, Single P-Channel HEXFET Power MOSFET, 20mOhm Ron, TO-220AB"/>
-      <property name="ki_keywords" value="Single P-Channel HEXFET Power MOSFET"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>57f85833-b382-4292-86ca-3c87f593ce64</tstamps>
-    </comp>
-    <comp ref="R2">
-      <value>10k</value>
+    <comp ref="R5">
+      <value>3.83k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1712-YR1B3K83CCCT-ND</field>
+        <field name="Part #">YR1B3K83CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="1712-YR1B3K83CCCT-ND"/>
+      <property name="Part #" value="YR1B3K83CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
       <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>620fb2f5-ceca-4700-bbb0-f2a2b5271a9b</tstamps>
-    </comp>
-    <comp ref="R3">
-      <value>10k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
-      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="Resistor, US symbol"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>6a64f76a-8a3d-4048-bf12-7bc33fb54f40</tstamps>
-    </comp>
-    <comp ref="R4">
-      <value>4.02k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
-      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="Resistor, US symbol"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>9b5fe069-b3d6-4b9d-ab0a-cd0f680f5b10</tstamps>
-    </comp>
-    <comp ref="R6">
-      <value>10k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
-      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="Resistor, US symbol"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>3c37c3dc-70c4-4a0c-a55a-8a17ee44aeb2</tstamps>
-    </comp>
-    <comp ref="R7">
-      <value>10k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
-      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="Resistor, US symbol"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>e81b76a2-770a-4197-98f6-36ed7a61e6cd</tstamps>
+      <tstamps>c0617157-c9fc-46dd-9ddd-b131ed2fa58c</tstamps>
     </comp>
     <comp ref="R8">
-      <value>10k</value>
+      <value>1k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105942CT-ND</field>
+        <field name="Part #">YR1B1K0CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105942CT-ND"/>
+      <property name="Part #" value="YR1B1K0CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -501,21 +729,18 @@
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
       <tstamps>59d5a539-63c1-40cb-ab5c-eff3c920184e</tstamps>
     </comp>
-    <comp ref="R9">
-      <value>4.02k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
-      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="Resistor, US symbol"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>75036c8c-f135-4f20-b67a-bda1f5847d14</tstamps>
-    </comp>
     <comp ref="R10">
-      <value>250k</value>
+      <value>11.8k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1712-YR1B11K8CCCT-ND</field>
+        <field name="Part #">YR1B11K8CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="1712-YR1B11K8CCCT-ND"/>
+      <property name="Part #" value="YR1B11K8CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -524,9 +749,17 @@
       <tstamps>03aa92a7-9eb6-4b4b-ab91-4127779aff53</tstamps>
     </comp>
     <comp ref="R13">
-      <value>0.1</value>
-      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <value>1+/-1%</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder</footprint>
+      <fields>
+        <field name="Distributor Part #">RMCF2512FT1R00CT-ND</field>
+        <field name="Part #">RMCF2512FT1R00</field>
+        <field name="Unit Price">0.27</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="RMCF2512FT1R00CT-ND"/>
+      <property name="Part #" value="RMCF2512FT1R00"/>
+      <property name="Unit Price" value="0.27"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -535,9 +768,17 @@
       <tstamps>94d23c5e-6970-4c7d-9433-3141bca3e0cb</tstamps>
     </comp>
     <comp ref="R14">
-      <value>4.02k</value>
+      <value>10k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105970CT-ND</field>
+        <field name="Part #">YR1B10KCC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105970CT-ND"/>
+      <property name="Part #" value="YR1B10KCC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -546,9 +787,17 @@
       <tstamps>b943d38e-aa06-4621-9e7b-ce2e14017bed</tstamps>
     </comp>
     <comp ref="R15">
-      <value>10k</value>
+      <value>10k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105970CT-ND</field>
+        <field name="Part #">YR1B10KCC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105970CT-ND"/>
+      <property name="Part #" value="YR1B10KCC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -559,7 +808,15 @@
     <comp ref="R16">
       <value>10k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105970CT-ND</field>
+        <field name="Part #">YR1B10KCC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105970CT-ND"/>
+      <property name="Part #" value="YR1B10KCC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -568,9 +825,17 @@
       <tstamps>c19ecdf1-fb72-4192-9228-0f638b74a417</tstamps>
     </comp>
     <comp ref="R17">
-      <value>4.02k</value>
+      <value>10k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105970CT-ND</field>
+        <field name="Part #">YR1B10KCC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105970CT-ND"/>
+      <property name="Part #" value="YR1B10KCC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -579,9 +844,17 @@
       <tstamps>df538318-a0b2-4bf9-8d6c-43b8d5cc315c</tstamps>
     </comp>
     <comp ref="R18">
-      <value>10k</value>
+      <value>1k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105942CT-ND</field>
+        <field name="Part #">YR1B1K0CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105942CT-ND"/>
+      <property name="Part #" value="YR1B1K0CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -590,9 +863,17 @@
       <tstamps>8c9b6e00-39d5-4200-9d95-1b34fcd89eb4</tstamps>
     </comp>
     <comp ref="R19">
-      <value>250k</value>
+      <value>11.8k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1712-YR1B11K8CCCT-ND</field>
+        <field name="Part #">YR1B11K8CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="1712-YR1B11K8CCCT-ND"/>
+      <property name="Part #" value="YR1B11K8CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
@@ -601,20 +882,150 @@
       <tstamps>b98592c8-adfe-466d-a252-9ea6c8be1fa6</tstamps>
     </comp>
     <comp ref="R20">
-      <value>10k</value>
+      <value>1k+/-0.1%</value>
       <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105942CT-ND</field>
+        <field name="Part #">YR1B1K0CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
       <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105942CT-ND"/>
+      <property name="Part #" value="YR1B1K0CC"/>
+      <property name="Unit Price" value="0.63"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Resistor, US symbol"/>
       <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>fd0369ac-05e3-4af2-bbb8-7414630fed4e</tstamps>
+      <tstamps>cd5cf555-b064-4b03-ad15-8c0893e9ec32</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>3.83k+/-0.1%</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1712-YR1B3K83CCCT-ND</field>
+        <field name="Part #">YR1B3K83CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="1712-YR1B3K83CCCT-ND"/>
+      <property name="Part #" value="YR1B3K83CC"/>
+      <property name="Unit Price" value="0.63"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>9109b231-fed2-4cfb-821a-f8134fd992e7</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>1k+/-0.1%</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">A105942CT-ND</field>
+        <field name="Part #">YR1B1K0CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A105942CT-ND"/>
+      <property name="Part #" value="YR1B1K0CC"/>
+      <property name="Unit Price" value="0.63"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>33cadb89-cf4f-4b93-8df0-3c5f021072a9</tstamps>
+    </comp>
+    <comp ref="R29">
+      <value>3.83k+/-0.1%</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">1712-YR1B3K83CCCT-ND</field>
+        <field name="Part #">YR1B3K83CC</field>
+        <field name="Unit Price">0.63</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="1712-YR1B3K83CCCT-ND"/>
+      <property name="Part #" value="YR1B3K83CC"/>
+      <property name="Unit Price" value="0.63"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>337afa75-2061-41ba-8438-0fee9598a69c</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">13-MFR-25FRF52-1KCT-ND</field>
+        <field name="Part #">MFR-25FRF52-1K</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="13-MFR-25FRF52-1KCT-ND"/>
+      <property name="Part #" value="MFR-25FRF52-1K"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>89367bad-1120-457b-bbbe-158ea29490e9</tstamps>
+    </comp>
+    <comp ref="R36">
+      <value>1.5</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder</footprint>
+      <fields>
+        <field name="Distributor Part #">A121179CT-ND</field>
+        <field name="Part #">35221R5JT</field>
+        <field name="Unit Price">1.22</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="A121179CT-ND"/>
+      <property name="Part #" value="35221R5JT"/>
+      <property name="Unit Price" value="1.22"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>63c6eab9-ae1a-4057-8e71-5f770b27c0ae</tstamps>
+    </comp>
+    <comp ref="R37">
+      <value>1+/-1%</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder</footprint>
+      <fields>
+        <field name="Distributor Part #">RMCF2512FT1R00CT-ND</field>
+        <field name="Part #">RMCF2512FT1R00</field>
+        <field name="Unit Price">0.27</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="RMCF2512FT1R00CT-ND"/>
+      <property name="Part #" value="RMCF2512FT1R00"/>
+      <property name="Unit Price" value="0.27"/>
+      <property name="Sheetname" value="IV_Variation"/>
+      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
+      <tstamps>890c4734-10d4-4300-8f49-a46325d7a6cb</tstamps>
     </comp>
     <comp ref="TP1">
       <value>4952</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="test point"/>
@@ -622,21 +1033,18 @@
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
       <tstamps>36d7bf24-412b-48ac-87f0-fbb776ca803e</tstamps>
     </comp>
-    <comp ref="TP2">
-      <value>4952</value>
-      <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
-      <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
-      <property name="ki_keywords" value="test point tp"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>edf233af-5aeb-48c8-939f-9caa8e9b98ab</tstamps>
-    </comp>
     <comp ref="TP3">
       <value>4952</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="test point"/>
@@ -647,7 +1055,15 @@
     <comp ref="TP4">
       <value>4952</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="test point"/>
@@ -656,9 +1072,17 @@
       <tstamps>c4cec988-5f02-4969-a4df-05afb309475a</tstamps>
     </comp>
     <comp ref="TP5">
-      <value>TestPoint</value>
+      <value>4952</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="test point"/>
@@ -666,28 +1090,696 @@
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
       <tstamps>ccc79076-b5ac-4e08-a852-5e72b6966c36</tstamps>
     </comp>
-    <comp ref="TP6">
-      <value>TestPoint</value>
-      <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
-      <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value="IV_Variation"/>
-      <property name="Sheetfile" value="IV_variation.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
-      <property name="ki_keywords" value="test point tp"/>
-      <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>c492d612-a900-46e9-ad8f-ede6374f99d6</tstamps>
-    </comp>
     <comp ref="U2">
-      <value>LM6144xIx</value>
+      <value>LMC6484A</value>
       <footprint>Package_DIP:DIP-14_W7.62mm</footprint>
       <datasheet>https://www.ti.com/lit/ds/symlink/lm6142.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">LMC6484IN/NOPB-ND</field>
+        <field name="Part #">LMC6484IN/NOPB</field>
+        <field name="Unit Price">2.83</field>
+      </fields>
       <libsource lib="Amplifier_Operational" part="LM6144xIx" description="Low-Power, Quad-Operational Amplifiers, 17MHz, DIP-14/SOIC-14"/>
+      <property name="Distributor Part #" value="LMC6484IN/NOPB-ND"/>
+      <property name="Part #" value="LMC6484IN/NOPB"/>
+      <property name="Unit Price" value="2.83"/>
       <property name="Sheetname" value="IV_Variation"/>
       <property name="Sheetfile" value="IV_variation.kicad_sch"/>
       <property name="ki_description" value="Low-Power, Quad-Operational Amplifiers, 17MHz, DIP-14/SOIC-14"/>
       <property name="ki_keywords" value="quad opamp rail"/>
       <sheetpath names="/IV_Variation/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/"/>
-      <tstamps>b46bcf20-35fc-4b39-bf14-9d51f8c8cc0a 2ee27637-0a88-40ba-adc7-e8fd7885f496 326fcf90-b63a-45a1-8e3f-9cd2de72bf0b 760a6139-5dd7-44ab-b9a5-349502677fbe 081e2308-d412-46da-bec7-8b37fc0fa2ec</tstamps>
+      <tstamps>b46bcf20-35fc-4b39-bf14-9d51f8c8cc0a 081e2308-d412-46da-bec7-8b37fc0fa2ec</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>a348240b-5b75-41cf-a921-0cb7a763e1a2</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">BC2665CT-ND</field>
+        <field name="Part #">K104K10X7RF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="BC2665CT-ND"/>
+      <property name="Part #" value="K104K10X7RF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>af4d8ba8-391c-4387-b4ad-5a69fda2b6fe</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>100pF</value>
+      <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">56-K101J10C0GF5UH5CT-ND</field>
+        <field name="Part #">K101J10C0GF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="56-K101J10C0GF5UH5CT-ND"/>
+      <property name="Part #" value="K101J10C0GF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>14ac06ca-6a18-4853-9130-fb60f21f02f3</tstamps>
+    </comp>
+    <comp ref="D8">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>c33cb8ff-90e0-4855-80fa-f9e8b1092145</tstamps>
+    </comp>
+    <comp ref="D9">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>9d201a6f-bf4a-417e-8827-27a60b343293</tstamps>
+    </comp>
+    <comp ref="D10">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>400562c4-c7df-47ee-817a-d259c6ad7900</tstamps>
+    </comp>
+    <comp ref="D11">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>46765299-7ed6-480d-bd27-6c0490033eaf</tstamps>
+    </comp>
+    <comp ref="HS3">
+      <value>13.40°C/W</value>
+      <footprint>Library:HSINK_531002B02500G</footprint>
+      <fields>
+        <field name="Distributor Part #">HS351-ND</field>
+        <field name="Part #">531002B02500G</field>
+        <field name="Unit Price">1.55</field>
+      </fields>
+      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
+      <property name="Distributor Part #" value="HS351-ND"/>
+      <property name="Part #" value="531002B02500G"/>
+      <property name="Unit Price" value="1.55"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Heatsink"/>
+      <property name="ki_keywords" value="thermal heat temperature"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>6e5b6c90-0cc0-4555-a3f3-e8373429b78a</tstamps>
+    </comp>
+    <comp ref="HS4">
+      <value>13.40°C/W</value>
+      <footprint>Library:HSINK_531002B02500G</footprint>
+      <fields>
+        <field name="Distributor Part #">HS351-ND</field>
+        <field name="Part #">531002B02500G</field>
+        <field name="Unit Price">1.55</field>
+      </fields>
+      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
+      <property name="Distributor Part #" value="HS351-ND"/>
+      <property name="Part #" value="531002B02500G"/>
+      <property name="Unit Price" value="1.55"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Heatsink"/>
+      <property name="ki_keywords" value="thermal heat temperature"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>05fedefd-6b36-4842-95dd-654922ee6f59</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>TIP122</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</datasheet>
+      <fields>
+        <field name="Distributor Part #">TIP122GOS-ND</field>
+        <field name="Part #">TIP122G</field>
+        <field name="Unit Price">0.79</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="TIP122" description="5A Ic, 100V Vce, Silicon Darlington Power NPN Transistor, TO-220"/>
+      <property name="Distributor Part #" value="TIP122GOS-ND"/>
+      <property name="Part #" value="TIP122G"/>
+      <property name="Unit Price" value="0.79"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="5A Ic, 100V Vce, Silicon Darlington Power NPN Transistor, TO-220"/>
+      <property name="ki_keywords" value="Darlington Power NPN Transistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>cb90b5de-2bfd-4483-9be6-e179649994c7</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>TIP127</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</datasheet>
+      <fields>
+        <field name="Distributor Part #">TIP127GOS-ND</field>
+        <field name="Part #">TIP127G</field>
+        <field name="Unit Price">1.37</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="TIP127" description="5A Ic, 100V Vce, Silicon Darlington Power PNP Transistor, TO-220"/>
+      <property name="Distributor Part #" value="TIP127GOS-ND"/>
+      <property name="Part #" value="TIP127G"/>
+      <property name="Unit Price" value="1.37"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="5A Ic, 100V Vce, Silicon Darlington Power PNP Transistor, TO-220"/>
+      <property name="ki_keywords" value="Darlington Power PNP Transistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>4fe3cf05-d0a7-4736-8fc8-a453454b3fcb</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>bd5aa54d-7fb3-4572-bbc6-600127dab189</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>d61d5767-857e-420e-9603-997b84f06bc3</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>4.7k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT4K70CT-ND</field>
+        <field name="Part #">CF14JT4K70</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT4K70CT-ND"/>
+      <property name="Part #" value="CF14JT4K70"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>75ea0d16-acb7-49d2-9388-aa8a58f4933d</tstamps>
+    </comp>
+    <comp ref="R31">
+      <value>4.7k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT4K70CT-ND</field>
+        <field name="Part #">CF14JT4K70</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT4K70CT-ND"/>
+      <property name="Part #" value="CF14JT4K70"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>0ca04f11-82c3-451a-97fc-e55d909e6b23</tstamps>
+    </comp>
+    <comp ref="R32">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">13-MFR-25FRF52-1KCT-ND</field>
+        <field name="Part #">MFR-25FRF52-1K</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="13-MFR-25FRF52-1KCT-ND"/>
+      <property name="Part #" value="MFR-25FRF52-1K"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>c2a7299c-5282-4e43-a699-b5fc882ecf9e</tstamps>
+    </comp>
+    <comp ref="R33">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>2b7c8aff-72fb-46c0-a448-dbd1dfa4d933</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>4952</value>
+      <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
+      <property name="Sheetname" value="Half Supply Buffer"/>
+      <property name="Sheetfile" value="half_supply_buffer.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/IV_Variation/Half Supply Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/77b09a51-4245-4afb-8848-526ca5066b24/"/>
+      <tstamps>9eba4151-e282-4031-b438-80eb70c2d1af</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>100pF</value>
+      <footprint>Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Distributor Part #">56-K101J10C0GF5UH5CT-ND</field>
+        <field name="Part #">K101J10C0GF5UH5</field>
+        <field name="Unit Price">0.23</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Distributor Part #" value="56-K101J10C0GF5UH5CT-ND"/>
+      <property name="Part #" value="K101J10C0GF5UH5"/>
+      <property name="Unit Price" value="0.23"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>b3338bcb-6d35-46e8-832c-c321037a0e72</tstamps>
+    </comp>
+    <comp ref="D12">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>3b6448af-f863-43ee-a446-fa0e2cbd1898</tstamps>
+    </comp>
+    <comp ref="D13">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>73a64262-8687-46dc-89fb-3cc8249b3f2a</tstamps>
+    </comp>
+    <comp ref="D14">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>8d322adf-044b-439c-b220-742734858a7a</tstamps>
+    </comp>
+    <comp ref="D15">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <fields>
+        <field name="Distributor Part #">1N4148FS-ND</field>
+        <field name="Part #">1N4148</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <property name="Sim.Device" value="D"/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Distributor Part #" value="1N4148FS-ND"/>
+      <property name="Part #" value="1N4148"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="100V 0.15A standard switching diode, DO-35"/>
+      <property name="ki_keywords" value="diode"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>54c6b866-515d-47fe-987b-72b30cf8df05</tstamps>
+    </comp>
+    <comp ref="HS1">
+      <value>13.40°C/W</value>
+      <footprint>Library:HSINK_531002B02500G</footprint>
+      <fields>
+        <field name="Distributor Part #">HS351-ND</field>
+        <field name="Part #">531002B02500G</field>
+        <field name="Unit Price">1.55</field>
+      </fields>
+      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
+      <property name="Distributor Part #" value="HS351-ND"/>
+      <property name="Part #" value="531002B02500G"/>
+      <property name="Unit Price" value="1.55"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Heatsink"/>
+      <property name="ki_keywords" value="thermal heat temperature"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>02251db8-0e07-48f7-8308-bb21d81d5444</tstamps>
+    </comp>
+    <comp ref="HS2">
+      <value>13.40°C/W</value>
+      <footprint>Library:HSINK_531002B02500G</footprint>
+      <fields>
+        <field name="Distributor Part #">HS351-ND</field>
+        <field name="Part #">531002B02500G</field>
+        <field name="Unit Price">1.55</field>
+      </fields>
+      <libsource lib="Mechanical" part="Heatsink" description="Heatsink"/>
+      <property name="Distributor Part #" value="HS351-ND"/>
+      <property name="Part #" value="531002B02500G"/>
+      <property name="Unit Price" value="1.55"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Heatsink"/>
+      <property name="ki_keywords" value="thermal heat temperature"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>04f7f84a-34c2-4186-9a5b-cab706cb1d83</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>TIP122</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</datasheet>
+      <fields>
+        <field name="Distributor Part #">TIP122GOS-ND</field>
+        <field name="Part #">TIP122G</field>
+        <field name="Unit Price">0.79</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="TIP122" description="5A Ic, 100V Vce, Silicon Darlington Power NPN Transistor, TO-220"/>
+      <property name="Distributor Part #" value="TIP122GOS-ND"/>
+      <property name="Part #" value="TIP122G"/>
+      <property name="Unit Price" value="0.79"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="5A Ic, 100V Vce, Silicon Darlington Power NPN Transistor, TO-220"/>
+      <property name="ki_keywords" value="Darlington Power NPN Transistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>a107757c-9e31-4d4b-9ed3-a99b1014e878</tstamps>
+    </comp>
+    <comp ref="Q4">
+      <value>TIP127</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Vertical</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</datasheet>
+      <fields>
+        <field name="Distributor Part #">TIP127GOS-ND</field>
+        <field name="Part #">TIP127G</field>
+        <field name="Unit Price">1.37</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="TIP127" description="5A Ic, 100V Vce, Silicon Darlington Power PNP Transistor, TO-220"/>
+      <property name="Distributor Part #" value="TIP127GOS-ND"/>
+      <property name="Part #" value="TIP127G"/>
+      <property name="Unit Price" value="1.37"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="5A Ic, 100V Vce, Silicon Darlington Power PNP Transistor, TO-220"/>
+      <property name="ki_keywords" value="Darlington Power PNP Transistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>8ee94f3f-f3d1-44a7-991e-c2dab43e26be</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>6cb26932-e5eb-4b4f-9fd5-9daf5726036a</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT10K0CT-ND</field>
+        <field name="Part #">CF14JT10K0</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT10K0CT-ND"/>
+      <property name="Part #" value="CF14JT10K0"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>2f6a0406-9b39-4c91-a32c-524d205de50e</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">13-MFR-25FRF52-1KCT-ND</field>
+        <field name="Part #">MFR-25FRF52-1K</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="13-MFR-25FRF52-1KCT-ND"/>
+      <property name="Part #" value="MFR-25FRF52-1K"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>d700e337-c3fa-4271-904d-13a4c190cb45</tstamps>
+    </comp>
+    <comp ref="R34">
+      <value>4.7k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT4K70CT-ND</field>
+        <field name="Part #">CF14JT4K70</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT4K70CT-ND"/>
+      <property name="Part #" value="CF14JT4K70"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>4b6d9971-bd43-4c3b-bd91-662fceae9903</tstamps>
+    </comp>
+    <comp ref="R35">
+      <value>4.7k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Distributor Part #">CF14JT4K70CT-ND</field>
+        <field name="Part #">CF14JT4K70</field>
+        <field name="Unit Price">0.1</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Distributor Part #" value="CF14JT4K70CT-ND"/>
+      <property name="Part #" value="CF14JT4K70"/>
+      <property name="Unit Price" value="0.1"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>af08ccd3-106d-4ae0-a05e-9ef6e7c1ca8b</tstamps>
+    </comp>
+    <comp ref="TP6">
+      <value>4952</value>
+      <footprint>TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm</footprint>
+      <fields>
+        <field name="Distributor Part #">36-4952-ND</field>
+        <field name="Part #">4952</field>
+        <field name="Unit Price">0.26</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Distributor Part #" value="36-4952-ND"/>
+      <property name="Part #" value="4952"/>
+      <property name="Unit Price" value="0.26"/>
+      <property name="Sheetname" value="Sweep Voltage Buffer"/>
+      <property name="Sheetfile" value="sweep_voltage_buffer.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/IV_Variation/Sweep Voltage Buffer/" tstamps="/934ae8eb-860a-4c99-952a-5338d2d71b19/4dd5a6ca-340c-4903-adac-e344c202e05d/"/>
+      <tstamps>2c5f4034-8908-4e69-9d5b-e2ae6ab04a47</tstamps>
     </comp>
   </components>
   <libparts>
@@ -910,6 +2002,42 @@
         <pin num="2" name="" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Diode" part="1N4148">
+      <description>100V 0.15A standard switching diode, DO-35</description>
+      <docs>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</docs>
+      <footprints>
+        <fp>D*DO?35*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N4148</field>
+        <field name="Footprint">Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</field>
+        <field name="Datasheet">https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="1N5817">
+      <description>20V 1A Schottky Barrier Rectifier Diode, DO-41</description>
+      <docs>http://www.vishay.com/docs/88525/1n5817.pdf</docs>
+      <footprints>
+        <fp>D*DO?41*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N5817</field>
+        <field name="Footprint">Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal</field>
+        <field name="Datasheet">http://www.vishay.com/docs/88525/1n5817.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="MCU_Module" part="Arduino_Nano_v3.x">
       <description>Arduino Nano v3.x</description>
       <docs>http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf</docs>
@@ -982,7 +2110,7 @@
         <pin num="1" name="1" type="input"/>
       </pins>
     </libpart>
-    <libpart lib="Reference_Voltage" part="LM285Z-2.5">
+    <libpart lib="Reference_Voltage" part="LM385BZ-2.5">
       <description>2.5V Micropower Voltage Reference Diodes, TO-92</description>
       <docs>http://www.onsemi.com/pub_link/Collateral/LM285-D.PDF</docs>
       <footprints>
@@ -990,7 +2118,7 @@
       </footprints>
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">LM285Z-2.5</field>
+        <field name="Value">LM385BZ-2.5</field>
         <field name="Footprint">Package_TO_SOT_THT:TO-92_Inline</field>
         <field name="Datasheet">http://www.onsemi.com/pub_link/Collateral/LM285-D.PDF</field>
       </fields>
@@ -999,40 +2127,40 @@
         <pin num="3" name="A" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Transistor_FET" part="IRF3205">
-      <description>110A Id, 55V Vds, Single N-Channel HEXFET Power MOSFET, 8mOhm Ron, TO-220AB</description>
-      <docs>http://www.irf.com/product-info/datasheets/data/irf3205.pdf</docs>
+    <libpart lib="Transistor_BJT" part="TIP122">
+      <description>5A Ic, 100V Vce, Silicon Darlington Power NPN Transistor, TO-220</description>
+      <docs>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</docs>
       <footprints>
         <fp>TO?220*</fp>
       </footprints>
       <fields>
         <field name="Reference">Q</field>
-        <field name="Value">IRF3205</field>
+        <field name="Value">TIP122</field>
         <field name="Footprint">Package_TO_SOT_THT:TO-220-3_Vertical</field>
-        <field name="Datasheet">http://www.irf.com/product-info/datasheets/data/irf3205.pdf</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</field>
       </fields>
       <pins>
-        <pin num="1" name="G" type="input"/>
-        <pin num="2" name="D" type="passive"/>
-        <pin num="3" name="S" type="passive"/>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="C" type="passive"/>
+        <pin num="3" name="E" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Transistor_FET" part="IRF4905">
-      <description>-74A Id, -55V Vds, Single P-Channel HEXFET Power MOSFET, 20mOhm Ron, TO-220AB</description>
-      <docs>http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c</docs>
+    <libpart lib="Transistor_BJT" part="TIP127">
+      <description>5A Ic, 100V Vce, Silicon Darlington Power PNP Transistor, TO-220</description>
+      <docs>https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</docs>
       <footprints>
         <fp>TO?220*</fp>
       </footprints>
       <fields>
         <field name="Reference">Q</field>
-        <field name="Value">IRF4905</field>
+        <field name="Value">TIP127</field>
         <field name="Footprint">Package_TO_SOT_THT:TO-220-3_Vertical</field>
-        <field name="Datasheet">http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/TIP120-D.PDF</field>
       </fields>
       <pins>
-        <pin num="1" name="G" type="input"/>
-        <pin num="2" name="D" type="passive"/>
-        <pin num="3" name="S" type="passive"/>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="C" type="passive"/>
+        <pin num="3" name="E" type="passive"/>
       </pins>
     </libpart>
   </libparts>
@@ -1052,6 +2180,9 @@
     <library logical="Device">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
     </library>
+    <library logical="Diode">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Diode.kicad_sym</uri>
+    </library>
     <library logical="MCU_Module">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/MCU_Module.kicad_sym</uri>
     </library>
@@ -1061,8 +2192,8 @@
     <library logical="Reference_Voltage">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Reference_Voltage.kicad_sym</uri>
     </library>
-    <library logical="Transistor_FET">
-      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+    <library logical="Transistor_BJT">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_BJT.kicad_sym</uri>
     </library>
   </libraries>
   <nets>
@@ -1081,66 +2212,77 @@
     </net>
     <net code="2" name="+12V">
       <node ref="C3" pin="1" pintype="passive"/>
-      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="C6" pin="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="F1" pin="2" pintype="passive"/>
-      <node ref="Q1" pin="2" pinfunction="D" pintype="passive"/>
-      <node ref="Q5" pin="2" pinfunction="D" pintype="passive"/>
+      <node ref="D16" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="C" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="C" pintype="passive"/>
       <node ref="R2" pin="1" pintype="passive"/>
       <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="R34" pin="1" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
       <node ref="U2" pin="4" pinfunction="V+" pintype="power_in"/>
     </net>
-    <net code="3" name="/IV_Variation/DUT+">
-      <node ref="D2" pin="2" pinfunction="A2" pintype="passive"/>
-      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
-      <node ref="Q5" pin="3" pinfunction="S" pintype="passive"/>
-      <node ref="Q6" pin="3" pinfunction="S" pintype="passive"/>
-      <node ref="R16" pin="1" pintype="passive"/>
-      <node ref="R20" pin="2" pintype="passive"/>
-      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
-    </net>
-    <net code="4" name="/IV_Variation/DUT-">
-      <node ref="D2" pin="1" pinfunction="A1" pintype="passive"/>
-      <node ref="F2" pin="1" pintype="passive"/>
-      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="R15" pin="1" pintype="passive"/>
-      <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
-    </net>
-    <net code="5" name="/IV_Variation/DUT_I">
-      <node ref="R19" pin="2" pintype="passive"/>
+    <net code="3" name="/IV_Variation/DUT_I">
+      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
       <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="14" pintype="output"/>
       <node ref="U3" pin="2" pinfunction="CH1" pintype="input"/>
     </net>
-    <net code="6" name="/IV_Variation/DUT_V">
-      <node ref="R14" pin="2" pintype="passive"/>
+    <net code="4" name="/IV_Variation/DUT_V">
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
       <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="8" pintype="output"/>
       <node ref="U3" pin="1" pinfunction="CH0" pintype="input"/>
     </net>
-    <net code="7" name="/IV_Variation/VADJ">
+    <net code="5" name="/IV_Variation/Sweep Voltage Buffer/Sweep_Amplified">
+      <node ref="Q3" pin="3" pinfunction="E" pintype="passive"/>
+      <node ref="Q4" pin="3" pinfunction="E" pintype="passive"/>
+      <node ref="R36" pin="1" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+    </net>
+    <net code="6" name="/IV_Variation/Sweep_Input">
       <node ref="TP6" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="8" pinfunction="Vout" pintype="output"/>
       <node ref="U2" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="7" name="/IV_Variation/Vmiddle">
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R29" pin="2" pintype="passive"/>
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="CH2" pintype="input"/>
     </net>
     <net code="8" name="GND">
       <node ref="A1" pin="29" pinfunction="GND" pintype="power_in"/>
       <node ref="A1" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C10" pin="2" pintype="passive"/>
       <node ref="C2" pin="2" pintype="passive"/>
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="C4" pin="2" pintype="passive"/>
       <node ref="C5" pin="2" pintype="passive"/>
-      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="C6" pin="2" pintype="passive"/>
       <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="D6" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="D7" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="Q2" pin="2" pinfunction="D" pintype="passive"/>
-      <node ref="Q6" pin="2" pinfunction="D" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="C" pintype="passive"/>
+      <node ref="Q4" pin="2" pinfunction="C" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
       <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="R28" pin="2" pintype="passive"/>
       <node ref="R3" pin="2" pintype="passive"/>
-      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="R31" pin="2" pintype="passive"/>
+      <node ref="R35" pin="2" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
       <node ref="U1" pin="5" pinfunction="~{LDAC}" pintype="input"/>
       <node ref="U1" pin="7" pinfunction="Vss" pintype="power_in"/>
       <node ref="U2" pin="11" pinfunction="V-" pintype="power_in"/>
@@ -1148,7 +2290,181 @@
       <node ref="U3" pin="7" pinfunction="DGND" pintype="power_in"/>
       <node ref="U4" pin="3" pinfunction="A" pintype="passive"/>
     </net>
-    <net code="9" name="Net-(#FLG03-pwr)">
+    <net code="9" name="Net-(A1-D6)">
+      <node ref="A1" pin="9" pinfunction="D6" pintype="bidirectional"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+    </net>
+    <net code="10" name="Net-(A1-D7)">
+      <node ref="A1" pin="10" pinfunction="D7" pintype="bidirectional"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+    </net>
+    <net code="11" name="Net-(A1-D8)">
+      <node ref="A1" pin="11" pinfunction="D8" pintype="bidirectional"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+    </net>
+    <net code="12" name="Net-(A1-D9)">
+      <node ref="A1" pin="12" pinfunction="D9" pintype="bidirectional"/>
+      <node ref="U3" pin="8" pinfunction="~{CS}/SHDN" pintype="input"/>
+    </net>
+    <net code="13" name="Net-(A1-D10)">
+      <node ref="A1" pin="13" pinfunction="D10" pintype="bidirectional"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="~{CS}" pintype="input"/>
+    </net>
+    <net code="14" name="Net-(A1-D11)">
+      <node ref="A1" pin="14" pinfunction="D11" pintype="bidirectional"/>
+      <node ref="U1" pin="4" pinfunction="SDI" pintype="input"/>
+      <node ref="U3" pin="9" pinfunction="Din" pintype="input"/>
+    </net>
+    <net code="15" name="Net-(A1-D12)">
+      <node ref="A1" pin="15" pinfunction="D12" pintype="bidirectional"/>
+      <node ref="U3" pin="10" pinfunction="Dout" pintype="output"/>
+    </net>
+    <net code="16" name="Net-(A1-D13)">
+      <node ref="A1" pin="16" pinfunction="D13" pintype="bidirectional"/>
+      <node ref="U1" pin="3" pinfunction="SCK" pintype="input"/>
+      <node ref="U3" pin="11" pinfunction="CLK" pintype="input"/>
+    </net>
+    <net code="17" name="Net-(C7-Pad2)">
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+      <node ref="U2" pin="14" pintype="output"/>
+    </net>
+    <net code="18" name="Net-(C8-Pad2)">
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U2" pin="8" pintype="output"/>
+    </net>
+    <net code="19" name="Net-(D2-A1)">
+      <node ref="D2" pin="1" pinfunction="A1" pintype="passive"/>
+      <node ref="F2" pin="1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="20" name="Net-(D2-A2)">
+      <node ref="D2" pin="2" pinfunction="A2" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R36" pin="2" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="21" name="Net-(D6-A)">
+      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+    </net>
+    <net code="22" name="Net-(D7-A)">
+      <node ref="D7" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(D8-A)">
+      <node ref="D8" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="Q1" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(D9-K)">
+      <node ref="D9" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q2" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R31" pin="1" pintype="passive"/>
+    </net>
+    <net code="25" name="Net-(D10-A)">
+      <node ref="D10" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D8" pin="1" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="26" name="Net-(D10-K)">
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="D10" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D11" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R32" pin="1" pintype="passive"/>
+      <node ref="U2" pin="7" pintype="output"/>
+    </net>
+    <net code="27" name="Net-(D11-K)">
+      <node ref="D11" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D9" pin="2" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="28" name="Net-(D12-A)">
+      <node ref="D12" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D13" pin="1" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="29" name="Net-(D12-K)">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="D12" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D14" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U2" pin="1" pintype="output"/>
+    </net>
+    <net code="30" name="Net-(D13-A)">
+      <node ref="D13" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="Q3" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R34" pin="2" pintype="passive"/>
+    </net>
+    <net code="31" name="Net-(D14-K)">
+      <node ref="D14" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D15" pin="2" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="32" name="Net-(D15-K)">
+      <node ref="D15" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q4" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R35" pin="1" pintype="passive"/>
+    </net>
+    <net code="33" name="Net-(D16-A)">
+      <node ref="D16" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="F1" pin="2" pintype="passive"/>
+    </net>
+    <net code="34" name="Net-(F2-Pad2)">
+      <node ref="F2" pin="2" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="R37" pin="1" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+    </net>
+    <net code="35" name="Net-(J2-Pin_2)">
+      <node ref="F1" pin="1" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    </net>
+    <net code="36" name="Net-(U2A--)">
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="37" name="Net-(U2B-+)">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="38" name="Net-(U2B--)">
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="R33" pin="1" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="39" name="Net-(U2C-+)">
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="U2" pin="10" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="40" name="Net-(U2C--)">
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="U2" pin="9" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="41" name="Net-(U2D-+)">
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="U2" pin="12" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="42" name="Net-(U2D--)">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="U2" pin="13" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="43" name="Net-(U3-Vref)">
       <node ref="R24" pin="2" pintype="passive"/>
       <node ref="R25" pin="2" pintype="passive"/>
       <node ref="R26" pin="2" pintype="passive"/>
@@ -1156,188 +2472,83 @@
       <node ref="U3" pin="13" pinfunction="Vref" pintype="power_in"/>
       <node ref="U4" pin="2" pinfunction="K" pintype="passive"/>
     </net>
-    <net code="10" name="Net-(A1-D6)">
-      <node ref="A1" pin="9" pinfunction="D6" pintype="bidirectional"/>
-      <node ref="C2" pin="1" pintype="passive"/>
-      <node ref="R21" pin="2" pintype="passive"/>
-      <node ref="R22" pin="1" pintype="passive"/>
-    </net>
-    <net code="11" name="Net-(A1-D7)">
-      <node ref="A1" pin="10" pinfunction="D7" pintype="bidirectional"/>
-      <node ref="R12" pin="2" pintype="passive"/>
-    </net>
-    <net code="12" name="Net-(A1-D8)">
-      <node ref="A1" pin="11" pinfunction="D8" pintype="bidirectional"/>
-      <node ref="R11" pin="2" pintype="passive"/>
-    </net>
-    <net code="13" name="Net-(A1-D9)">
-      <node ref="A1" pin="12" pinfunction="D9" pintype="bidirectional"/>
-      <node ref="U3" pin="8" pinfunction="~{CS}/SHDN" pintype="input"/>
-    </net>
-    <net code="14" name="Net-(A1-D10)">
-      <node ref="A1" pin="13" pinfunction="D10" pintype="bidirectional"/>
-      <node ref="R1" pin="2" pintype="passive"/>
-      <node ref="U1" pin="2" pinfunction="~{CS}" pintype="input"/>
-    </net>
-    <net code="15" name="Net-(A1-D11)">
-      <node ref="A1" pin="14" pinfunction="D11" pintype="bidirectional"/>
-      <node ref="U1" pin="4" pinfunction="SDI" pintype="input"/>
-      <node ref="U3" pin="9" pinfunction="Din" pintype="input"/>
-    </net>
-    <net code="16" name="Net-(A1-D12)">
-      <node ref="A1" pin="15" pinfunction="D12" pintype="bidirectional"/>
-      <node ref="U3" pin="10" pinfunction="Dout" pintype="output"/>
-    </net>
-    <net code="17" name="Net-(A1-D13)">
-      <node ref="A1" pin="16" pinfunction="D13" pintype="bidirectional"/>
-      <node ref="U1" pin="3" pinfunction="SCK" pintype="input"/>
-      <node ref="U3" pin="11" pinfunction="CLK" pintype="input"/>
-    </net>
-    <net code="18" name="Net-(D6-A)">
-      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="R11" pin="1" pintype="passive"/>
-    </net>
-    <net code="19" name="Net-(D7-A)">
-      <node ref="D7" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="R12" pin="1" pintype="passive"/>
-    </net>
-    <net code="20" name="Net-(F2-Pad2)">
-      <node ref="F2" pin="2" pintype="passive"/>
-      <node ref="R13" pin="1" pintype="passive"/>
-      <node ref="R8" pin="1" pintype="passive"/>
-    </net>
-    <net code="21" name="Net-(J2-Pin_2)">
-      <node ref="F1" pin="1" pintype="passive"/>
-      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
-    </net>
-    <net code="22" name="Net-(Q1-G)">
-      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
-      <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
-      <node ref="R4" pin="2" pintype="passive"/>
-    </net>
-    <net code="23" name="Net-(Q5-G)">
-      <node ref="Q5" pin="1" pinfunction="G" pintype="input"/>
-      <node ref="Q6" pin="1" pinfunction="G" pintype="input"/>
-      <node ref="R9" pin="2" pintype="passive"/>
-    </net>
-    <net code="24" name="Net-(R4-Pad1)">
-      <node ref="R4" pin="1" pintype="passive"/>
-      <node ref="U2" pin="7" pintype="output"/>
-    </net>
-    <net code="25" name="Net-(R9-Pad1)">
-      <node ref="R9" pin="1" pintype="passive"/>
-      <node ref="U2" pin="1" pintype="output"/>
-    </net>
-    <net code="26" name="Net-(R20-Pad1)">
-      <node ref="R20" pin="1" pintype="passive"/>
-      <node ref="R6" pin="2" pintype="passive"/>
-    </net>
-    <net code="27" name="Net-(U2A--)">
-      <node ref="R6" pin="1" pintype="passive"/>
-      <node ref="R7" pin="1" pintype="passive"/>
-      <node ref="U2" pin="2" pinfunction="-" pintype="input"/>
-    </net>
-    <net code="28" name="Net-(U2B-+)">
-      <node ref="C8" pin="1" pintype="passive"/>
-      <node ref="R2" pin="2" pintype="passive"/>
-      <node ref="R3" pin="1" pintype="passive"/>
-      <node ref="U2" pin="5" pinfunction="+" pintype="input"/>
-    </net>
-    <net code="29" name="Net-(U2C-+)">
-      <node ref="R16" pin="2" pintype="passive"/>
-      <node ref="R17" pin="1" pintype="passive"/>
-      <node ref="U2" pin="10" pinfunction="+" pintype="input"/>
-    </net>
-    <net code="30" name="Net-(U2C--)">
-      <node ref="R14" pin="1" pintype="passive"/>
-      <node ref="R15" pin="2" pintype="passive"/>
-      <node ref="U2" pin="9" pinfunction="-" pintype="input"/>
-    </net>
-    <net code="31" name="Net-(U2D-+)">
-      <node ref="R10" pin="1" pintype="passive"/>
-      <node ref="R8" pin="2" pintype="passive"/>
-      <node ref="U2" pin="12" pinfunction="+" pintype="input"/>
-    </net>
-    <net code="32" name="Net-(U2D--)">
-      <node ref="R18" pin="2" pintype="passive"/>
-      <node ref="R19" pin="1" pintype="passive"/>
-      <node ref="U2" pin="13" pinfunction="-" pintype="input"/>
-    </net>
-    <net code="33" name="V{slash}2">
-      <node ref="Q1" pin="3" pinfunction="S" pintype="passive"/>
-      <node ref="Q2" pin="3" pinfunction="S" pintype="passive"/>
+    <net code="44" name="V{slash}2">
+      <node ref="Q1" pin="3" pinfunction="E" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="E" pintype="passive"/>
       <node ref="R10" pin="2" pintype="passive"/>
       <node ref="R13" pin="2" pintype="passive"/>
       <node ref="R17" pin="2" pintype="passive"/>
       <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="R32" pin="2" pintype="passive"/>
+      <node ref="R33" pin="2" pintype="passive"/>
+      <node ref="R37" pin="2" pintype="passive"/>
       <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="6" pinfunction="-" pintype="input"/>
-      <node ref="U3" pin="3" pinfunction="CH2" pintype="input"/>
     </net>
-    <net code="34" name="unconnected-(A1-3V3-Pad17)">
+    <net code="45" name="unconnected-(A1-3V3-Pad17)">
       <node ref="A1" pin="17" pinfunction="3V3" pintype="power_out+no_connect"/>
     </net>
-    <net code="35" name="unconnected-(A1-A0-Pad19)">
+    <net code="46" name="unconnected-(A1-A0-Pad19)">
       <node ref="A1" pin="19" pinfunction="A0" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="36" name="unconnected-(A1-A1-Pad20)">
+    <net code="47" name="unconnected-(A1-A1-Pad20)">
       <node ref="A1" pin="20" pinfunction="A1" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="37" name="unconnected-(A1-A2-Pad21)">
+    <net code="48" name="unconnected-(A1-A2-Pad21)">
       <node ref="A1" pin="21" pinfunction="A2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="38" name="unconnected-(A1-A3-Pad22)">
+    <net code="49" name="unconnected-(A1-A3-Pad22)">
       <node ref="A1" pin="22" pinfunction="A3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="39" name="unconnected-(A1-A4-Pad23)">
+    <net code="50" name="unconnected-(A1-A4-Pad23)">
       <node ref="A1" pin="23" pinfunction="A4" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="40" name="unconnected-(A1-A5-Pad24)">
+    <net code="51" name="unconnected-(A1-A5-Pad24)">
       <node ref="A1" pin="24" pinfunction="A5" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="41" name="unconnected-(A1-A6-Pad25)">
+    <net code="52" name="unconnected-(A1-A6-Pad25)">
       <node ref="A1" pin="25" pinfunction="A6" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="42" name="unconnected-(A1-A7-Pad26)">
+    <net code="53" name="unconnected-(A1-A7-Pad26)">
       <node ref="A1" pin="26" pinfunction="A7" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="43" name="unconnected-(A1-AREF-Pad18)">
+    <net code="54" name="unconnected-(A1-AREF-Pad18)">
       <node ref="A1" pin="18" pinfunction="AREF" pintype="input+no_connect"/>
     </net>
-    <net code="44" name="unconnected-(A1-D0{slash}RX-Pad2)">
+    <net code="55" name="unconnected-(A1-D0{slash}RX-Pad2)">
       <node ref="A1" pin="2" pinfunction="D0/RX" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="45" name="unconnected-(A1-D1{slash}TX-Pad1)">
+    <net code="56" name="unconnected-(A1-D1{slash}TX-Pad1)">
       <node ref="A1" pin="1" pinfunction="D1/TX" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="46" name="unconnected-(A1-D2-Pad5)">
+    <net code="57" name="unconnected-(A1-D2-Pad5)">
       <node ref="A1" pin="5" pinfunction="D2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="47" name="unconnected-(A1-D3-Pad6)">
+    <net code="58" name="unconnected-(A1-D3-Pad6)">
       <node ref="A1" pin="6" pinfunction="D3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="48" name="unconnected-(A1-D4-Pad7)">
+    <net code="59" name="unconnected-(A1-D4-Pad7)">
       <node ref="A1" pin="7" pinfunction="D4" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="49" name="unconnected-(A1-D5-Pad8)">
+    <net code="60" name="unconnected-(A1-D5-Pad8)">
       <node ref="A1" pin="8" pinfunction="D5" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="50" name="unconnected-(A1-VIN-Pad30)">
+    <net code="61" name="unconnected-(A1-VIN-Pad30)">
       <node ref="A1" pin="30" pinfunction="VIN" pintype="power_in+no_connect"/>
     </net>
-    <net code="51" name="unconnected-(A1-~{RESET}-Pad3)">
+    <net code="62" name="unconnected-(A1-~{RESET}-Pad3)">
       <node ref="A1" pin="3" pinfunction="~{RESET}" pintype="input+no_connect"/>
     </net>
-    <net code="52" name="unconnected-(A1-~{RESET}-Pad28)">
+    <net code="63" name="unconnected-(A1-~{RESET}-Pad28)">
       <node ref="A1" pin="28" pinfunction="~{RESET}" pintype="input+no_connect"/>
     </net>
-    <net code="53" name="unconnected-(U3-CH3-Pad4)">
+    <net code="64" name="unconnected-(U3-CH3-Pad4)">
       <node ref="U3" pin="4" pinfunction="CH3" pintype="input+no_connect"/>
     </net>
-    <net code="54" name="unconnected-(U3-NC-Pad5)">
+    <net code="65" name="unconnected-(U3-NC-Pad5)">
       <node ref="U3" pin="5" pinfunction="NC" pintype="no_connect"/>
     </net>
-    <net code="55" name="unconnected-(U3-NC-Pad6)">
+    <net code="66" name="unconnected-(U3-NC-Pad6)">
       <node ref="U3" pin="6" pinfunction="NC" pintype="no_connect"/>
     </net>
   </nets>

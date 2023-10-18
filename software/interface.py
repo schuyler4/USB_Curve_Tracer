@@ -3,29 +3,25 @@ import time
 import csv
 import numpy as np
 
-from .IV import IV_data
 from .plot import plot_data
+import constants
 
-# This function sets up the serial object.
 def init_serial():
-    BAUDRATE = 9600
-    SERIAL_PORT = 'COM7'
-
     try:
         my_serial = serial.Serial()
-        my_serial.port = SERIAL_PORT
-        my_serial.baudrate = BAUDRATE
+        my_serial.port = constants.SERIAL_PORT
+        my_serial.baudrate = constants.BAUDRATE
         my_serial.timeout = 1
         
         my_serial.open()
         # For some reason, a delay is required before flushing the serial buffer.
-        time.sleep(1)
+        time.sleep(constants.SECOND_DELAY)
         my_serial.flush()
         # Another delay is required after flushing the serial buffer, before using the serial port.
-        time.sleep(1)
+        time.sleep(constants.SECOND_DELAY)
         return my_serial
     except:
-        print('Serial port could not be opened.')
+        print(constants.OPENING_ERROR)
         return None
 
 
@@ -34,53 +30,46 @@ def read_serial_data(my_serial):
     received_data = []
     logging_data = False
 
-    DATA_START_COMMAND = 'START'
-    DATA_END_COMMAND = 'END'
-
     no_data_error = 10
 
     while True: 
         try:
-            data_str = my_serial.readline().decode('utf8')
+            data_str = my_serial.readline().decode(constants.DECODING_SCHEME)
 
-            # Check if the string contains a sub string.
             if(data_str == ''):
                 no_data_count += 1
 
                 if(no_data_count > no_data_error):
-                    print('No data received.')
+                    print(constants.NO_DATA_ERROR)
                     break
-            elif(DATA_END_COMMAND in data_str):
+            elif(constants.DATA_END_COMMAND in data_str):
                 logging_data = False
                 break
-            elif(DATA_START_COMMAND in data_str):
+            elif(constants.DATA_START_COMMAND in data_str):
                 logging_data = True
             else:
                 received_data.append(data_str)
                 no_data_count = 0
 
-        # Catch the exception and print it.
         except:
-            print('Data could not be read')
+            print(constants.DATA_READ_ERROR)
             break   
 
-    time.sleep(1)
+    time.sleep(constants.SECOND_DELAY)
 
     return received_data
 
 
-# This function decodes the decoded binary integer. 
 def sanitize_integer(string):
-    cleaned_string = string.replace('\x00', '').replace('\n', '')
+    cleaned_string = string.replace(constants.TRANSMIT_STRING_GARBAGE, '').replace(constants.NEWLINE, '')
     decoded_integer = int(cleaned_string)
     return decoded_integer
 
-
-# This function decodes the actual codes from the data. 
+ 
 def get_data_codes(data):
     codes = []
     for datum in data:
-        point = datum.split(',')
+        point = datum.split(constants.COMMA)
         point[0] = int(sanitize_integer(point[0]))
         point[1] = int(sanitize_integer(point[1]))
         codes.append(point)
@@ -91,53 +80,54 @@ def get_data_codes(data):
 
 
 def sweep_device(my_serial):
-    my_serial.write(b's')
-    time.sleep(0.1)
+    my_serial.write(constants.SWEEP_PROCESSOR_COMMAND)
+    time.sleep(constants.DATA_RECEIVE_DELAY)
     data = read_serial_data(my_serial)
     return data
 
 
 def write_data_to_CSV(current_codes, voltage_codes, title):
-    csv_filename = title + '.csv'
+    csv_filename = title + constants.CSV_EXTENSION
     csv_data = []
     for index, current_code in enumerate(current_codes):
         csv_data.append([current_code, voltage_codes[index]])
     
-    with open(csv_filename, 'wt') as fp:
-        writer = csv.writer(fp, delimiter = ',')
+    with open(csv_filename, constants.FILE_WRITE) as fp:
+        writer = csv.writer(fp, delimiter = constants.COMMA)
         writer.writerows(csv_data)
 
 
-# This function runs the basic command line user interface.
 def user_interface(my_serial):
     current_codes = []
     voltage_codes = []
     title = None
 
     while True:
-        user_input = input('Enter a command: ')
+        user_input = input(constants.COMMAND_PROMPT)
 
-        if('sweep' in user_input and user_input != 'sweep'):
-            command_and_title = user_input.split(',')
-            if(len(command_and_title) != 2):
-                print('Invalid command')
+        if(constants.SWEEP_USER_COMMAND in user_input and user_input != constants.SWEEP_USER_COMMAND):
+            command_and_title = user_input.split(constants.COMMA)
+            if(len(command_and_title) != constants.TITLE_COMMAND_LIST_LENGTH):
+                print(constants.INVALID_COMMAND_ERROR)
                 continue
             data = sweep_device(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
             plot_data(current_codes, voltage_codes, command_and_title[1]).show()
-        elif(user_input == 'sweep'):
+
+        elif(user_input == constants.SWEEP_USER_COMMAND):
             data = sweep_device(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            plot_data(current_codes, voltage_codes, 'IV Trace').show()
-        elif(user_input == 'csv'):
+            plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()
+
+        elif(user_input == constants.CSV_USER_COMMAND):
             if(len(current_codes) == 0 and len(voltage_codes) == 0):
-                print('No Stored Sweeps')
+                print(constants.STORED_SWEEPS_ERROR)
                 continue
             else:
-                title = input('Enter a title:')
+                title = input(constants.TITLE_PROMPT)
                 write_data_to_CSV(current_codes, voltage_codes, title)
             
-        elif(user_input == 'exit'):
+        elif(user_input == constants.EXIT_USER_COMMAND):
             break
         else:
-            print('Invalid command')
+            print(constants.INVALID_COMMAND_ERROR)

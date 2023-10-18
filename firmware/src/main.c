@@ -9,6 +9,7 @@
 #include "MCP4911.h"
 
 static uint16_t DAC_voltage_setting = 0;
+static Mode mode;
 
 int main(void)
 {
@@ -32,6 +33,12 @@ int main(void)
                 sweep_device();
                 turn_off_red_LED();
                 turn_on_green_LED();
+                break;
+            case UNIDIRECTIONAL_COMMAND_CHARACTER:
+                mode = UNIDIRECTIONAL;
+                break;
+            case BIDIRECTIONAL_COMMAND_CHARACTER:
+                mode = BIDIRECTIONAL;
                 break;
             default:
                 break;
@@ -155,20 +162,24 @@ void sweep_device(void)
 
     zero_device_voltage();
 
-    while(DAC_voltage_setting > MINIMUM_DAC_CODE)
+    if(mode == BIDIRECTIONAL)
     {
-        DAC_voltage_setting--;
-        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
-        IV_Sample sample;
-        sample = sample_IV();
-        print_sample(sample);
-
-        if(over_current(sample))
+        while(DAC_voltage_setting > MINIMUM_DAC_CODE)
         {
-            break;
-        }
-    }
+            DAC_voltage_setting--;
+            set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+            IV_Sample sample;
+            sample = sample_IV();
+            print_sample(sample);
 
+            if(over_current(sample))
+            {
+                break;
+            }
+        }
+
+        zero_device_voltage();
+    }
+    
     print_ending_command();
-    zero_device_voltage();
 }

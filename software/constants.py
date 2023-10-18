@@ -1,0 +1,46 @@
+NEWLINE = '\n'
+COMMA = ','
+
+BAUDRATE = 9600
+SERIAL_PORT = 'COM7'
+
+DATA_START_COMMAND = 'START'
+DATA_END_COMMAND = 'END'
+
+TRANSMIT_STRING_GARBAGE = '\x00'
+
+SWEEP_PROCESSOR_COMMAND = b's'
+
+DATA_RECEIVE_DELAY = 0.1
+SECOND_DELAY = 1
+TITLE_COMMAND_LIST_LENGTH = 2
+
+DECODING_SCHEME = 'utf8'
+
+FILE_WRITE = 'wt'
+
+CSV_EXTENSION = '.csv'
+
+IV_TRACE_TITLE = 'IV Trace'
+
+# Messages
+OPENING_ERROR = 'Serial port could not be opened.'
+NO_DATA_ERROR = 'No data received.'
+DATA_READ_ERROR = 'Data could not be read'
+COMMAND_PROMPT = 'Enter a command: '
+TITLE_PROMPT = 'Enter a title:'
+INVALID_COMMAND_ERROR = 'Invalid command'
+STORED_SWEEPS_ERROR = 'No Stored Sweeps'
+
+# User Commands
+SWEEP_USER_COMMAND = 'sweep'
+CSV_USER_COMMAND = 'csv'
+EXIT_USER_COMMAND = 'exit'
+
+# Plots
+THEORETICAL_TRACE_COLOR = 'red'
+MEASURED_LABEL = 'measured'
+THEORETICAL_LABEL = 'theoretical'
+
+VOLTAGE_AXIS_LABEL = 'Voltage (V)'
+CURRENT_AXIS_LABEL = 'Current (A)'

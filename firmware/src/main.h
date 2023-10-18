@@ -27,6 +27,9 @@
 
 #define SWEEP_COMMAND_CHARACTER 's'
 
+#define UNIDIRECTIONAL_COMMAND_CHARACTER 'u'
+#define BIDIRECTIONAL_COMMAND_CHARACTER 'b'
+
 #define START_COMMAND "START"
 #define END_COMMAND "END"
 
@@ -35,6 +38,12 @@ typedef struct
     uint16_t voltage_code;
     uint16_t current_code;
 } IV_Sample;
+
+typedef enum
+{
+    UNIDIRECTIONAL,
+    BIDIRECTIONAL
+} Mode;
 
 void setup_IO(void);
 void DAC_CS_toggle(void);
