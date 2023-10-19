@@ -3,8 +3,9 @@ import time
 import csv
 import numpy as np
 
+from . import constants
 from .plot import plot_data
-import constants
+
 
 def init_serial():
     try:
@@ -30,8 +31,6 @@ def read_serial_data(my_serial):
     received_data = []
     logging_data = False
 
-    no_data_error = 10
-
     while True: 
         try:
             data_str = my_serial.readline().decode(constants.DECODING_SCHEME)
@@ -39,7 +38,7 @@ def read_serial_data(my_serial):
             if(data_str == ''):
                 no_data_count += 1
 
-                if(no_data_count > no_data_error):
+                if(no_data_count > constants.NO_DATA_ERROR_COUNT):
                     print(constants.NO_DATA_ERROR)
                     break
             elif(constants.DATA_END_COMMAND in data_str):
@@ -47,10 +46,9 @@ def read_serial_data(my_serial):
                 break
             elif(constants.DATA_START_COMMAND in data_str):
                 logging_data = True
-            else:
+            elif(logging_data):
                 received_data.append(data_str)
                 no_data_count = 0
-
         except:
             print(constants.DATA_READ_ERROR)
             break   
@@ -79,11 +77,16 @@ def get_data_codes(data):
     return current_codes, voltage_codes
 
 
-def sweep_device(my_serial):
+def sweep_device_command(my_serial):
     my_serial.write(constants.SWEEP_PROCESSOR_COMMAND)
     time.sleep(constants.DATA_RECEIVE_DELAY)
     data = read_serial_data(my_serial)
     return data
+
+
+def change_mode_command(my_serial, processor_mode):
+    my_serial.write(processor_mode)
+    time.sleep(constants.DATA_RECEIVE_DELAY)
 
 
 def write_data_to_CSV(current_codes, voltage_codes, title):
@@ -110,15 +113,13 @@ def user_interface(my_serial):
             if(len(command_and_title) != constants.TITLE_COMMAND_LIST_LENGTH):
                 print(constants.INVALID_COMMAND_ERROR)
                 continue
-            data = sweep_device(my_serial)
+            data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
             plot_data(current_codes, voltage_codes, command_and_title[1]).show()
-
         elif(user_input == constants.SWEEP_USER_COMMAND):
-            data = sweep_device(my_serial)
+            data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
             plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()
-
         elif(user_input == constants.CSV_USER_COMMAND):
             if(len(current_codes) == 0 and len(voltage_codes) == 0):
                 print(constants.STORED_SWEEPS_ERROR)
@@ -126,7 +127,10 @@ def user_interface(my_serial):
             else:
                 title = input(constants.TITLE_PROMPT)
                 write_data_to_CSV(current_codes, voltage_codes, title)
-            
+        elif(user_input == constants.UNIDIRECTIONAL_USER_COMMAND):
+            change_mode_command(my_serial, constants.UNIDIRECTIONAL_PROCESSOR_COMMAND)
+        elif(user_input == constants.BIDIRECTIONAL_USER_COMMAND):
+            change_mode_command(my_serial, constants.BIDIRECTIONAL_PROCESSOR_COMMAND)
         elif(user_input == constants.EXIT_USER_COMMAND):
             break
         else:

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 from .IV import IV_data
-import constants
+from . import constants
 
 def plot_data(current_codes, voltage_codes, title, theoretical_currents=[]):
     currents, voltages = IV_data(voltage_codes, current_codes)
