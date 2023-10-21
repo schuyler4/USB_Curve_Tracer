@@ -58,23 +58,25 @@ def read_serial_data(my_serial):
     return received_data
 
 
-def sanitize_integer(string):
+def sanitize_string(string):
     cleaned_string = string.replace(constants.TRANSMIT_STRING_GARBAGE, '').replace(constants.NEWLINE, '')
-    decoded_integer = int(cleaned_string)
-    return decoded_integer
+    return cleaned_string
 
  
 def get_data_codes(data):
-    codes = []
-    for datum in data:
-        point = datum.split(constants.COMMA)
-        point[0] = int(sanitize_integer(point[0]))
-        point[1] = int(sanitize_integer(point[1]))
-        codes.append(point)
-    codes = np.array(codes)
-    current_codes = codes[:,0]
-    voltage_codes = codes[:,1]
-    return current_codes, voltage_codes
+    if(constants.POWER_DISCONNECTED in sanitize_string(data)):
+        return None, None
+    else:
+        codes = []
+        for datum in data:
+            point = datum.split(constants.COMMA)
+            point[0] = int(sanitize_string(point[0]))
+            point[1] = int(sanitize_string(point[1]))
+            codes.append(point)
+        codes = np.array(codes)
+        current_codes = codes[:,0]
+        voltage_codes = codes[:,1]
+        return current_codes, voltage_codes
 
 
 def sweep_device_command(my_serial):
@@ -115,11 +117,17 @@ def user_interface(my_serial):
                 continue
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            plot_data(current_codes, voltage_codes, command_and_title[1]).show()
+            if(current_codes == None and voltage_codes == None):
+                print(constants.POWER_DISCONNECTED_ERROR)
+            else:
+                plot_data(current_codes, voltage_codes, command_and_title[1]).show()
         elif(user_input == constants.SWEEP_USER_COMMAND):
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()
+            if(current_codes == None and voltage_codes == None):
+                print(constants.POWER_DISCONNECTED_ERROR)
+            else:
+                plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()
         elif(user_input == constants.CSV_USER_COMMAND):
             if(len(current_codes) == 0 and len(voltage_codes) == 0):
                 print(constants.STORED_SWEEPS_ERROR)

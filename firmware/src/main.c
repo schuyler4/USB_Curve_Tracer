@@ -21,32 +21,61 @@ int main(void)
 
     while(1)
     {   
-        zero_device_voltage();
-        turn_on_green_LED();
-        uint8_t command = UART_receive_character();
-
-        switch(command)
+        if(external_voltage_supply_detected())
         {
-            case SWEEP_COMMAND_CHARACTER:
-                turn_off_green_LED();
-                turn_on_red_LED();
-                sweep_device();
-                turn_off_red_LED();
-                turn_on_green_LED();
-                break;
-            case UNIDIRECTIONAL_COMMAND_CHARACTER:
-                mode = UNIDIRECTIONAL;
-                break;
-            case BIDIRECTIONAL_COMMAND_CHARACTER:
-                mode = BIDIRECTIONAL;
-                break;
-            default:
-                break;
+            device_operation();
+        }
+        else
+        {
+            power_disconnected();
         }
     }
 
     // The program should never return. 
     return 0;
+}
+
+void device_operation(void)
+{
+    uint8_t command = UART_receive_character();
+    zero_device_voltage();
+    turn_off_red_LED();
+    turn_on_green_LED();
+
+    switch(command)
+    {
+        case SWEEP_COMMAND_CHARACTER:
+            turn_off_green_LED();
+            turn_on_red_LED();
+            sweep_device();
+            turn_off_red_LED();
+            turn_on_green_LED();
+            break;
+        case UNIDIRECTIONAL_COMMAND_CHARACTER:
+            mode = UNIDIRECTIONAL;
+            break;
+        case BIDIRECTIONAL_COMMAND_CHARACTER:
+            mode = BIDIRECTIONAL;
+            break;
+        default:
+            break;
+    }
+}
+
+void power_disconnected(void)
+{
+    uint8_t command = UART_receive_character();
+    turn_off_green_LED();
+    turn_on_red_LED();
+
+    if(command == SWEEP_COMMAND_CHARACTER || 
+    command == UNIDIRECTIONAL_COMMAND_CHARACTER || 
+    command == BIDIRECTIONAL_COMMAND_CHARACTER)
+    {
+        print_starting_command();
+        print_power_disconnected();
+        print_ending_command();
+    }
 }
 
 void turn_on_green_LED(void)
@@ -80,6 +109,11 @@ void setup_IO(void)
     // Set the LED pins to outputs. 
     DDRB |= (1 << DDB0);
     DDRD |= (1 << DDD7);
+}
+
+uint8_t external_voltage_supply_detected(void)
+{
+    return PIND & (1 << PIND6) != 0;
 }
 
 void zero_device_voltage(void)
@@ -131,6 +165,12 @@ void print_starting_command(void)
 void print_ending_command(void)
 {
     UART_transmit_string(END_COMMAND);
+    UART_transmit_string(NEW_LINE);
+}
+
+void print_power_disconnected(void)
+{
+    UART_transmit_string(POWER_DISCONNECTED);
     UART_transmit_string(NEW_LINE);
 }
 

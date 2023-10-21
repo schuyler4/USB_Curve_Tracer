@@ -32,6 +32,7 @@
 
 #define START_COMMAND "START"
 #define END_COMMAND "END"
+#define POWER_DISCONNECTED "P"
 
 typedef struct 
 {
@@ -45,12 +46,20 @@ typedef enum
     BIDIRECTIONAL
 } Mode;
 
+void device_operation(void);
+
 void setup_IO(void);
 void DAC_CS_toggle(void);
 void ADC_CS_toggle(void);
 uint32_t average_ADC_reading(uint8_t channel);
 void zero_device_voltage(void);
 void sweep_device(void);
+uint8_t external_voltage_supply_detected(void);
+void print_power_disconnected(void);
+void power_disconnected(void);
+
+void print_starting_command(void);
+void print_ending_command(void);
 
 // LED Control
 void turn_on_green_LED(void);
