@@ -12,7 +12,7 @@ def init_serial():
         my_serial = serial.Serial()
         my_serial.port = constants.SERIAL_PORT
         my_serial.baudrate = constants.BAUDRATE
-        my_serial.timeout = 1
+        my_serial.timeout = constants.SECOND_DELAY
         
         my_serial.open()
         # For some reason, a delay is required before flushing the serial buffer.

@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdint.h>
+#include <util/delay.h>
 
 #include "main.h"
 
@@ -17,19 +18,22 @@ int main(void)
     setup_IO();
     setup_SPI();
 
+    _delay_ms(10);
     zero_device_voltage();
 
+    mode = BIDIRECTIONAL;
+
     while(1)
-    {   
-        if(external_voltage_supply_detected())
-        {
-            device_operation();
-        }
-        else
-        {
-            power_disconnected();
-        }
+    {
+        device_operation();
     }
+
+    //zero_device_voltage();
+
+    //while(1)
+    //{   
+    //    device_operation();
+    //}
 
     // The program should never return. 
     return 0;
@@ -37,10 +41,9 @@ int main(void)
 
 void device_operation(void)
 {
-    uint8_t command = UART_receive_character();
-    zero_device_voltage();
     turn_off_red_LED();
     turn_on_green_LED();
+    uint8_t command = UART_receive_character();
 
     switch(command)
     {
@@ -64,9 +67,9 @@ void device_operation(void)
 
 void power_disconnected(void)
 {
-    uint8_t command = UART_receive_character();
-    turn_off_green_LED();
     turn_on_red_LED();
+    turn_off_green_LED();
+    uint8_t command = UART_receive_character();
 
     if(command == SWEEP_COMMAND_CHARACTER || 
     command == UNIDIRECTIONAL_COMMAND_CHARACTER || 
@@ -109,6 +112,8 @@ void setup_IO(void)
     // Set the LED pins to outputs. 
     DDRB |= (1 << DDB0);
     DDRD |= (1 << DDD7);
+    // Set the supply voltage detect to input.
+    DDRD &= ~(1 << DDD6);
 }
 
 uint8_t external_voltage_supply_detected(void)
