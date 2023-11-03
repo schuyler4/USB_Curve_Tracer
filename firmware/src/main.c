@@ -11,6 +11,7 @@
 
 static uint16_t DAC_voltage_setting = 0;
 static Mode mode;
+static uint8_t sweeping = 0;
 
 int main(void)
 {
@@ -18,22 +19,17 @@ int main(void)
     setup_IO();
     setup_SPI();
 
-    _delay_ms(10);
-    zero_device_voltage();
-
     mode = BIDIRECTIONAL;
 
     while(1)
     {
-        device_operation();
+        //device_operation();
+        if(!sweeping)
+        {
+            zero_device_voltage();
+            turn_on_green_LED();
+        }
     }
-
-    //zero_device_voltage();
-
-    //while(1)
-    //{   
-    //    device_operation();
-    //}
 
     // The program should never return. 
     return 0;
@@ -123,23 +119,29 @@ uint8_t external_voltage_supply_detected(void)
 
 void zero_device_voltage(void)
 {
+    uint16_t reference_voltage = get_ADC_reading(SINGLE_ENDED, REFERENCE_ADC_CHANNEL);
+    UART_transmit_uint16_t(reference_voltage);
+    UART_transmit_string(NEW_LINE_AND_CARRIAGE_RETURN);
+
     while(1)
     {
         uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
+        UART_transmit_uint16_t(voltage_reading);
+        UART_transmit_string(NEW_LINE_AND_CARRIAGE_RETURN);
 
-        if(voltage_reading > ZERO_DEVICE_VOLTAGE_CODE && DAC_voltage_setting > 0)
+        if(voltage_reading > reference_voltage && DAC_voltage_setting > 0)
         {
             DAC_voltage_setting--;
         }
-        else if(voltage_reading < ZERO_DEVICE_VOLTAGE_CODE && DAC_voltage_setting <= DAC_RESOLUTION)
+        else if(voltage_reading < reference_voltage && DAC_voltage_setting <= DAC_RESOLUTION)
         {
             DAC_voltage_setting++;
         }
 
         set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
 
-        uint8_t above_range = voltage_reading > ZERO_DEVICE_VOLTAGE_CODE + ZERO_DEVICE_MARGIN;
-        uint8_t below_range = voltage_reading < ZERO_DEVICE_VOLTAGE_CODE - ZERO_DEVICE_MARGIN;
+        uint8_t above_range = voltage_reading > reference_voltage + ZERO_DEVICE_MARGIN;
+        uint8_t below_range = voltage_reading < reference_voltage - ZERO_DEVICE_MARGIN;
 
         if(!above_range && !below_range)
         {
@@ -190,6 +192,7 @@ void print_sample(IV_Sample sample)
 void sweep_device(void)
 {
     print_starting_command();
+    zero_device_voltage();
 
     while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
     {

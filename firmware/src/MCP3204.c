@@ -10,6 +10,7 @@
 #include <stdint.h>
 
 #include "MCP3204.h"
+#include "UART.h"
 
 #include "spi.h"
 
@@ -20,9 +21,9 @@ static void ADC_CS_toggle(void)
 
 uint16_t get_ADC_reading(uint8_t single_or_diff, uint8_t channel)
 {
-    uint8_t d0 = channel & D0_MASK;
-    uint8_t d1 = channel & D1_MASK;
-    uint8_t d2 = channel & D2_MASK;
+    uint8_t d0 = (channel & D0_MASK) != 0;
+    uint8_t d1 = (channel & D1_MASK) != 0;
+    uint8_t d2 = (channel & D2_MASK) != 0;
     uint8_t configuration_byte1 = (1 << START_BIT) | (single_or_diff << SGL_OR_DIFF) | (d2 << D2);
     uint8_t configuration_byte2 = (d1 << D1) | (d0 << D0);
 

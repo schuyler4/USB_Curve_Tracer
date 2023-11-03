@@ -64,11 +64,11 @@ def sanitize_string(string):
 
  
 def get_data_codes(data):
-    if(constants.POWER_DISCONNECTED in sanitize_string(data)):
+    if(constants.POWER_DISCONNECTED in sanitize_string(data[0])):
         return None, None
     else:
         codes = []
-        for datum in data:
+        for datum in data:  
             point = datum.split(constants.COMMA)
             point[0] = int(sanitize_string(point[0]))
             point[1] = int(sanitize_string(point[1]))
@@ -117,14 +117,14 @@ def user_interface(my_serial):
                 continue
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            if(current_codes == None and voltage_codes == None):
+            if(current_codes.any() and voltage_codes.any()):
                 print(constants.POWER_DISCONNECTED_ERROR)
             else:
                 plot_data(current_codes, voltage_codes, command_and_title[1]).show()
         elif(user_input == constants.SWEEP_USER_COMMAND):
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes = get_data_codes(data)
-            if(current_codes == None and voltage_codes == None):
+            if(current_codes.any() and voltage_codes.any()):
                 print(constants.POWER_DISCONNECTED_ERROR)
             else:
                 plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()

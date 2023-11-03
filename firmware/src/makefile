@@ -4,7 +4,7 @@
 F_CPU = 16000000UL
 
 # the port that the board is connected to
-PORT = COM7
+PORT = COM4
 
 # the directory where all the compiled files go
 BIN_DIRECTORY = ../bin
