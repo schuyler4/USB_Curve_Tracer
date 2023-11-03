@@ -23,7 +23,7 @@ int main(void)
 
     while(1)
     {
-        //device_operation();
+        device_operation();
         if(!sweeping)
         {
             zero_device_voltage();
@@ -114,20 +114,16 @@ void setup_IO(void)
 
 uint8_t external_voltage_supply_detected(void)
 {
-    return PIND & (1 << PIND6) != 0;
+    return (PIND & (1 << PIND6)) != 0;
 }
 
 void zero_device_voltage(void)
 {
     uint16_t reference_voltage = get_ADC_reading(SINGLE_ENDED, REFERENCE_ADC_CHANNEL);
-    UART_transmit_uint16_t(reference_voltage);
-    UART_transmit_string(NEW_LINE_AND_CARRIAGE_RETURN);
 
     while(1)
     {
         uint16_t voltage_reading = get_ADC_reading(SINGLE_ENDED, VOLTAGE_ADC_CHANNEL);
-        UART_transmit_uint16_t(voltage_reading);
-        UART_transmit_string(NEW_LINE_AND_CARRIAGE_RETURN);
 
         if(voltage_reading > reference_voltage && DAC_voltage_setting > 0)
         {
