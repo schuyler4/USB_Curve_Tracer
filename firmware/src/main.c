@@ -1,6 +1,5 @@
 #include <avr/io.h>
 #include <stdint.h>
-#include <util/delay.h>
 
 #include "main.h"
 
@@ -20,6 +19,7 @@ int main(void)
     setup_SPI();
 
     mode = BIDIRECTIONAL;
+    zero_device_voltage();
 
     while(1)
     {
@@ -37,35 +37,42 @@ int main(void)
 
 void device_operation(void)
 {
+    zero_device_voltage();
     turn_off_red_LED();
     turn_on_green_LED();
     uint8_t command = UART_receive_character();
 
-    switch(command)
+    if(!external_voltage_supply_detected())
     {
-        case SWEEP_COMMAND_CHARACTER:
-            turn_off_green_LED();
-            turn_on_red_LED();
-            sweep_device();
-            turn_off_red_LED();
-            turn_on_green_LED();
-            break;
-        case UNIDIRECTIONAL_COMMAND_CHARACTER:
-            mode = UNIDIRECTIONAL;
-            break;
-        case BIDIRECTIONAL_COMMAND_CHARACTER:
-            mode = BIDIRECTIONAL;
-            break;
-        default:
-            break;
+        power_disconnected(command);
+    }
+    else
+    {
+        switch(command)
+        {
+            case SWEEP_COMMAND_CHARACTER:
+                turn_off_green_LED();
+                turn_on_red_LED();
+                sweep_device();
+                turn_off_red_LED();
+                turn_on_green_LED();
+                break;
+            case UNIDIRECTIONAL_COMMAND_CHARACTER:
+                mode = UNIDIRECTIONAL;
+                break;
+            case BIDIRECTIONAL_COMMAND_CHARACTER:
+                mode = BIDIRECTIONAL;
+                break;
+            default:
+                break;
+        }
     }
 }
 
-void power_disconnected(void)
+void power_disconnected(uint8_t command)
 {
     turn_on_red_LED();
     turn_off_green_LED();
-    uint8_t command = UART_receive_character();
 
     if(command == SWEEP_COMMAND_CHARACTER || 
     command == UNIDIRECTIONAL_COMMAND_CHARACTER || 

@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define HARDWARE_REVISION 2
+#define HARDWARE_REVISION 3
 
 #define AVERAGING_SAMPLE_COUNT 10
 
@@ -22,8 +22,10 @@
 
 // Maximum current is +/- 0.75A
 
-#define MAX_POSITIVE_CURRENT_CODE 0 // THIS NEEDS TO BE CALCULATED ONCE THE REFERENCE VOLTAGE IS MEASURED
-#define MAX_NEGATIVE_CURRENT_CODE 0 // THIS NEEDS TO BE CALCULATED ONCE THE REFERENCE VOLTAGE IS MEASURED
+// 5.841 Measured Reference Voltage
+
+#define MAX_POSITIVE_CURRENT_CODE 2500 
+#define MAX_NEGATIVE_CURRENT_CODE 462
 
 #endif
 
@@ -66,7 +68,7 @@ void zero_device_voltage(void);
 void sweep_device(void);
 uint8_t external_voltage_supply_detected(void);
 void print_power_disconnected(void);
-void power_disconnected(void);
+void power_disconnected(uint8_t command);
 
 void print_starting_command(void);
 void print_ending_command(void);

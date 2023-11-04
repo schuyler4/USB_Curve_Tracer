@@ -6,7 +6,6 @@ import numpy as np
 from . import constants
 from .plot import plot_data
 
-
 def init_serial():
     try:
         my_serial = serial.Serial()
@@ -65,7 +64,7 @@ def sanitize_string(string):
  
 def get_data_codes(data):
     if(constants.POWER_DISCONNECTED in sanitize_string(data[0])):
-        return None, None
+        return [], [], False
     else:
         codes = []
         for datum in data:  
@@ -76,7 +75,7 @@ def get_data_codes(data):
         codes = np.array(codes)
         current_codes = codes[:,0]
         voltage_codes = codes[:,1]
-        return current_codes, voltage_codes
+        return current_codes, voltage_codes, True
 
 
 def sweep_device_command(my_serial):
@@ -106,6 +105,7 @@ def user_interface(my_serial):
     current_codes = []
     voltage_codes = []
     title = None
+    hardware_revision = 2
 
     while True:
         user_input = input(constants.COMMAND_PROMPT)
@@ -120,14 +120,17 @@ def user_interface(my_serial):
             if(current_codes.any() and voltage_codes.any()):
                 print(constants.POWER_DISCONNECTED_ERROR)
             else:
-                plot_data(current_codes, voltage_codes, command_and_title[1]).show()
+                plot_data(current_codes, voltage_codes, hardware_revision, command_and_title[1]).show()
+
         elif(user_input == constants.SWEEP_USER_COMMAND):
             data = sweep_device_command(my_serial)
-            current_codes, voltage_codes = get_data_codes(data)
-            #if(current_codes.any() and voltage_codes.any()):
-            #    print(constants.POWER_DISCONNECTED_ERROR)
-            #else:
-            plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE).show()
+            current_codes, voltage_codes, power_connected = get_data_codes(data)
+            if(power_connected):
+                plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE, hardware_revision).show()
+            else:
+                print(constants.POWER_DISCONNECTED_ERROR)
+                break
+
         elif(user_input == constants.CSV_USER_COMMAND):
             if(len(current_codes) == 0 and len(voltage_codes) == 0):
                 print(constants.STORED_SWEEPS_ERROR)
@@ -135,10 +138,19 @@ def user_interface(my_serial):
             else:
                 title = input(constants.TITLE_PROMPT)
                 write_data_to_CSV(current_codes, voltage_codes, title)
+
         elif(user_input == constants.UNIDIRECTIONAL_USER_COMMAND):
             change_mode_command(my_serial, constants.UNIDIRECTIONAL_PROCESSOR_COMMAND)
+
         elif(user_input == constants.BIDIRECTIONAL_USER_COMMAND):
             change_mode_command(my_serial, constants.BIDIRECTIONAL_PROCESSOR_COMMAND)
+
+        elif(user_input == constants.REV1_USER_COMMAND):
+            hardware_revision = 1
+        
+        elif(user_input == constants.REV2_USER_COMMAND):
+            hardware_revision = 2
+
         elif(user_input == constants.EXIT_USER_COMMAND):
             break
         else:
