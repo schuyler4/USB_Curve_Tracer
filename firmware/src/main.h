@@ -21,8 +21,8 @@
 #elif HARDWARE_REVISION == 3
 
 // Maximum current is +/- 0.75A
-
 // 5.841 Measured Reference Voltage
+// LSB: 610.4uV
 
 #define MAX_POSITIVE_CURRENT_CODE 3000 
 #define MAX_NEGATIVE_CURRENT_CODE 462
@@ -41,6 +41,8 @@
 
 #define UNIDIRECTIONAL_COMMAND_CHARACTER 'u'
 #define BIDIRECTIONAL_COMMAND_CHARACTER 'b'
+
+#define CURRENT_LIMIT_COMMAND_CHARACTER 'c'
 
 #define START_COMMAND "START"
 #define END_COMMAND "END"

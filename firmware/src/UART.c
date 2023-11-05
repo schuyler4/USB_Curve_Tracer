@@ -161,3 +161,15 @@ char UART_receive_character(void)
     // return data
     return UDR0;
 }
+
+// This function receives a uint16_t integer.
+// Most significant byte first. 
+uint16_t UART_receive_uint16_t(void)
+{
+    // wait for data
+    while(!(UCSR0A & (1 << RXC0)));
+    uint8_t first_byte = UDR0;
+    // wait for data again
+    while(!(UCSR0A & (1 << RXC0)));
+    return (first_byte << BYTE_SIZE) | UDR0;
+}   

@@ -13,6 +13,8 @@
 #define F_CPU 16000000UL
 #endif
 
+#define BYTE_SIZE 8
+
 #define BAUD 9600
 #define MYUBRR (((F_CPU / (BAUD * 16UL))) - 1)
 
@@ -34,5 +36,6 @@ void UART_transmit_uint8_t(uint8_t number);
 void UART_transmit_uint16_t(uint16_t number);
 void UART_transmit_uint32_t(uint32_t number);
 char UART_receive_character(void);
+uint16_t UART_receive_uint16_t(void);
 
 #endif

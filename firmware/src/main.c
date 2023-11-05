@@ -1,3 +1,12 @@
+//
+// FILENAME: main.c
+//
+// description: This is main file for the USB curve tracer program. This file contains
+// most of the control, zeroing, and sweeping of the device. 
+//
+// Written by Marek Newton
+//
+
 #include <avr/io.h>
 #include <stdint.h>
 
@@ -8,12 +17,18 @@
 #include "MCP3204.h"
 #include "MCP4911.h"
 
-static uint16_t DAC_voltage_setting = 0;
+static uint16_t DAC_voltage_setting;
 static Mode mode;
-static uint8_t sweeping = 0;
+static uint8_t sweeping;
+static uint8_t user_programmed_current_limit_used;
+static uint16_t user_programmed_current_limit;
 
 int main(void)
 {
+    DAC_voltage_setting = 0;
+    sweeping = 0;
+    user_programmed_current_limit_used = 0;
+
     setup_UART();
     setup_IO();
     setup_SPI();
@@ -62,6 +77,10 @@ void device_operation(void)
                 break;
             case BIDIRECTIONAL_COMMAND_CHARACTER:
                 mode = BIDIRECTIONAL;
+                break;
+            case CURRENT_LIMIT_COMMAND_CHARACTER:
+                user_programmed_current_limit = UART_receive_uint16_t();
+                user_programmed_current_limit_used = 1;
                 break;
             default:
                 break;
