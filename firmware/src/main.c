@@ -189,28 +189,12 @@ void print_sample(IV_Sample sample)
     UART_transmit_uint16_t(sample.current_code);
     UART_transmit_string(DELIMINATOR);
     UART_transmit_uint16_t(sample.voltage_code);
-    UART_transmit_string(NEW_LINE);
+    UART_transmit_string(NEW_LINE_AND_CARRIAGE_RETURN);
 }
 
 void sweep_device(void)
 {
     print_starting_command();
-    zero_device_voltage();
-
-    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
-    {
-        DAC_voltage_setting++;
-        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
-        IV_Sample sample;
-        sample = sample_IV();
-        print_sample(sample);
-
-        if(over_current(sample))
-        {
-            break;
-        }
-    }
-
     zero_device_voltage();
 
     if(mode == BIDIRECTIONAL)
@@ -232,5 +216,22 @@ void sweep_device(void)
         zero_device_voltage();
     }
     
+
+    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
+    {
+        DAC_voltage_setting++;
+        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+        IV_Sample sample;
+        sample = sample_IV();
+        print_sample(sample);
+
+        if(over_current(sample))
+        {
+            break;
+        }
+    }
+
+    zero_device_voltage();
+
     print_ending_command();
 }

@@ -3,7 +3,7 @@ This is my attempt at making a curve tracer.
 Instead of implementing a display, data is piped to a PC where it is plotted using Python. It also controlled using
 a command line interface on the PC. 
 
-![Device Picture](./device_picture.JPG)
+![Device Picture](./device_picture_REV2.JPG)
 
 <h3> Specs </h3>
 <ul>
@@ -26,16 +26,6 @@ contact resistance will be included in the measurement. </li>
 <h3> Examples </h3>
 <p>Here are a few diode curves. </p>
 
-![Zener Diode Plot](./zener_diode_plot.png)
-![1N4001 Diode](./1N4001.png)
+![Zener Diode Plot](./zener_diode_plot_REV2.png)
+![1N4001 Diode](./1N4001_REV2.png)
 There was a power buffering blip with the 1N4001 diode. 
-
-<h3> Test Curves </h3>
-<p>Here are the test curves with the theoretical
-curve overlaid.</p>
-
-![33 Test Curve](./test/test_plot/33.png)
-![220 Test Curve](./test/test_plot/220.png)
-![330 Test Curve](./test/test_plot/330.png)
-![470 Test Curve](./test/test_plot/470.png)
-![680 Test Curve](./test/test_plot/680.png)

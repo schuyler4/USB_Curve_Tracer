@@ -24,7 +24,7 @@
 
 // 5.841 Measured Reference Voltage
 
-#define MAX_POSITIVE_CURRENT_CODE 2500 
+#define MAX_POSITIVE_CURRENT_CODE 3000 
 #define MAX_NEGATIVE_CURRENT_CODE 462
 
 #endif

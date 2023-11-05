@@ -30,6 +30,7 @@ IV_TRACE_TITLE = 'IV Trace'
 NO_DATA_ERROR_COUNT = 10
 
 # Messages
+COMPONENT_CONNECTION_MESSAGE = 'Safe to connect component to curve tracer.'
 OPENING_ERROR = 'Serial port could not be opened.'
 NO_DATA_ERROR = 'No data received.'
 DATA_READ_ERROR = 'Data could not be read'

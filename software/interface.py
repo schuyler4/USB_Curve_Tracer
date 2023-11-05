@@ -105,7 +105,9 @@ def user_interface(my_serial):
     current_codes = []
     voltage_codes = []
     title = None
-    hardware_revision = 2
+    hardware_revision = 3
+
+    print(constants.COMPONENT_CONNECTION_MESSAGE)
 
     while True:
         user_input = input(constants.COMMAND_PROMPT)
@@ -116,11 +118,12 @@ def user_interface(my_serial):
                 print(constants.INVALID_COMMAND_ERROR)
                 continue
             data = sweep_device_command(my_serial)
-            current_codes, voltage_codes = get_data_codes(data)
-            if(current_codes.any() and voltage_codes.any()):
-                print(constants.POWER_DISCONNECTED_ERROR)
+            current_codes, voltage_codes, power_connected = get_data_codes(data)
+            if(power_connected):
+                plot_data(current_codes, voltage_codes, command_and_title[1], hardware_revision).show()
             else:
-                plot_data(current_codes, voltage_codes, hardware_revision, command_and_title[1]).show()
+                print(constants.POWER_DISCONNECTED_ERROR)
+                break
 
         elif(user_input == constants.SWEEP_USER_COMMAND):
             data = sweep_device_command(my_serial)
