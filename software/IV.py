@@ -1,7 +1,7 @@
 '''
 FILENAME: IV.py
 
-PURPOSE: This file contains functions that convert ADC codes into current and voltage values.
+PURPOSE: This file contains all the calculations and calibrations that convert ADC codes into current and voltage values.
 
 WRITTEN BY: Marek Newton
 '''
@@ -26,7 +26,7 @@ CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3 = 4020 # Ohms
 CURRENT_SENSOR_ZERO_VOLTAGE_REV3 = 1.16 # V
 SHUNT_RESISTANCE_REV3 = 0.5 # Ohms
 COMMON_VOLTAGE_REV3 = 5.836 # V
-CURRENT_AMPLIFIER_GAIN_REV3 = 11.8
+CURRENT_AMPLIFIER_GAIN_REV3 = 11.8 # V/V
 
 output_voltage = lambda code: code * LSB
 gain_division = lambda voltage, gain: voltage/gain

@@ -20,12 +20,17 @@ a command line interface on the PC.
 <li>The curve tracer cannot be driven, so it cannot measure voltage sources.</li>
 <li>The curve tracer does not include Kelvin connection functionality, so test lead resistance and 
 contact resistance will be included in the measurement. </li>
-<li>Precision parts are not used so this obviously effects the performance.</li>
 </ul> 
 
 <h3> Examples </h3>
-<p>Here are a few diode curves. </p>
+<p>Here are a few diode curves taken with the revision 2 device. </p>
 
 ![Zener Diode Plot](./zener_diode_plot_REV2.png)
 ![1N4001 Diode](./1N4001_REV2.png)
-There was a power buffering blip with the 1N4001 diode. 
+
+<p>
+Here is a Darlington Transistor sweep taken with revision 3 of the device. 
+I'm not sure if it's right or not. 
+
+![TIP122G Plot](./TIP122G_REV3_LM324.png)
+</p>

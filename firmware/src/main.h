@@ -24,7 +24,7 @@
 // 5.841 Measured Reference Voltage
 // LSB: 610.4uV
 
-#define MAX_POSITIVE_CURRENT_CODE 3000 
+#define MAX_POSITIVE_CURRENT_CODE 3350
 #define MAX_NEGATIVE_CURRENT_CODE 462
 
 #endif

@@ -6,10 +6,9 @@ import os
 import pandas as pd
 import numpy as np
 from numpy.polynomial.polynomial import polyfit
-import matplotlib.pyplot as plot
 
 from software.IV import IV_data
-from software.plot import plot_data
+from software.plot import plot_data, get_codes_from_file
 
 import matplotlib.pyplot as plt
 
@@ -29,13 +28,6 @@ def find_data_files():
         if file.endswith(".csv"):
             files.append(file)
     return files
-
-
-def get_codes_from_file(filename):
-    data = np.array(pd.read_csv(filename))
-    current_codes = data[:, 0]
-    voltage_codes = data[:, 1]
-    return current_codes, voltage_codes
 
 
 def get_theoretical_data(voltages, resistance_value):
