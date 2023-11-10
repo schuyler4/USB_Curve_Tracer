@@ -154,6 +154,15 @@ def user_interface(my_serial):
         elif(user_input == constants.REV2_USER_COMMAND):
             hardware_revision = 2
 
+        elif(user_input == constants.CURRENT_LIMIT_COMMAND):
+            print(constants.CURRENT_LIMIT_UNIDIRECTIONAL)
+            while True:
+                current_limit = input(constants.CURRENT_LIMIT_PROMPT)
+                try:
+                    current_limit = float(current_limit)
+                except ValueError:
+                    print()
+                    
         elif(user_input == constants.EXIT_USER_COMMAND):
             break
         else:

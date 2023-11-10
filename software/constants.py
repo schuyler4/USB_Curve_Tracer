@@ -46,6 +46,9 @@ TITLE_PROMPT = 'Enter a title:'
 INVALID_COMMAND_ERROR = 'Invalid command'
 STORED_SWEEPS_ERROR = 'No Stored Sweeps'
 POWER_DISCONNECTED_ERROR = '12V Power is disconnected from the curve tracer.'
+CURRENT_LIMIT_UNIDIRECTIONAL = 'A custom current limit can only be set in unidirectional mode.'
+INVALID_CURRENT_LIMIT = 'Invalid Current limit Entered'
+CURRENT_LIMIT_PROMPT = 'Enter a new current limit:'
 
 # User Commands
 SWEEP_USER_COMMAND = 'sweep'
@@ -55,6 +58,7 @@ UNIDIRECTIONAL_USER_COMMAND = 'unidirectional'
 BIDIRECTIONAL_USER_COMMAND = 'bidirectional'
 REV2_USER_COMMAND = 'rev2'
 REV1_USER_COMMAND = 'rev1'
+CURRENT_LIMIT_COMMAND = 'current_limit'
 
 # Plots
 THEORETICAL_TRACE_COLOR = 'red'

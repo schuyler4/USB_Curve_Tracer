@@ -2075,7 +2075,7 @@
     (property "Reference" "R32" (at 152.4 85.09 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "1k" (at 152.4 90.17 90)
+    (property "Value" "330" (at 152.4 90.17 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (at 152.654 86.614 90)
