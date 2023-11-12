@@ -1,3 +1,13 @@
+'''
+FILENAME: interface.py
+
+description: This file takes care of the serial communication with the curve tracer and the command line interface.
+
+Written by Marek Newton
+'''
+
+from enum import Enum
+
 import serial
 import time
 import csv
@@ -5,6 +15,13 @@ import numpy as np
 
 from . import constants
 from .plot import plot_data
+from .IV import calculate_max_current_code
+
+
+class DirectionalMode(Enum):
+    BIDIRECTIONAL = 0
+    UNIDIRECTIONAL = 1
+
 
 def init_serial():
     try:
@@ -105,7 +122,7 @@ def user_interface(my_serial):
     current_codes = []
     voltage_codes = []
     title = None
-    hardware_revision = 3
+    hardware_revision = 3   
 
     print(constants.COMPONENT_CONNECTION_MESSAGE)
 
@@ -160,8 +177,18 @@ def user_interface(my_serial):
                 current_limit = input(constants.CURRENT_LIMIT_PROMPT)
                 try:
                     current_limit = float(current_limit)
+                    my_serial.write(constants.CURRENT_LIMIT_PROCESSOR_COMMAND)
+                    print(calculate_max_current_code(current_limit, hardware_revision))
+                    my_serial.write(calculate_max_current_code(current_limit, hardware_revision))
+                    for _ in range(0, constants.ACK_READ_ATTEMPTS):
+                        ack = my_serial.readline().decode(constants.DECODING_SCHEME)
+                        print(ack)
+                        if(constants.CURRENT_LIMIT_ACK in ack):
+                            print("current limit ack")
+                            break
+                    break
                 except ValueError:
-                    print()
+                    print(constants.INVALID_CURRENT_LIMIT)
                     
         elif(user_input == constants.EXIT_USER_COMMAND):
             break

@@ -81,6 +81,8 @@ void device_operation(void)
             case CURRENT_LIMIT_COMMAND_CHARACTER:
                 user_programmed_current_limit = UART_receive_uint16_t();
                 user_programmed_current_limit_used = 1;
+                UART_transmit_uint16_t(user_programmed_current_limit);
+                UART_transmit_string(CURRENT_LIMIT_SET);
                 break;
             default:
                 break;
@@ -216,9 +218,31 @@ void sweep_device(void)
     print_starting_command();
     zero_device_voltage();
 
+    uint8_t user_limit_exceeded = DAC_voltage_setting > user_programmed_current_limit;
+    uint8_t user_minimum = user_programmed_current_limit_used && user_limit_exceeded;   
+
+    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE || user_minimum)
+    {
+        DAC_voltage_setting++;
+        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
+        IV_Sample sample;
+        sample = sample_IV();
+        print_sample(sample);
+
+        if(over_current(sample))
+        {
+            break;
+        }
+    }
+
+    zero_device_voltage();
+
     if(mode == BIDIRECTIONAL)
     {
-        while(DAC_voltage_setting > MINIMUM_DAC_CODE)
+        uint8_t user_limit_exceeded = DAC_voltage_setting > user_programmed_current_limit;
+        uint8_t user_minimum = user_programmed_current_limit_used && user_limit_exceeded;
+
+        while(DAC_voltage_setting > MINIMUM_DAC_CODE || user_minimum)
         {
             DAC_voltage_setting--;
             set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
@@ -234,23 +258,6 @@ void sweep_device(void)
 
         zero_device_voltage();
     }
-    
-
-    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
-    {
-        DAC_voltage_setting++;
-        set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
-        IV_Sample sample;
-        sample = sample_IV();
-        print_sample(sample);
-
-        if(over_current(sample))
-        {
-            break;
-        }
-    }
-
-    zero_device_voltage();
 
     print_ending_command();
 }

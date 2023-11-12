@@ -1448,7 +1448,7 @@
     (property "Reference" "R33" (at 144.78 138.43 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "10k" (at 144.78 143.51 90)
+    (property "Value" "100k" (at 144.78 143.51 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (at 145.034 139.954 90)

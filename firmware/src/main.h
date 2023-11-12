@@ -31,7 +31,7 @@
 
 #define ZERO_DEVICE_MARGIN 3
 
-#define MAXIMUM_DAC_CODE 1024
+#define MAXIMUM_DAC_CODE 1023
 #define MINIMUM_DAC_CODE 0
 
 // PC Communication Protocol.
@@ -47,6 +47,8 @@
 #define START_COMMAND "START"
 #define END_COMMAND "END"
 #define POWER_DISCONNECTED "P"
+
+#define CURRENT_LIMIT_SET "L"
 
 typedef struct 
 {

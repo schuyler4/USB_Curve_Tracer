@@ -1,7 +1,7 @@
 '''
 FILENAME: plot.py
 
-description: This file contains all the functions necessary to plot data and get it from CSV files. 
+description: This file contains all the functions necessary to plot data and get it from a CSV files. 
 
 Written by Marek Newton
 '''

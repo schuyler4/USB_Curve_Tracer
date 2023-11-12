@@ -1,16 +1,15 @@
 <h2> USB Curve Tracer </h2>
 This is my attempt at making a curve tracer.  
-Instead of implementing a display, data is piped to a PC where it is plotted using Python. It also controlled using
-a command line interface on the PC. 
+Instead of implementing a display, data is piped to an external computer where it is plotted using Python. It also controlled using a command line interface on the external computer. 
 
-![Device Picture](./device_picture_REV2.JPG)
+![Device Picture](./REV3_Picture.JPG)
 
-<h3> Specs </h3>
+<h3> Revision 3 Specs </h3>
 <ul>
 <li>12V External Power Supply</li>
-<li>Maximum Positive Sweep Voltage: 3.4</li>
-<li>Minimum Negative Sweep Voltage: -4.6V</li>
-<li>Full Sweep Time: 15s</li>
+<li>Maximum Positive Sweep Voltage: 4V</li>
+<li>Minimum Negative Sweep Voltage: -3.9V</li>
+<li>Full Sweep Time: 15.4ss</li>
 </ul>
 
 <h3> Limitations </h3>
@@ -23,6 +22,10 @@ contact resistance will be included in the measurement. </li>
 </ul> 
 
 <h3> Examples </h3>
+<p>Here is a diode curve taken with the revision 3 device. </p>
+
+![1N4001 Diode](./1N4001_REV3.png)
+
 <p>Here are a few diode curves taken with the revision 2 device. </p>
 
 ![Zener Diode Plot](./zener_diode_plot_REV2.png)
