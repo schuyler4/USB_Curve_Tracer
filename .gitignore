@@ -19,6 +19,7 @@ fp-info-cache
 rev1/
 electronics/rev1
 __pycache__/
+software/venv
 
 *.hex
 *.o
