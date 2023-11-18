@@ -4,7 +4,7 @@
 F_CPU = 16000000UL
 
 # the port that the board is connected to
-PORT = COM4
+PORT =  /dev/ttyUSB0
 
 # the directory where all the compiled files go
 BIN_DIRECTORY = ../bin

@@ -118,11 +118,37 @@ def write_data_to_CSV(current_codes, voltage_codes, title):
         writer.writerows(csv_data)
 
 
+def enter_current_limit(my_serial, hardware_revision, directional_mode):
+    if(directional_mode == DirectionalMode.BIDIRECTIONAL):
+        print(constants.CURRENT_LIMIT_UNIDIRECTIONAL)
+        
+    while True:
+        current_limit = input(constants.CURRENT_LIMIT_PROMPT)
+        try:
+            current_limit = float(current_limit)
+
+            if(current_limit > 0.7):
+                raise ValueError
+        
+            my_serial.write(constants.CURRENT_LIMIT_PROCESSOR_COMMAND)
+            my_serial.write(calculate_max_current_code(current_limit, hardware_revision))
+            for _ in range(0, constants.ACK_READ_ATTEMPTS):
+                ack = my_serial.readline().decode(constants.DECODING_SCHEME)
+                print(ack)
+                if(constants.CURRENT_LIMIT_ACK in ack):
+                    print("current limit ack", ack)
+                    break
+            break
+        except ValueError:
+            print(constants.INVALID_CURRENT_LIMIT)
+
+
 def user_interface(my_serial):
     current_codes = []
     voltage_codes = []
     title = None
-    hardware_revision = 3   
+    hardware_revision = 3
+    directional_mode = DirectionalMode.BIDIRECTIONAL
 
     print(constants.COMPONENT_CONNECTION_MESSAGE)
 
@@ -161,9 +187,11 @@ def user_interface(my_serial):
 
         elif(user_input == constants.UNIDIRECTIONAL_USER_COMMAND):
             change_mode_command(my_serial, constants.UNIDIRECTIONAL_PROCESSOR_COMMAND)
+            directional_mode = DirectionalMode.UNIDIRECTIONAL
 
         elif(user_input == constants.BIDIRECTIONAL_USER_COMMAND):
             change_mode_command(my_serial, constants.BIDIRECTIONAL_PROCESSOR_COMMAND)
+            directional_mode = DirectionalMode.BIDIRECTIONAL
 
         elif(user_input == constants.REV1_USER_COMMAND):
             hardware_revision = 1
@@ -172,23 +200,9 @@ def user_interface(my_serial):
             hardware_revision = 2
 
         elif(user_input == constants.CURRENT_LIMIT_COMMAND):
-            print(constants.CURRENT_LIMIT_UNIDIRECTIONAL)
-            while True:
-                current_limit = input(constants.CURRENT_LIMIT_PROMPT)
-                try:
-                    current_limit = float(current_limit)
-                    my_serial.write(constants.CURRENT_LIMIT_PROCESSOR_COMMAND)
-                    print(calculate_max_current_code(current_limit, hardware_revision))
-                    my_serial.write(calculate_max_current_code(current_limit, hardware_revision))
-                    for _ in range(0, constants.ACK_READ_ATTEMPTS):
-                        ack = my_serial.readline().decode(constants.DECODING_SCHEME)
-                        print(ack)
-                        if(constants.CURRENT_LIMIT_ACK in ack):
-                            print("current limit ack")
-                            break
-                    break
-                except ValueError:
-                    print(constants.INVALID_CURRENT_LIMIT)
+            enter_current_limit(my_serial, hardware_revision, directional_mode)
+            change_mode_command(my_serial, constants.UNIDIRECTIONAL_PROCESSOR_COMMAND)
+            directional_mode = DirectionalMode.UNIDIRECTIONAL
                     
         elif(user_input == constants.EXIT_USER_COMMAND):
             break

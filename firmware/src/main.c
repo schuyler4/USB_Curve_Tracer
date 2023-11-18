@@ -80,8 +80,9 @@ void device_operation(void)
                 break;
             case CURRENT_LIMIT_COMMAND_CHARACTER:
                 user_programmed_current_limit = UART_receive_uint16_t();
+                user_programmed_current_limit = 1000;
                 user_programmed_current_limit_used = 1;
-                UART_transmit_uint16_t(user_programmed_current_limit);
+                //UART_transmit_uint16_t(user_programmed_current_limit);
                 UART_transmit_string(CURRENT_LIMIT_SET);
                 break;
             default:
@@ -184,7 +185,14 @@ IV_Sample sample_IV(void)
 
 uint8_t over_current(IV_Sample sample)
 {
-    return sample.current_code > MAX_POSITIVE_CURRENT_CODE || sample.current_code < MAX_NEGATIVE_CURRENT_CODE;
+    if(user_programmed_current_limit_used && user_programmed_current_limit > 900)
+    {
+        return sample.current_code > user_programmed_current_limit;
+    }
+    else
+    {
+        return sample.current_code > MAX_POSITIVE_CURRENT_CODE || sample.current_code < MAX_NEGATIVE_CURRENT_CODE;
+    }
 }
 
 void print_starting_command(void)
@@ -218,10 +226,7 @@ void sweep_device(void)
     print_starting_command();
     zero_device_voltage();
 
-    uint8_t user_limit_exceeded = DAC_voltage_setting > user_programmed_current_limit;
-    uint8_t user_minimum = user_programmed_current_limit_used && user_limit_exceeded;   
-
-    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE || user_minimum)
+    while(DAC_voltage_setting <= MAXIMUM_DAC_CODE)
     {
         DAC_voltage_setting++;
         set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);
@@ -239,10 +244,7 @@ void sweep_device(void)
 
     if(mode == BIDIRECTIONAL)
     {
-        uint8_t user_limit_exceeded = DAC_voltage_setting > user_programmed_current_limit;
-        uint8_t user_minimum = user_programmed_current_limit_used && user_limit_exceeded;
-
-        while(DAC_voltage_setting > MINIMUM_DAC_CODE || user_minimum)
+        while(DAC_voltage_setting > MINIMUM_DAC_CODE)
         {
             DAC_voltage_setting--;
             set_DAC(DAC_voltage_setting, GAIN_1X, BUFFERED);

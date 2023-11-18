@@ -2,7 +2,7 @@ NEWLINE = '\n'
 COMMA = ','
 
 BAUDRATE = 9600
-SERIAL_PORT = 'COM4'
+SERIAL_PORT = '/dev/ttyUSB0'
 
 DATA_START_COMMAND = 'START'
 DATA_END_COMMAND = 'END'
@@ -50,7 +50,7 @@ TITLE_PROMPT = 'Enter a title:'
 INVALID_COMMAND_ERROR = 'Invalid command'
 STORED_SWEEPS_ERROR = 'No Stored Sweeps'
 POWER_DISCONNECTED_ERROR = '12V Power is disconnected from the curve tracer.'
-CURRENT_LIMIT_UNIDIRECTIONAL = 'A custom current limit can only be set in unidirectional mode.'
+CURRENT_LIMIT_UNIDIRECTIONAL = 'Changing to Unidirectional mode.'
 INVALID_CURRENT_LIMIT = 'Invalid Current limit Entered'
 CURRENT_LIMIT_PROMPT = 'Enter a new current limit:'
 

@@ -1,7 +1,8 @@
 '''
 FILENAME: IV.py
 
-PURPOSE: This file contains all the calculations and calibrations that convert ADC codes into current and voltage values.
+PURPOSE: This file contains all the calculations and calibrations that convert ADC codes into current and voltage values,
+and vice versa.
 
 WRITTEN BY: Marek Newton
 '''
@@ -41,19 +42,27 @@ def divider_voltage(input_voltage, upper_resistor):
     return (input_voltage/(upper_resistor + LOWER_STEP_DOWN_RESISTOR))*LOWER_STEP_DOWN_RESISTOR
 
 
-def IV_data(voltage_codes, current_codes, hardware_rev):
+def get_current_from_code(current_code, hardware_rev):
     if(hardware_rev == 2):
-        voltages = divided_voltage(output_voltage(voltage_codes), 
-                                   VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV2) - COMMON_VOLTAGE_REV2
-        currents = (divided_voltage(output_voltage(current_codes) - CURRENT_SENSOR_ZERO_VOLTAGE_REV2, 
+        return (divided_voltage(output_voltage(current_code) - CURRENT_SENSOR_ZERO_VOLTAGE_REV2, 
                                 CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV2)/CURRENT_AMPLIFIER_GAIN_REV2)/SHUNT_RESISTANCE_REV2
     else:
-        voltages = divided_voltage(output_voltage(voltage_codes), 
-                                   VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3) - COMMON_VOLTAGE_REV3
-        currents = ((
-                    divided_voltage(output_voltage(current_codes) - CURRENT_SENSOR_ZERO_VOLTAGE_REV3, 
+        return ((divided_voltage(output_voltage(current_code) - CURRENT_SENSOR_ZERO_VOLTAGE_REV3, 
         CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3)/CURRENT_AMPLIFIER_GAIN_REV3)/SHUNT_RESISTANCE_REV3)
+    
 
+def get_voltage_from_code(voltage_code, hardware_rev):
+    if(hardware_rev == 2):
+        return divided_voltage(output_voltage(voltage_code), 
+                                   VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV2) - COMMON_VOLTAGE_REV2
+    else:
+        return divided_voltage(output_voltage(voltage_code), 
+                                   VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3) - COMMON_VOLTAGE_REV3        
+
+
+def IV_data(voltage_codes, current_codes, hardware_rev):
+    currents = get_current_from_code(current_codes, hardware_rev)
+    voltages = get_voltage_from_code(voltage_codes, hardware_rev)
     return currents, voltages
 
 
