@@ -24,16 +24,16 @@ contact resistance will be included in the measurement. </li>
 <h3> Examples </h3>
 <p>Here is a diode curve taken with the revision 3 device. </p>
 
-![1N4001 Diode](./1N4001_REV3.png)
+![1N4001 Diode](./examples/1N4001_REV3.png)
 
 <p>Here are a few diode curves taken with the revision 2 device. </p>
 
 ![Zener Diode Plot](./zener_diode_plot_REV2.png)
-![1N4001 Diode](./1N4001_REV2.png)
+![1N4001 Diode](./examples/1N4001_REV2.png)
 
 <p>
 Here is a Darlington Transistor sweep taken with revision 3 of the device. 
 I'm not sure if it's right or not. 
 
-![TIP122G Plot](./TIP122G_REV3_LM324.png)
+![TIP122G Plot](./examples/TIP122G_REV3_LM324.png)
 </p>
