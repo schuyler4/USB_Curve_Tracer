@@ -28,7 +28,7 @@ contact resistance will be included in the measurement. </li>
 
 <p>Here are a few diode curves taken with the revision 2 device. </p>
 
-![Zener Diode Plot](./zener_diode_plot_REV2.png)
+![Zener Diode Plot](./examples/zener_diode_plot_REV2.png)
 ![1N4001 Diode](./examples/1N4001_REV2.png)
 
 <p>
