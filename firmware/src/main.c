@@ -79,11 +79,13 @@ void device_operation(void)
                 mode = BIDIRECTIONAL;
                 break;
             case CURRENT_LIMIT_COMMAND_CHARACTER:
-                user_programmed_current_limit = UART_receive_uint16_t();
-                user_programmed_current_limit = 1000;
+                user_programmed_current_limit = receive_current_code();
                 user_programmed_current_limit_used = 1;
-                //UART_transmit_uint16_t(user_programmed_current_limit);
+                UART_transmit_uint16_t(user_programmed_current_limit);
                 UART_transmit_string(CURRENT_LIMIT_SET);
+                break;
+            case MAX_CURRENT_LIMIT_COMMAND_CHARACTER:
+                user_programmed_current_limit_used = 0;
                 break;
             default:
                 break;
@@ -173,6 +175,25 @@ void zero_device_voltage(void)
             break;
         }
     }
+}
+
+uint16_t receive_current_code(void)
+{
+    // most significant byte first
+    uint8_t bytes[CURRENT_CODE_BYTE_COUNT];
+    uint8_t byte_count = 0;
+
+    while(1)
+    {
+        bytes[byte_count] = (uint8_t)UART_receive_character();
+        byte_count++;
+        if(byte_count == CURRENT_CODE_BYTE_COUNT)
+        {
+            break;
+        }
+    }
+
+    return bytes[0] << BYTE_SIZE | bytes[1];
 }
 
 IV_Sample sample_IV(void)

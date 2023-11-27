@@ -13,6 +13,9 @@ LSB = REFERENCE_VOLTAGE/ADC_RESOLUTION # V
 
 LOWER_STEP_DOWN_RESISTOR = 1000 # Ohms
 
+BYTE_MASK = 0xFF
+BYTE_SIZE = 8
+
 # REVISION 2 HARDWARE VALUES
 CURRENT_AMPLIFIER_GAIN_REV2 = 250 # V/V
 VOLTAGE_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV2 = 4700 # Ohms
@@ -31,6 +34,13 @@ CURRENT_AMPLIFIER_GAIN_REV3 = 11.8 # V/V
 
 output_voltage = lambda code: code * LSB
 gain_division = lambda voltage, gain: voltage/gain
+
+
+def split_adc_code(adc_code):
+    lower_byte = adc_code & BYTE_MASK
+    upper_byte = (adc_code >> BYTE_SIZE) & BYTE_MASK
+    return upper_byte, lower_byte
+
 
 # This gets the input voltage of a voltage divider given its output voltage. 
 def divided_voltage(divider_voltage, upper_resistor):
@@ -68,13 +78,10 @@ def IV_data(voltage_codes, current_codes, hardware_rev):
 
 def calculate_max_current_code(max_current, hardware_rev):
     if(hardware_rev == 2):
-        adc_input_voltage = divider_voltage(max_current*SHUNT_RESISTANCE_REV3*CURRENT_AMPLIFIER_GAIN_REV3, 
-                                            CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3)
-        return int(adc_input_voltage/LSB)
-    else:
         adc_input_voltage = divider_voltage(max_current*SHUNT_RESISTANCE_REV2*CURRENT_AMPLIFIER_GAIN_REV2, 
                                             CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV2)
         return int(adc_input_voltage/LSB)
-
-
-
+    else:
+        adc_input_voltage = divider_voltage(max_current*SHUNT_RESISTANCE_REV3*CURRENT_AMPLIFIER_GAIN_REV3+COMMON_VOLTAGE_REV3, 
+                                            CURRENT_SENSOR_UPPER_STEP_DOWN_RESISTOR_REV3)
+        return int(adc_input_voltage/LSB)

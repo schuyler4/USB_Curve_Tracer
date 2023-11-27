@@ -10,6 +10,7 @@
 #define VOLTAGE_ADC_CHANNEL 0
 #define CURRENT_ADC_CHANNEL 1
 #define REFERENCE_ADC_CHANNEL 2
+#define CURRENT_CODE_BYTE_COUNT 2
 
 #define MAXIMUM_ADC_READING 4095
 
@@ -43,6 +44,7 @@
 #define BIDIRECTIONAL_COMMAND_CHARACTER 'b'
 
 #define CURRENT_LIMIT_COMMAND_CHARACTER 'c'
+#define MAX_CURRENT_LIMIT_COMMAND_CHARACTER 'm'
 
 #define START_COMMAND "START"
 #define END_COMMAND "END"
@@ -73,6 +75,7 @@ void sweep_device(void);
 uint8_t external_voltage_supply_detected(void);
 void print_power_disconnected(void);
 void power_disconnected(uint8_t command);
+uint16_t receive_current_code(void);
 
 void print_starting_command(void);
 void print_ending_command(void);

@@ -15,7 +15,7 @@ import numpy as np
 
 from . import constants
 from .plot import plot_data
-from .IV import calculate_max_current_code
+from .IV import calculate_max_current_code, split_adc_code
 
 
 class DirectionalMode(Enum):
@@ -127,11 +127,21 @@ def enter_current_limit(my_serial, hardware_revision, directional_mode):
         try:
             current_limit = float(current_limit)
 
-            if(current_limit > 0.7):
+            if(current_limit > constants.MAXIMUM_USER_CURRENT_LIMIT or current_limit < 0):
                 raise ValueError
-        
+            
+            # The UART peripheral only works with 8 bit values, so it is convient to 
+            # split the current code into two bytes and transmit them one at a time.
+            current_code = calculate_max_current_code(current_limit, hardware_revision)
+            upper_current_code, lower_current_code = split_adc_code(current_code)
+
+            # Transmission (Most Significant Byte First)
             my_serial.write(constants.CURRENT_LIMIT_PROCESSOR_COMMAND)
-            my_serial.write(calculate_max_current_code(current_limit, hardware_revision))
+            time.sleep(constants.SECOND_DELAY)
+            my_serial.write(upper_current_code)
+            time.sleep(constants.SECOND_DELAY)
+            my_serial.write(lower_current_code)
+
             for _ in range(0, constants.ACK_READ_ATTEMPTS):
                 ack = my_serial.readline().decode(constants.DECODING_SCHEME)
                 print(ack)
@@ -141,6 +151,11 @@ def enter_current_limit(my_serial, hardware_revision, directional_mode):
             break
         except ValueError:
             print(constants.INVALID_CURRENT_LIMIT)
+
+
+def max_current_limit(my_serial):
+    my_serial.write(constants.MAX_CURRENT_LIMIT_PROCESSOR_COMMAND)
+    time.sleep(constants.DATA_RECEIVE_DELAY)
 
 
 def user_interface(my_serial):
@@ -203,6 +218,11 @@ def user_interface(my_serial):
             enter_current_limit(my_serial, hardware_revision, directional_mode)
             change_mode_command(my_serial, constants.UNIDIRECTIONAL_PROCESSOR_COMMAND)
             directional_mode = DirectionalMode.UNIDIRECTIONAL
+
+        elif(user_input == constants.MAXIMUM_USER_CURRENT_LIMIT):
+            max_current_limit(my_serial)
+            change_mode_command(my_serial, constants.BIDIRECTIONAL_PROCESSOR_COMMAND)
+            directional_mode = DirectionalMode.BIDIRECTIONAL
                     
         elif(user_input == constants.EXIT_USER_COMMAND):
             break
