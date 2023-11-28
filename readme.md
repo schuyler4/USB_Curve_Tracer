@@ -9,7 +9,7 @@ Instead of implementing a display, data is piped to an external computer where i
 <li>12V External Power Supply</li>
 <li>Maximum Positive Sweep Voltage: 4V</li>
 <li>Minimum Negative Sweep Voltage: -3.9V</li>
-<li>Full Sweep Time: 15.4ss</li>
+<li>Full Sweep Time: 15.4s</li>
 </ul>
 
 <h3> Limitations </h3>
@@ -22,18 +22,7 @@ contact resistance will be included in the measurement. </li>
 </ul> 
 
 <h3> Examples </h3>
-<p>Here is a diode curve taken with the revision 3 device. </p>
+<p>Below is an example 1N4148 diode and a 2N3904 BJT sweep. Short of curve tracing with a different system and doing a comparison, there is not really a good way to verify if these are correct. However, the general shape of the curves does look right. There is clearly some offset error for the red trace of the 2N3904. </p>
 
-![1N4001 Diode](./examples/1N4001_REV3.png)
-
-<p>Here are a few diode curves taken with the revision 2 device. </p>
-
-![Zener Diode Plot](./examples/zener_diode_plot_REV2.png)
-![1N4001 Diode](./examples/1N4001_REV2.png)
-
-<p>
-Here is a Darlington Transistor sweep taken with revision 3 of the device. 
-I'm not sure if it's right or not. 
-
-![TIP122G Plot](./examples/TIP122G_REV3_LM324.png)
-</p>
+![1N4148 Diode](./examples/1N4148_REV3.png)
+![2N3904 BJT](./examples/2N3904_REV3.png)
