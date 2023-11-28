@@ -185,11 +185,15 @@ uint16_t receive_current_code(void)
 
     while(1)
     {
-        bytes[byte_count] = (uint8_t)UART_receive_character();
-        byte_count++;
-        if(byte_count == CURRENT_CODE_BYTE_COUNT)
+        uint8_t byte = (uint8_t)UART_receive_character();
+        if(byte != 0)
         {
-            break;
+            bytes[byte_count] = byte;
+            byte_count++;
+            if(byte_count == CURRENT_CODE_BYTE_COUNT)
+            {
+                break;
+            }
         }
     }
 

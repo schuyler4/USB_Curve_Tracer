@@ -135,12 +135,16 @@ def enter_current_limit(my_serial, hardware_revision, directional_mode):
             current_code = calculate_max_current_code(current_limit, hardware_revision)
             upper_current_code, lower_current_code = split_adc_code(current_code)
 
+            print('current code:', current_code)
+            print('upper current code', upper_current_code)
+            print('lower current code', lower_current_code)
+
             # Transmission (Most Significant Byte First)
             my_serial.write(constants.CURRENT_LIMIT_PROCESSOR_COMMAND)
             time.sleep(constants.SECOND_DELAY)
-            my_serial.write(upper_current_code)
+            my_serial.write(upper_current_code.to_bytes(1, byteorder='big'))
             time.sleep(constants.SECOND_DELAY)
-            my_serial.write(lower_current_code)
+            my_serial.write(lower_current_code.to_bytes(1, byteorder='big'))
 
             for _ in range(0, constants.ACK_READ_ATTEMPTS):
                 ack = my_serial.readline().decode(constants.DECODING_SCHEME)
