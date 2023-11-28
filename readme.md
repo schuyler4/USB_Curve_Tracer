@@ -22,7 +22,7 @@ contact resistance will be included in the measurement. </li>
 </ul> 
 
 <h3> Examples </h3>
-<p>Below is an example 1N4148 diode and a 2N3904 BJT sweep. Short of curve tracing with a different system and doing a comparison, there is not really a good way to verify if these are correct. However, the general shape of the curves does look right. There is clearly some offset error for the red trace of the 2N3904. </p>
+<p>Below is an example 1N4148 diode sweep and a 2N3904 BJT sweep. Short of curve tracing with a different system and doing a comparison, there is not really a good way to verify if these are correct. However, the general shape of the curves does look right. There is clearly some offset error for the red trace of the 2N3904 sweep. </p>
 
 ![1N4148 Diode](./examples/1N4148_REV3.png)
 ![2N3904 BJT](./examples/2N3904_REV3.png)
