@@ -2,7 +2,7 @@
 This is my attempt at making a curve tracer.  
 Instead of implementing a display, data is piped to an external computer where it is plotted using Python. It also controlled using a command line interface on the external computer. 
 
-![Device Picture](./REV3_Picture.JPG)
+![Device Picture](./device_picture_REV3.JPG)
 
 <h3> Revision 3 Specs </h3>
 <ul>
