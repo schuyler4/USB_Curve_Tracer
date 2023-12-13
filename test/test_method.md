@@ -4,7 +4,7 @@ The curve tracer is tested by sweeping a number of different resistor values.
 Once all this data is collected, a best fit line for each tested resistor value
 is found. The percent error between the theoretical resistor IV curve, and the measured resistor value IV curve is found.
 
-The following resistor values are tested:  680, 470, 330, 220, 33
+The following resistor values are tested: 470, 330, 220, 33
 
 This test is not automated with the curve tracer in loop. Each resistor is manually measured,
 and the data is saved in the test directory. 
