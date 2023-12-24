@@ -2,7 +2,7 @@ import sys
 
 sys.path.append('../../../')
 
-from software.plot import get_codes_from_file, plot_transistor_data, BJT_Current_Setting_Indicator, Prefix
+from software.plot import get_codes_from_file, plot_transistor_data, Control_Signal_Type, Transistor_Type, Prefix
 
 CURVE_COUNT = 5
 HARDWARE_REV = 3
@@ -18,8 +18,9 @@ for i in range(1, CURVE_COUNT+1):
 
 plot_transistor_data(
     transistor_IV_codes, 
+    Transistor_Type.BJT,
     BASE_CURRENTS, 
-    BJT_Current_Setting_Indicator.BASE_CURRENT, 
+    Control_Signal_Type.CURRENT,
     Prefix.MILLI,
     PLOT_TITLE, 
     HARDWARE_REV).show()
