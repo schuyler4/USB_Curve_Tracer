@@ -173,8 +173,9 @@ def user_interface(my_serial):
 
     while True:
         user_input = input(constants.COMMAND_PROMPT)
+        command_exists = constants.SWEEP_USER_COMMAND in user_input
 
-        if(constants.SWEEP_USER_COMMAND in user_input and user_input != constants.SWEEP_USER_COMMAND):
+        if(command_exits and user_input != constants.SWEEP_USER_COMMAND):
             command_and_title = user_input.split(constants.COMMA)
             if(len(command_and_title) != constants.TITLE_COMMAND_LIST_LENGTH):
                 print(constants.INVALID_COMMAND_ERROR)
@@ -182,7 +183,10 @@ def user_interface(my_serial):
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes, power_connected = get_data_codes(data)
             if(power_connected):
-                plot_data(current_codes, voltage_codes, command_and_title[1], hardware_revision).show()
+                plot_data(current_codes, 
+                          voltage_codes, 
+                          command_and_title[1], 
+                          hardware_revision).show()
             else:
                 print(constants.POWER_DISCONNECTED_ERROR)
                 break
@@ -191,7 +195,10 @@ def user_interface(my_serial):
             data = sweep_device_command(my_serial)
             current_codes, voltage_codes, power_connected = get_data_codes(data)
             if(power_connected):
-                plot_data(current_codes, voltage_codes, constants.IV_TRACE_TITLE, hardware_revision).show()
+                plot_data(current_codes, 
+                          voltage_codes, 
+                          constants.IV_TRACE_TITLE,
+                          hardware_revision).show()
             else:
                 print(constants.POWER_DISCONNECTED_ERROR)
                 break
