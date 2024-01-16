@@ -20,12 +20,15 @@ step_filter = Step_Average(currents,
                            constants.DAC_BIT_RESOLUTION)
 
 step_filter()
-print(len(step_filter.find_steps()))
-for step in step_filter.find_steps():
-    print(step)
-averaged_currents = step_filter.averaged_currents
 averaged_voltages = step_filter.averaged_voltages
+averaged_currents = step_filter.averaged_currents
+step_voltages = step_filter.step_voltages
+step_currents = step_filter.step_currents
 
-plt.scatter(voltages, currents, color='blue')
-plt.plot(averaged_voltages, averaged_currents, color='red')
+for i, step_voltage in enumerate(step_voltages):
+    step_current = step_currents[i]
+    plt.plot(step_voltage, step_current)
+
+plt.scatter(averaged_voltages, averaged_currents)
 plt.show()
+
