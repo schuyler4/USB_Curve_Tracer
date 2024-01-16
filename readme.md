@@ -19,6 +19,8 @@ Instead of implementing a display, data is piped to an external computer where i
 <li>The curve tracer cannot be driven, so it cannot measure voltage sources.</li>
 <li>The curve tracer does not include Kelvin connection functionality, so test lead resistance and 
 contact resistance will be included in the measurement. </li>
+<li> The curve tracer does not include any programmable gain stages. For this reason, you only get full
+current/voltage measurement when using the full current/voltage range.</li>
 </ul> 
 
 <h3> Examples </h3>
