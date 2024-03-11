@@ -28,3 +28,10 @@ current/voltage measurement when using the full current/voltage range.</li>
 
 ![1N4148 Diode](./examples/1N4148_REV3.png)
 ![2N3904 BJT](./examples/2N3904_REV3.png)
+
+<h3> Schematic </h3>
+
+![Schematic Page 1](./schematic_page1.png)
+![Schematic Page 2](./schematic_page2.png)
+![Schematic Page 3](./schematic_page3.png)
+![Schematic Page 4](./schematic_page4.png)
