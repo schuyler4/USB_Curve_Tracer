@@ -34,3 +34,5 @@ software/bin
 
 # Netlist
 *.net
+
+*.lck
